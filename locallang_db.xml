@@ -13,6 +13,7 @@
 			<label index="tx_zhdkmadekintegration_gallery.type.I.1">Thumbnails</label>
 			<label index="tx_zhdkmadekintegration_gallery.type.I.2">Dia show</label>
 			<label index="tx_zhdkmadekintegration_gallery.type">Type</label>
+			<label index="tx_zhdkmadekintegration_gallery.items">Gallery Items</label>
 			<label index="tx_zhdkmadekintegration_item">Gallery item</label>
 			<label index="tx_zhdkmadekintegration_item.madekid">Madek ID</label>
 			<label index="tx_zhdkmadekintegration_item.type.I.0">File</label>
@@ -22,8 +23,7 @@
 			<label index="tx_zhdkmadekintegration_item.mediatype.I.1">Video</label>
 			<label index="tx_zhdkmadekintegration_item.mediatype.I.2">Audio</label>
 			<label index="tx_zhdkmadekintegration_item.mediatype">Media Type</label>
-			<label index="tx_zhdkmadekintegration_item.caption">Caption</label>
-			<label index="tx_zhdkmadekintegration_item.gallery">Gallery</label>
+			<label index="tx_zhdkmadekintegration_item.title">Title</label>
 			<label index="tt_content.list_type_pi1">Madek Gallery</label>
 		</languageKey>
 		<languageKey index="de" type="array">
@@ -34,6 +34,7 @@
 			<label index="tx_zhdkmadekintegration_gallery.type.I.1">Thumbnails</label>
 			<label index="tx_zhdkmadekintegration_gallery.type.I.2">DIashow</label>
 			<label index="tx_zhdkmadekintegration_gallery.type">Typ</label>
+			<label index="tx_zhdkmadekintegration_gallery.items">Galerie-Inhalt</label>
 			<label index="tx_zhdkmadekintegration_item">Galerie-Inhalt</label>
 			<label index="tx_zhdkmadekintegration_item.madekid">Madek ID</label>
 			<label index="tx_zhdkmadekintegration_item.type.I.0">Datei</label>
@@ -43,8 +44,7 @@
 			<label index="tx_zhdkmadekintegration_item.mediatype.I.1">Video</label>
 			<label index="tx_zhdkmadekintegration_item.mediatype.I.2">Audio</label>
 			<label index="tx_zhdkmadekintegration_item.mediatype">Medientyp</label>
-			<label index="tx_zhdkmadekintegration_item.caption">Bildlegende</label>
-			<label index="tx_zhdkmadekintegration_item.gallery">Galerie</label>
+			<label index="tx_zhdkmadekintegration_item.title">Titel</label>
 			<label index="tt_content.list_type_pi1">Madek-Galerie</label>
 		</languageKey>
 	</data>

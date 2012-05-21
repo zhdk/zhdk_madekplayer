@@ -4,7 +4,7 @@ if (!defined ('TYPO3_MODE')) 	die ('Access denied.');
 $TCA['tx_zhdkmadekintegration_gallery'] = array (
 	'ctrl' => $TCA['tx_zhdkmadekintegration_gallery']['ctrl'],
 	'interface' => array (
-		'showRecordFieldList' => 'sys_language_uid,l10n_parent,l10n_diffsource,hidden,starttime,endtime,fe_group,title,description,type'
+		'showRecordFieldList' => 'sys_language_uid,l10n_parent,l10n_diffsource,hidden,starttime,endtime,fe_group,title,description,type,items'
 	),
 	'feInterface' => $TCA['tx_zhdkmadekintegration_gallery']['feInterface'],
 	'columns' => array (
@@ -140,9 +140,54 @@ $TCA['tx_zhdkmadekintegration_gallery'] = array (
 				'maxitems' => 1,
 			)
 		),
+		'items' => array (		
+			'exclude' => 0,		
+			'label' => 'LLL:EXT:zhdk_madekintegration/locallang_db.xml:tx_zhdkmadekintegration_gallery.items',		
+			'config' => array (
+				'type' => 'select',	
+				'foreign_table' => 'tx_zhdkmadekintegration_item',	
+				'foreign_table_where' => 'AND tx_zhdkmadekintegration_item.pid=###CURRENT_PID### ORDER BY tx_zhdkmadekintegration_item.uid',	
+				'size' => 10,	
+				'minitems' => 0,
+				'maxitems' => 100,	
+				'wizards' => array(
+					'_PADDING'  => 2,
+					'_VERTICAL' => 1,
+					'add' => array(
+						'type'   => 'script',
+						'title'  => 'Create new record',
+						'icon'   => 'add.gif',
+						'params' => array(
+							'table'    => 'tx_zhdkmadekintegration_item',
+							'pid'      => '###CURRENT_PID###',
+							'setValue' => 'prepend'
+						),
+						'script' => 'wizard_add.php',
+					),
+					'list' => array(
+						'type'   => 'script',
+						'title'  => 'List',
+						'icon'   => 'list.gif',
+						'params' => array(
+							'table' => 'tx_zhdkmadekintegration_item',
+							'pid'   => '###CURRENT_PID###',
+						),
+						'script' => 'wizard_list.php',
+					),
+					'edit' => array(
+						'type'                     => 'popup',
+						'title'                    => 'Edit',
+						'script'                   => 'wizard_edit.php',
+						'popup_onlyOpenIfSelected' => 1,
+						'icon'                     => 'edit2.gif',
+						'JSopenParams'             => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+					),
+				),
+			)
+		),
 	),
 	'types' => array (
-		'0' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title;;;;2-2-2, description;;;richtext[]:rte_transform[mode=ts];3-3-3, type')
+		'0' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title;;;;2-2-2, description;;;richtext[]:rte_transform[mode=ts];3-3-3, type, items')
 	),
 	'palettes' => array (
 		'1' => array('showitem' => 'starttime, endtime, fe_group')
@@ -154,7 +199,7 @@ $TCA['tx_zhdkmadekintegration_gallery'] = array (
 $TCA['tx_zhdkmadekintegration_item'] = array (
 	'ctrl' => $TCA['tx_zhdkmadekintegration_item']['ctrl'],
 	'interface' => array (
-		'showRecordFieldList' => 'sys_language_uid,l10n_parent,l10n_diffsource,hidden,starttime,endtime,fe_group,madekid,type,mediatype,caption,gallery'
+		'showRecordFieldList' => 'sys_language_uid,l10n_parent,l10n_diffsource,hidden,starttime,endtime,fe_group,madekid,type,mediatype,title'
 	),
 	'feInterface' => $TCA['tx_zhdkmadekintegration_item']['feInterface'],
 	'columns' => array (
@@ -257,7 +302,6 @@ $TCA['tx_zhdkmadekintegration_item'] = array (
 				'eval'     => 'int',
 				'checkbox' => '0',
 				'range'    => array (
-					'upper' => '1000',
 					'lower' => '10'
 				),
 				'default' => 0
@@ -290,30 +334,17 @@ $TCA['tx_zhdkmadekintegration_item'] = array (
 				'maxitems' => 1,
 			)
 		),
-		'caption' => array (		
+		'title' => array (		
 			'exclude' => 0,		
-			'label' => 'LLL:EXT:zhdk_madekintegration/locallang_db.xml:tx_zhdkmadekintegration_item.caption',		
+			'label' => 'LLL:EXT:zhdk_madekintegration/locallang_db.xml:tx_zhdkmadekintegration_item.title',		
 			'config' => array (
-				'type' => 'text',
-				'cols' => '30',	
-				'rows' => '5',
-			)
-		),
-		'gallery' => array (		
-			'exclude' => 0,		
-			'label' => 'LLL:EXT:zhdk_madekintegration/locallang_db.xml:tx_zhdkmadekintegration_item.gallery',		
-			'config' => array (
-				'type' => 'select',	
-				'foreign_table' => 'tx_zhdkmadekintegration_gallery',	
-				'foreign_table_where' => 'AND tx_zhdkmadekintegration_gallery.pid=###CURRENT_PID### ORDER BY tx_zhdkmadekintegration_gallery.uid',	
-				'size' => 1,	
-				'minitems' => 0,
-				'maxitems' => 1,
+				'type' => 'input',	
+				'size' => '30',
 			)
 		),
 	),
 	'types' => array (
-		'0' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, madekid, type, mediatype, caption, gallery')
+		'0' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, madekid, type, mediatype, title;;;;2-2-2')
 	),
 	'palettes' => array (
 		'1' => array('showitem' => 'starttime, endtime, fe_group')

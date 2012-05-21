@@ -27,6 +27,7 @@ CREATE TABLE tx_zhdkmadekintegration_gallery (
 	title varchar(255) DEFAULT '' NOT NULL,
 	description text,
 	type int(11) DEFAULT '0' NOT NULL,
+	items text,
 	
 	PRIMARY KEY (uid),
 	KEY parent (pid),
@@ -65,8 +66,7 @@ CREATE TABLE tx_zhdkmadekintegration_item (
 	madekid int(11) DEFAULT '0' NOT NULL,
 	type int(11) DEFAULT '0' NOT NULL,
 	mediatype int(11) DEFAULT '0' NOT NULL,
-	caption text,
-	gallery int(11) DEFAULT '0' NOT NULL,
+	title tinytext,
 	
 	PRIMARY KEY (uid),
 	KEY parent (pid),
