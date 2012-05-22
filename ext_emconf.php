@@ -11,7 +11,7 @@
 ########################################################################
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'ZHDK Madek Integration',
+	'title' => 'ZHDK Madek Player',
 	'description' => '',
 	'category' => 'plugin',
 	'author' => 'Beat Rohrer',

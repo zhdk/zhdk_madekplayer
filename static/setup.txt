@@ -1,0 +1,7 @@
+tt_content.madekgallery= COA
+tt_content.madekgallery {
+    10 = < lib.stdheader
+
+    20 = MADEKGALLERY
+    20 { ... }
+}

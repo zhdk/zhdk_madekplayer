@@ -1,0 +1,107 @@
+
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:zhdk_madekintegration/pi1/locallang.php:flexform.tabgeneral</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<title>
+						<TCEforms>
+							<label>LLL:EXT:zhdk_madekintegration/locallang_db.xml:tx_zhdkmadekintegration_gallery.title</label>
+							<config>
+								<type>input</type>
+								<size>30</size>
+								<eval>require,trim</eval>
+							</config>
+						</TCEforms>
+					</title>
+					<gallery_items>
+						<TCEforms>
+							<exclude>0</exclude>
+							<label>LLL:EXT:zhdk_madekintegration/locallang_db.php:tx_zhdkmadekintegration_item</label>
+							<config>
+								<type>input</type>
+								<size>30</size>
+								<eval>require,trim,int</eval>
+							</config>
+						</TCEforms>
+					</gallery_items>
+					<gallery_type>
+						<TCEforms>
+							<exclude>0</exclude>
+							<label>LLL:EXT:zhdk_madekintegration/locallang_db.php:tx_zhdkmadekintegration_item.type</label>
+							<config>
+								<type>select</type>
+								<size>30</size>
+								<eval>require</eval>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:zhdk_madekintegration/locallang_db.php:tx_zhdkmadekintegration_item.type.I.0</numIndex>
+										<numIndex index="1">0</numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:zhdk_madekintegration/locallang_db.php:tx_zhdkmadekintegration_item.type.I.1</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+								</items>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+						</TCEforms>
+					</gallery_type>
+					<!--<gallery_items>
+						<TCEforms>
+							<exclude>0</exclude>
+							<label>LLL:EXT:zhdk_madekintegration/locallang_db.php:tx_zhdkmadekintegration_item</label>
+							<config>
+								<type>select</type>
+								<foreign_table>tx_zhdkmadekintegration_item</foreign_table>
+								<foreign_table_where> AND tx_zhdkmadekintegration_item.pid=###CURRENT_PID### ORDER BY tx_zhdkmadekintegration_item.uid</foreign_table_where>
+								<size>15</size>
+								<minitems>1</minitems>
+								<maxitems>100</maxitems>
+								<wizards>
+									<add>
+										<type>script</type>
+										<title>Create new record</title>
+										<icon>add.gif</icon>
+										<params>
+											<table>tx_zhdkmadekintegration_item</table>
+											<pid>###CURRENT_PID###</pid>
+											<setValue>prepend</setValue>
+										</params>
+										<script>wizard_add.php</script>
+									</add>
+									<list>
+										<type>script</type>
+										<title>List</title>
+										<icon>list.gif</icon>
+										<params>
+											<table>tx_zhdkmadekintegration_item</table>
+											<pid>###CURRENT_PID###</pid>
+										</params>
+										<script>wizard_list.php</script>
+									</list>
+									<edit>
+										<type>popup</type>
+										<title>Edit</title>
+										<icon>edit2.gif</icon>
+										<script>wizard_edit.php</script>
+										<popup_onlyOpenIfSelected>1</popup_onlyOpenIfSelected>
+										<JSopenParams>height=350,width=580,status=0,menubar=0,scrollbars=1</JSopenParams>
+									</edit>
+								</wizards>
+							</config>
+						</TCEforms>
+					</gallery_items>-->
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>
