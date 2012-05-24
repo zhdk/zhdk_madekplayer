@@ -7,99 +7,77 @@
 		<sDEF>
 			<ROOT>
 				<TCEforms>
-					<sheetTitle>LLL:EXT:zhdk_madekintegration/pi1/locallang.php:flexform.tabgeneral</sheetTitle>
+					<sheetTitle>LLL:EXT:zhdk_madekplayer/pi1/locallang.php:flexform.tabgeneral</sheetTitle>
 				</TCEforms>
 				<type>array</type>
 				<el>
-					<title>
-						<TCEforms>
-							<label>LLL:EXT:zhdk_madekintegration/locallang_db.xml:tx_zhdkmadekintegration_gallery.title</label>
-							<config>
-								<type>input</type>
-								<size>30</size>
-								<eval>require,trim</eval>
-							</config>
-						</TCEforms>
-					</title>
-					<gallery_items>
+					<madek_set>
 						<TCEforms>
 							<exclude>0</exclude>
-							<label>LLL:EXT:zhdk_madekintegration/locallang_db.php:tx_zhdkmadekintegration_item</label>
+							<label>LLL:EXT:zhdk_madekplayer/locallang.php:tx_zhdkmadekplayer_pi1.config.set_id</label>
 							<config>
 								<type>input</type>
 								<size>30</size>
 								<eval>require,trim,int</eval>
-							</config>
-						</TCEforms>
-					</gallery_items>
-					<gallery_type>
-						<TCEforms>
-							<exclude>0</exclude>
-							<label>LLL:EXT:zhdk_madekintegration/locallang_db.php:tx_zhdkmadekintegration_item.type</label>
-							<config>
-								<type>select</type>
-								<size>30</size>
-								<eval>require</eval>
-								<items type="array">
-									<numIndex index="0" type="array">
-										<numIndex index="0">LLL:EXT:zhdk_madekintegration/locallang_db.php:tx_zhdkmadekintegration_item.type.I.0</numIndex>
-										<numIndex index="1">0</numIndex>
-									</numIndex>
-									<numIndex index="1" type="array">
-										<numIndex index="0">LLL:EXT:zhdk_madekintegration/locallang_db.php:tx_zhdkmadekintegration_item.type.I.1</numIndex>
-										<numIndex index="1">1</numIndex>
-									</numIndex>
-								</items>
-								<maxitems>1</maxitems>
-								<size>1</size>
-							</config>
-						</TCEforms>
-					</gallery_type>
-					<!--<gallery_items>
-						<TCEforms>
-							<exclude>0</exclude>
-							<label>LLL:EXT:zhdk_madekintegration/locallang_db.php:tx_zhdkmadekintegration_item</label>
-							<config>
-								<type>select</type>
-								<foreign_table>tx_zhdkmadekintegration_item</foreign_table>
-								<foreign_table_where> AND tx_zhdkmadekintegration_item.pid=###CURRENT_PID### ORDER BY tx_zhdkmadekintegration_item.uid</foreign_table_where>
-								<size>15</size>
-								<minitems>1</minitems>
-								<maxitems>100</maxitems>
-								<wizards>
-									<add>
-										<type>script</type>
-										<title>Create new record</title>
-										<icon>add.gif</icon>
-										<params>
-											<table>tx_zhdkmadekintegration_item</table>
-											<pid>###CURRENT_PID###</pid>
-											<setValue>prepend</setValue>
-										</params>
-										<script>wizard_add.php</script>
-									</add>
-									<list>
-										<type>script</type>
-										<title>List</title>
-										<icon>list.gif</icon>
-										<params>
-											<table>tx_zhdkmadekintegration_item</table>
-											<pid>###CURRENT_PID###</pid>
-										</params>
-										<script>wizard_list.php</script>
-									</list>
-									<edit>
+								<wizards type="array">
+									<_PADDING type="integer">2</_PADDING>
+									<add type="array">
 										<type>popup</type>
-										<title>Edit</title>
-										<icon>edit2.gif</icon>
-										<script>wizard_edit.php</script>
-										<popup_onlyOpenIfSelected>1</popup_onlyOpenIfSelected>
-										<JSopenParams>height=350,width=580,status=0,menubar=0,scrollbars=1</JSopenParams>
-									</edit>
+										<title>add1</title>
+										<icon>add.gif</icon>
+										<script>EXT:zhdk_madekplayer/pi1/madek_set_picker.php</script>
+										<JSopenParams>height=300,width=500,status=0,menubar=0,scrollbars=1</JSopenParams>
+									</add>
+									<!--<add2 type="array">
+										<type>userFunc</type>
+										<userFunc>tx_zhdkmadekplayer_pi1_wizicon->user_TCAform_procWizard</userFunc>
+										<title>add2</title>
+										<icon>add.gif</icon>
+									</add2>-->
 								</wizards>
 							</config>
 						</TCEforms>
-					</gallery_items>-->
+					</madek_set>
+					<show_copyright>
+						<TCEforms>
+							<exclude>0</exclude>
+							<label>LLL:EXT:zhdk_madekplayer/locallang.php:tx_zhdkmadekplayer_pi1.config.show_copyright</label>
+							<config>
+								<type>check</type>
+								<default>1</default>
+							</config>
+						</TCEforms>
+					</show_copyright>
+					<show_title>
+						<TCEforms>
+							<exclude>0</exclude>
+							<label>LLL:EXT:zhdk_madekplayer/locallang.php:tx_zhdkmadekplayer_pi1.config.show_title</label>
+							<config>
+								<type>check</type>
+								<default>1</default>
+							</config>
+						</TCEforms>
+					</show_title>
+					<show_subtitle>
+						<TCEforms>
+							<exclude>0</exclude>
+							<label>LLL:EXT:zhdk_madekplayer/locallang.php:tx_zhdkmadekplayer_pi1.config.show_subtitle</label>
+							<config>
+								<type>check</type>
+								<default>1</default>
+							</config>
+						</TCEforms>
+					</show_subtitle>
+					<show_author>
+						<TCEforms>
+							<exclude>0</exclude>
+							<label>LLL:EXT:zhdk_madekplayer/locallang.php:tx_zhdkmadekplayer_pi1.config.show_author</label>
+							<config>
+								<type>check</type>
+								<default>1</default>
+							</config>
+						</TCEforms>
+					</show_author>
 				</el>
 			</ROOT>
 		</sDEF>

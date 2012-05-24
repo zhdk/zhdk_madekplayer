@@ -2,16 +2,74 @@
 <T3locallang>
 	<meta type="array">
 		<type>module</type>
-		<description>Language labels for extension 'zhdk_madekintegration'</description>
+		<description>Language labels for extension 'zhdk_madekplayer'</description>
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-			<label index="pi1_title">Madek Gallery</label>
-			<label index="pi1_plus_wiz_description">Displays Images from the Madek (media archive)</label>
+			<label index="pi1_title">Madek Player</label>
+			<label index="pi1_plus_wiz_description">Features a set from the Madek.</label>
+			<label index="tx_zhdkmadekplayer_gallery">Gallery</label>
+			<label index="tx_zhdkmadekplayer_gallery.title">Title</label>
+			<label index="tx_zhdkmadekplayer_gallery.description">Description</label>
+			<label index="tx_zhdkmadekplayer_gallery.type.I.0">Single File</label>
+			<label index="tx_zhdkmadekplayer_gallery.type.I.1">Thumbnails</label>
+			<label index="tx_zhdkmadekplayer_gallery.type.I.2">Dia show</label>
+			<label index="tx_zhdkmadekplayer_gallery.type">Type</label>
+			<label index="tx_zhdkmadekplayer_gallery.items">Gallery Items</label>
+			<label index="tx_zhdkmadekplayer_item">Gallery item</label>
+			<label index="tx_zhdkmadekplayer_item.madekid">Madek ID</label>
+			<label index="tx_zhdkmadekplayer_item.type.I.0">File</label>
+			<label index="tx_zhdkmadekplayer_item.type.I.1">Set</label>
+			<label index="tx_zhdkmadekplayer_item.type">Type</label>
+			<label index="tx_zhdkmadekplayer_item.mediatype.I.0">Image</label>
+			<label index="tx_zhdkmadekplayer_item.mediatype.I.1">Video</label>
+			<label index="tx_zhdkmadekplayer_item.mediatype.I.2">Audio</label>
+			<label index="tx_zhdkmadekplayer_item.mediatype">Media Type</label>
+			<label index="tx_zhdkmadekplayer_item.title">Title</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_copyright">Show copyright notice</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_title">Show title</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_subtitle">Show Description</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_author">Show author</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.set_id">Madek Media Set ID</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright">Copyright</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_notice">Copyright holder</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_status">License name</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_usage">Terms of use</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_url">License URL</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_url.short">URL</label>
 		</languageKey>
 		<languageKey index="de" type="array">
-			<label index="pi1_title">Madek-Galerie</label>
-			<label index="pi1_plus_wiz_description">Zeigt Bilder aus dem Madek</label>
+			<label index="pi1_title">Madek-Player</label>
+			<label index="pi1_plus_wiz_description">Zeigt Sets aus dem Madek an.</label>
+			<label index="tx_zhdkmadekplayer_gallery">Galerie</label>
+			<label index="tx_zhdkmadekplayer_gallery.title">Titel</label>
+			<label index="tx_zhdkmadekplayer_gallery.description">Beschreibung</label>
+			<label index="tx_zhdkmadekplayer_gallery.type.I.0">Einzelnes Bild</label>
+			<label index="tx_zhdkmadekplayer_gallery.type.I.1">Thumbnails</label>
+			<label index="tx_zhdkmadekplayer_gallery.type.I.2">DIashow</label>
+			<label index="tx_zhdkmadekplayer_gallery.type">Typ</label>
+			<label index="tx_zhdkmadekplayer_gallery.items">Galerie-Inhalt</label>
+			<label index="tx_zhdkmadekplayer_item">Galerie-Inhalt</label>
+			<label index="tx_zhdkmadekplayer_item.madekid">Madek ID</label>
+			<label index="tx_zhdkmadekplayer_item.type.I.0">Datei</label>
+			<label index="tx_zhdkmadekplayer_item.type.I.1">Set</label>
+			<label index="tx_zhdkmadekplayer_item.type">Typ</label>
+			<label index="tx_zhdkmadekplayer_item.mediatype.I.0">Bild</label>
+			<label index="tx_zhdkmadekplayer_item.mediatype.I.1">Video</label>
+			<label index="tx_zhdkmadekplayer_item.mediatype.I.2">Audio</label>
+			<label index="tx_zhdkmadekplayer_item.mediatype">Medientyp</label>
+			<label index="tx_zhdkmadekplayer_item.title">Titel</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_copyright">Zeige Copyright-Information an</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_title">Zeige den Titel an</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_subtitle">Zeige die Bildunterschrift</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_author">Zeige den Urheber</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.set_id">Madek Media Set ID</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright">Copyright</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_notice">Copyright-Halter</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_status">Lizenz</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_usage">Lizenztext</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_url">URL zum Lizenz-Volltext</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_url.short">URL</label>
 		</languageKey>
 	</data>
 </T3locallang>

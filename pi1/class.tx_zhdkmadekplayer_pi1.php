@@ -30,17 +30,17 @@
 require_once(PATH_tslib . 'class.tslib_pibase.php');
 
 /**
- * Plugin 'Madek Gallery' for the 'zhdk_madekintegration' extension.
+ * Plugin 'Madek Gallery' for the 'zhdk_madekplayer' extension.
  *
  * @author	Beat Rohrer <beat.rohrer@zhdk.ch>
  * @package	TYPO3
- * @subpackage	tx_zhdkmadekintegration
+ * @subpackage	tx_zhdkmadekplayer
  */
-class tx_zhdkmadekintegration_pi1 extends tslib_pibase {
+class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 
-	var $prefixId = 'tx_zhdkmadekintegration_pi1';  // Same as class name
-	var $scriptRelPath = 'pi1/class.tx_zhdkmadekintegration_pi1.php'; // Path to this script relative to the extension dir.
-	var $extKey = 'zhdk_madekintegration'; // The extension key.
+	var $prefixId = 'tx_zhdkmadekplayer_pi1';  // Same as class name
+	var $scriptRelPath = 'pi1/class.tx_zhdkmadekplayer_pi1.php'; // Path to this script relative to the extension dir.
+	var $extKey = 'zhdk_madekplayer'; // The extension key.
 	var $pi_checkCHash = true;
 
 	/**
@@ -51,6 +51,7 @@ class tx_zhdkmadekintegration_pi1 extends tslib_pibase {
 	 * @return	The content that should be displayed on the website
 	 */
 	function main($content, $conf) {
+		$this->conf = $conf;
 		$this->init();
 		return $this->galleryView();
 		
@@ -89,15 +90,160 @@ class tx_zhdkmadekintegration_pi1 extends tslib_pibase {
 	}
 	
 	function galleryView() {
+		$this->pi_loadLL();
+		$madekSetId = $this->lConf['madek_set'];
+		$madekServer = rtrim($this->piVars['madekServer'], '/');
+		if(empty($madekSetId)) {
+			return;
+		}
+		$imageList = '';
+		//get set content
+		$json_url = "$madekServer/media_resources.json?ids=$madekSetId&with[media_type]=true&with[children]=true&public=true&with[meta_data][meta_key_names][]=title&with[meta_data][meta_key_names][]=subtitle&with[meta_data][meta_context_names][]=copyright";
+//		die($json_url);
+		$json = file_get_contents($json_url);
+		$data = json_decode($json, TRUE);
+//		die(print_r($json));
+		$debug = '';
+		$GLOBALS['TSFE']->additionalHeaderData['galleriffic_js'] = '<script type="text/javascript" src="' . t3lib_extMgm::siteRelPath('zhdk_madekplayer') . 'res/js/jquery.galleriffic.js"></script>';
+		$GLOBALS['TSFE']->additionalHeaderData['zhdk_madekplayer_css'] = '<link  media="screen" rel="stylesheet" type="text/css"  href="' . t3lib_extMgm::siteRelPath('zhdk_madekplayer') . 'res/css/zhdkmadekplayer.css" />';
+		foreach($data['media_resources'][0]['children'] as $item) {
+//			die(print_r($item));
+			if($item['type'] != 'media_entry') {
+//				die($item['type']);
+				$debug .= 'set: title: ' . self::getMetaDataValue('title', $item['meta_data']) . ', id: ' . $item['id'] . ', type: ' . $item['media_type'] . "\n";
+				continue;
+			}
+			if($item['media_type'] != 'Image') {
+				$debug .= 'not image: title: ' . self::getMetaDataValue('title', $item['meta_data']) . ', id: ' . $item['id'] . ', type: ' . $item['media_type'] . "\n";
+//				die($item['media_type']);
+				continue;
+			}
+			$debug .= 'media entry and image: title: ' . self::getMetaDataValue('title', $item['meta_data']) . ', id: ' . $item['id'] . ', type: ' . $item['media_type'] . "\n";
+			$description = '';
+			$title = 'Media Entry no. ' . $item['id'];
+			if(isset($item['meta_data'])) {
+				//set meta data
+				$tmpTitle = self::getMetaDataValue('title', $item['meta_data']);
+				if(!empty($tmpTitle) && $this->lConf['show_title']) {
+					$title = $tmpTitle;
+					$description = '<h3>' . $title . '</h3>';
+				}
+				$tmpSubtitle = self::getMetaDataValue('subtitle', $item['meta_data']);
+				if(!empty($tmpSubtitle) && $this->lConf['show_subtitle']) {
+					$description .= '<p>' . $tmpSubtitle . '</p>';
+				}
+				if($this->lConf['show_copyright']) {
+//				die(print_r(self::getMetaDataValue('copyright notice', $item['meta_data'])));
+					$notice = self::getMetaDataValue('copyright notice', $item['meta_data']);
+					$status = self::getMetaDataValue('copyright status', $item['meta_data']);
+					$usage = self::getMetaDataValue('copyright usage', $item['meta_data']);
+					$url = self::getMetaDataValue('copyright url', $item['meta_data']);
+					$description .= '<h4>' . $this->pi_getLL('tx_zhdkmadekplayer_pi1.copyright', 'Copyright') . '</h4>
+						<p>' . $notice . '<br>' . 
+							(!empty($url) ? '<a target="_blank" href="' . $url . '">' : '') . $status . (!empty($url) ? '</a>' : '');
+						'</p>';
+				}
+				
+			}
+			$imageList .= '
+				<li>
+					<a class="thumb" href="' . $madekServer . '/media_resources/' . $item['id'] . '/image?size=large" title="' . $title  . '">
+						<img alt="' . $title . '" src="' . $madekServer . '/media_resources/' . $item['id'] . '/image?size=small" />
+					</a>
+					<div class="caption">
+						' . $description  . '
+					</div>
+				</li>';
+		}
+		//prevent problems with multiple galleries on the same page
+		$randomIndex = rand();
+		$html = '
+<div class="zhdk_madekplayer-galleriffic">
+	<div class="zhdk_madekplayer-controls" id="zhdk_madekplayer-controls-' . $randomIndex . '"></div>
+	<!--<div id="zhdk_madekplayer-loading-' . $randomIndex . '"></div>-->
+	<div class="zhdk_madekplayer-slideshow" id="zhdk_madekplayer-slideshow-' . $randomIndex . '"></div>
+	<div class="zhdk_madekplayer-caption" id="zhdk_madekplayer-caption-' . $randomIndex . '"></div>
+	<div class="zhdk_madekplayer-thumbs" id="zhdk_madekplayer-thumbs-' . $randomIndex . '">
+		<ul class="thumbs noscript">
+			' . $imageList . '
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+' . "
+jQuery(document).ready(function($) {
+    var gallery = $('#zhdk_madekplayer-thumbs-$randomIndex').galleriffic({
+        delay:                     3000, // in milliseconds
+        numThumbs:                 6, // The number of thumbnails to show page
+        preloadAhead:              24, // Set to -1 to preload all images
+        enableTopPager:            false,
+        enableBottomPager:         true,
+        maxPagesToShow:            7,  // The maximum number of pages to display in either the top or bottom pager
+        imageContainerSel:         '#zhdk_madekplayer-slideshow-$randomIndex', // The CSS selector for the element within which the main slideshow image should be rendered
+        controlsContainerSel:      '#zhdk_madekplayer-controls-$randomIndex', // The CSS selector for the element within which the slideshow controls should be rendered
+        captionContainerSel:       '#zhdk_madekplayer-caption-$randomIndex', // The CSS selector for the element within which the captions should be rendered
+        //loadingContainerSel:       '', // The CSS selector for the element within which should be shown when an image is loading
+        renderSSControls:          true, // Specifies whether the slideshow's Play and Pause links should be rendered
+        renderNavControls:         true, // Specifies whether the slideshow's Next and Previous links should be rendered
+        playLinkText:              'Play',
+        pauseLinkText:             'Pause',
+        prevLinkText:              'Previous',
+        nextLinkText:              'Next',
+        nextPageLinkText:          'Next &rsaquo;',
+        prevPageLinkText:          '&lsaquo; Prev',
+        enableHistory:             false, // Specifies whether the url's hash and the browser's history cache should update when the current slideshow image changes
+        enableKeyboardNavigation:  true, // Specifies whether keyboard navigation is enabled
+        autoStart:                 false, // Specifies whether the slideshow should be playing or paused when the page first loads
+        syncTransitions:           false, // Specifies whether the out and in transitions occur simultaneously or distinctly
+        defaultTransitionDuration: 500, // If using the default transitions, specifies the duration of the transitions
+        /*onSlideChange:             undefined, // accepts a delegate like such: function(prevIndex, nextIndex) { ... }
+        onTransitionOut:           undefined, // accepts a delegate like such: function(slide, caption, isSync, callback) { ... }
+        onTransitionIn:            undefined, // accepts a delegate like such: function(slide, caption, isSync) { ... }
+        onPageTransitionOut:       undefined, // accepts a delegate like such: function(callback) { ... }
+        onPageTransitionIn:        undefined, // accepts a delegate like such: function() { ... }
+        onImageAdded:              undefined, // accepts a delegate like such: function(imageData, li) { ... }
+        onImageRemoved:            undefined  // accepts a delegate like such: function(imageData, li) { ... }*/
+    });
+	console.log('test1');
+});
+</script>
+";
+		die($debug);
+		return $html;
+	}
+	
+	/**
+	 * Loops through 1st level of array an checks each item if its subarray contains an item with ['name'] == $metadataName.
+	 * If yes, it returns the wanted corresponding value
+	 * @param type $needle the name of the key to check, array of arrays
+	 * @param array $haystack the array to search in
+	 * @param type $targetKey name of the Key you want. Default is 'value'
+	 * @return type 
+	 */
+	static function getMetaDataValue($needle, array $haystack, $targetKey = 'value', $htmlEscape = true) {
+		$found = null;
+		foreach($haystack as $item) {
+			if(isset($item['name']) && $item['name'] == $needle) {
+				$found = $item[$targetKey];
+				break;
+			}
+		}
+		if($found && $htmlEscape) {
+			$found = htmlspecialchars($found, ENT_QUOTES | ENT_XHTML, 'UTF-8');
+		}
+		return $found;
+	}
+	
+	function galleryViewOld() {
 		$localImageIds = $this->lConf['gallery_items'];
 		if(empty($localImageIds)) {
 			return;
 		}
 		$localImageIds = implode(',', $GLOBALS['TYPO3_DB']->fullQuoteArray(explode(',', $localImageIds)));
 		
-		$result = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows('madekid, title', 'tx_zhdkmadekintegration_item', "uid IN ($localImageIds)", '', '', '10');
-		$GLOBALS['TSFE']->additionalHeaderData['galleriffic_js'] = '<script type="text/javascript" src="' . t3lib_extMgm::siteRelPath('zhdk_madekintegration') . 'res/js/jquery.galleriffic.js"></script>';
-		$GLOBALS['TSFE']->additionalHeaderData['zhdk_madekintegration_css'] = '<link  media="screen" rel="stylesheet" type="text/css"  href="' . t3lib_extMgm::siteRelPath('zhdk_madekintegration') . 'res/zhdk_madekintegration.css" />';
+		$result = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows('madekid, title', 'tx_zhdkmadekplayer_item', "uid IN ($localImageIds)", '', '', '10');
+		$GLOBALS['TSFE']->additionalHeaderData['galleriffic_js'] = '<script type="text/javascript" src="' . t3lib_extMgm::siteRelPath('zhdk_madekplayer') . 'res/js/jquery.galleriffic.js"></script>';
+		$GLOBALS['TSFE']->additionalHeaderData['zhdk_madekplayer_css'] = '<link  media="screen" rel="stylesheet" type="text/css"  href="' . t3lib_extMgm::siteRelPath('zhdk_madekplayer') . 'res/zhdk_madekplayer.css" />';
 		foreach($result as $row) {
 			$imageList .= '
 				<li>
@@ -112,12 +258,12 @@ class tx_zhdkmadekintegration_pi1 extends tslib_pibase {
 		//prevent problems with multiple galleries on the same page
 		$randomIndex = rand();
 		$html = '
-<div class="zhdk_madekintegration-galleriffic">
-	<div id="zhdk_madekintegration-controls-' . $randomIndex . '"></div>
-	<!--<div id="zhdk_madekintegration-loading-' . $randomIndex . '"></div>-->
-	<div class="zhdk_madekintegration-slideshow" id="zhdk_madekintegration-slideshow-' . $randomIndex . '"></div>
-	<div id="zhdk_madekintegration-caption-' . $randomIndex . '"></div>
-	<div id="zhdk_madekintegration-thumbs-' . $randomIndex . '">
+<div class="zhdk_madekplayer-galleriffic">
+	<div id="zhdk_madekplayer-controls-' . $randomIndex . '"></div>
+	<!--<div id="zhdk_madekplayer-loading-' . $randomIndex . '"></div>-->
+	<div class="zhdk_madekplayer-slideshow" id="zhdk_madekplayer-slideshow-' . $randomIndex . '"></div>
+	<div id="zhdk_madekplayer-caption-' . $randomIndex . '"></div>
+	<div id="zhdk_madekplayer-thumbs-' . $randomIndex . '">
 		<ul class="thumbs noscript">
 			' . $imageList . '
 		</ul>
@@ -126,16 +272,16 @@ class tx_zhdkmadekintegration_pi1 extends tslib_pibase {
 <script type="text/javascript">
 ' . "
 jQuery(document).ready(function($) {
-    var gallery = $('#zhdk_madekintegration-thumbs-$randomIndex').galleriffic({
+    var gallery = $('#zhdk_madekplayer-thumbs-$randomIndex').galleriffic({
         /*delay:                     3000, // in milliseconds
         numThumbs:                 20, // The number of thumbnails to show page
         preloadAhead:              40, // Set to -1 to preload all images
         enableTopPager:            false,
         enableBottomPager:         true,
         maxPagesToShow:            7,  // The maximum number of pages to display in either the top or bottom pager*/
-        imageContainerSel:         '#zhdk_madekintegration-slideshow-$randomIndex', // The CSS selector for the element within which the main slideshow image should be rendered
-        //controlsContainerSel:      '#zhdk_madekintegration-controls-$randomIndex', // The CSS selector for the element within which the slideshow controls should be rendered
-        captionContainerSel:       '#zhdk_madekintegration-caption-$randomIndex', // The CSS selector for the element within which the captions should be rendered
+        imageContainerSel:         '#zhdk_madekplayer-slideshow-$randomIndex', // The CSS selector for the element within which the main slideshow image should be rendered
+        //controlsContainerSel:      '#zhdk_madekplayer-controls-$randomIndex', // The CSS selector for the element within which the slideshow controls should be rendered
+        captionContainerSel:       '#zhdk_madekplayer-caption-$randomIndex', // The CSS selector for the element within which the captions should be rendered
         /*loadingContainerSel:       '', // The CSS selector for the element within which should be shown when an image is loading
         renderSSControls:          true, // Specifies whether the slideshow's Play and Pause links should be rendered
         renderNavControls:         true, // Specifies whether the slideshow's Next and Previous links should be rendered
@@ -181,8 +327,8 @@ jQuery(document).ready(function($) {
 		$lConf = $this->conf['listView.']; // Local settings for the listView function
 
 		if ($this->piVars['showUid']) { // If a single element should be displayed:
-			$this->internal['currentTable'] = 'tx_zhdkmadekintegration_gallery';
-			$this->internal['currentRow'] = $this->pi_getRecord('tx_zhdkmadekintegration_gallery', $this->piVars['showUid']);
+			$this->internal['currentTable'] = 'tx_zhdkmadekplayer_gallery';
+			$this->internal['currentRow'] = $this->pi_getRecord('tx_zhdkmadekplayer_gallery', $this->piVars['showUid']);
 
 			$content = $this->singleView($content, $conf);
 			return $content;
@@ -206,12 +352,12 @@ jQuery(document).ready(function($) {
 			$this->internal['orderByList'] = 'uid,title';
 
 			// Get number of records:
-			$res = $this->pi_exec_query('tx_zhdkmadekintegration_gallery', 1);
+			$res = $this->pi_exec_query('tx_zhdkmadekplayer_gallery', 1);
 			list($this->internal['res_count']) = $GLOBALS['TYPO3_DB']->sql_fetch_row($res);
 
 			// Make listing query, pass query to SQL database:
-			$res = $this->pi_exec_query('tx_zhdkmadekintegration_gallery');
-			$this->internal['currentTable'] = 'tx_zhdkmadekintegration_gallery';
+			$res = $this->pi_exec_query('tx_zhdkmadekplayer_gallery');
+			$this->internal['currentTable'] = 'tx_zhdkmadekplayer_gallery';
 
 			// Put the whole list together:
 			$fullTable = ''; // Clear var;
@@ -367,7 +513,7 @@ jQuery(document).ready(function($) {
 
 }
 
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/zhdk_madekintegration/pi1/class.tx_zhdkmadekintegration_pi1.php']) {
-	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/zhdk_madekintegration/pi1/class.tx_zhdkmadekintegration_pi1.php']);
+if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/zhdk_madekplayer/pi1/class.tx_zhdkmadekplayer_pi1.php']) {
+	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/zhdk_madekplayer/pi1/class.tx_zhdkmadekplayer_pi1.php']);
 }
 ?>
