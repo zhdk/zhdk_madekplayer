@@ -10,3 +10,5 @@ plugin.tx_zhdkmadekplayer_pi1._CSS_DEFAULT_STYLE (
 
   # Example of how to set default values from TS in the incoming array, $this->piVars of the plugin:
 plugin.tx_zhdkmadekplayer_pi1._DEFAULT_PI_VARS.madekServer = http://medienarchiv.zhdk.ch/
+
+plugin.tx_zhdkmadekplayer_pi1.wizard.templateFile = EXT:tx_zhdkmadekplayer_pi1/wizard/template.html

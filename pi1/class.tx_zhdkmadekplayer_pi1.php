@@ -28,6 +28,7 @@
  * Hint: use extdeveval to insert/update function index above.
  */
 require_once(PATH_tslib . 'class.tslib_pibase.php');
+require_once(t3lib_extMgm::extPath('zhdk_madekplayer') . '/class.zhdk_madekplayer.php');
 
 /**
  * Plugin 'Madek Gallery' for the 'zhdk_madekplayer' extension.
@@ -99,45 +100,36 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		$imageList = '';
 		//get set content
 		$json_url = "$madekServer/media_resources.json?ids=$madekSetId&with[media_type]=true&with[children]=true&public=true&with[meta_data][meta_key_names][]=title&with[meta_data][meta_key_names][]=subtitle&with[meta_data][meta_context_names][]=copyright";
-//		die($json_url);
 		$json = file_get_contents($json_url);
 		$data = json_decode($json, TRUE);
-//		die(print_r($json));
 		$debug = '';
 		$GLOBALS['TSFE']->additionalHeaderData['galleriffic_js'] = '<script type="text/javascript" src="' . t3lib_extMgm::siteRelPath('zhdk_madekplayer') . 'res/js/jquery.galleriffic.js"></script>';
 		$GLOBALS['TSFE']->additionalHeaderData['zhdk_madekplayer_css'] = '<link  media="screen" rel="stylesheet" type="text/css"  href="' . t3lib_extMgm::siteRelPath('zhdk_madekplayer') . 'res/css/zhdkmadekplayer.css" />';
 		foreach($data['media_resources'][0]['children'] as $item) {
-//			die(print_r($item));
 			if($item['type'] != 'media_entry') {
-//				die($item['type']);
-				$debug .= 'set: title: ' . self::getMetaDataValue('title', $item['meta_data']) . ', id: ' . $item['id'] . ', type: ' . $item['media_type'] . "\n";
 				continue;
 			}
 			if($item['media_type'] != 'Image') {
-				$debug .= 'not image: title: ' . self::getMetaDataValue('title', $item['meta_data']) . ', id: ' . $item['id'] . ', type: ' . $item['media_type'] . "\n";
-//				die($item['media_type']);
 				continue;
 			}
-			$debug .= 'media entry and image: title: ' . self::getMetaDataValue('title', $item['meta_data']) . ', id: ' . $item['id'] . ', type: ' . $item['media_type'] . "\n";
 			$description = '';
 			$title = 'Media Entry no. ' . $item['id'];
 			if(isset($item['meta_data'])) {
 				//set meta data
-				$tmpTitle = self::getMetaDataValue('title', $item['meta_data']);
+				$tmpTitle = zhdk_madekplayer::getMetaDataValue('title', $item['meta_data']);
 				if(!empty($tmpTitle) && $this->lConf['show_title']) {
 					$title = $tmpTitle;
 					$description = '<h3>' . $title . '</h3>';
 				}
-				$tmpSubtitle = self::getMetaDataValue('subtitle', $item['meta_data']);
+				$tmpSubtitle = zhdk_madekplayer::getMetaDataValue('subtitle', $item['meta_data']);
 				if(!empty($tmpSubtitle) && $this->lConf['show_subtitle']) {
 					$description .= '<p>' . $tmpSubtitle . '</p>';
 				}
 				if($this->lConf['show_copyright']) {
-//				die(print_r(self::getMetaDataValue('copyright notice', $item['meta_data'])));
-					$notice = self::getMetaDataValue('copyright notice', $item['meta_data']);
-					$status = self::getMetaDataValue('copyright status', $item['meta_data']);
-					$usage = self::getMetaDataValue('copyright usage', $item['meta_data']);
-					$url = self::getMetaDataValue('copyright url', $item['meta_data']);
+					$notice = zhdk_madekplayer::getMetaDataValue('copyright notice', $item['meta_data']);
+					$status = zhdk_madekplayer::getMetaDataValue('copyright status', $item['meta_data']);
+					$usage = zhdk_madekplayer::getMetaDataValue('copyright usage', $item['meta_data']);
+					$url = zhdk_madekplayer::getMetaDataValue('copyright url', $item['meta_data']);
 					$description .= '<h4>' . $this->pi_getLL('tx_zhdkmadekplayer_pi1.copyright', 'Copyright') . '</h4>
 						<p>' . $notice . '<br>' . 
 							(!empty($url) ? '<a target="_blank" href="' . $url . '">' : '') . $status . (!empty($url) ? '</a>' : '');
@@ -208,30 +200,8 @@ jQuery(document).ready(function($) {
 });
 </script>
 ";
-		die($debug);
+//		die($debug);
 		return $html;
-	}
-	
-	/**
-	 * Loops through 1st level of array an checks each item if its subarray contains an item with ['name'] == $metadataName.
-	 * If yes, it returns the wanted corresponding value
-	 * @param type $needle the name of the key to check, array of arrays
-	 * @param array $haystack the array to search in
-	 * @param type $targetKey name of the Key you want. Default is 'value'
-	 * @return type 
-	 */
-	static function getMetaDataValue($needle, array $haystack, $targetKey = 'value', $htmlEscape = true) {
-		$found = null;
-		foreach($haystack as $item) {
-			if(isset($item['name']) && $item['name'] == $needle) {
-				$found = $item[$targetKey];
-				break;
-			}
-		}
-		if($found && $htmlEscape) {
-			$found = htmlspecialchars($found, ENT_QUOTES | ENT_XHTML, 'UTF-8');
-		}
-		return $found;
 	}
 	
 	function galleryViewOld() {

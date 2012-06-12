@@ -37,6 +37,12 @@
 			<label index="tx_zhdkmadekplayer_pi1.copyright_usage">Terms of use</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright_url">License URL</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright_url.short">URL</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.title">Madek Set Picker</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.intro">You may pick a single set from madek by searching for keywords. Simply click on a row to select the set. Please note that you won't find sets here that don't include any media.</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.header.set-title">Title</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.header.set-author">Authors</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.no-results">No matching sets found</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.results">Results</label>
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="pi1_title">Madek-Player</label>
@@ -70,6 +76,12 @@
 			<label index="tx_zhdkmadekplayer_pi1.copyright_usage">Lizenztext</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright_url">URL zum Lizenz-Volltext</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright_url.short">URL</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.title">Madek Set Picker</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.intro">You may pick a single set from madek by searching for keywords. Simply click on a row to select the set. Please note that you won't find sets here that don't include any media.</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.header.set-title">Title</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.header.set-author">Authors</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.no-results">No matching sets found</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.results">Results</label>
 		</languageKey>
 	</data>
 </T3locallang>
