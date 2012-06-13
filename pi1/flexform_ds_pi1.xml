@@ -45,6 +45,34 @@
 							</config>
 						</TCEforms>
 					</madek_set>
+					<sorting>
+						<TCEforms>
+							<exclude>0</exclude>
+							<label>LLL:EXT:zhdk_madekplayer/locallang.php:tx_zhdkmadekplayer_pi1.config.sorting</label>
+							<config>
+								<type>select</type>
+								<size>30</size>
+								<eval>require</eval>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:zhdk_madekplayer/locallang.php:tx_zhdkmadekplayer_pi1.config.sorting.updated_at</numIndex>
+										<numIndex index="1">updated_at</numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:zhdk_madekplayer/locallang.php:tx_zhdkmadekplayer_pi1.config.sorting.created_at</numIndex>
+										<numIndex index="1">created_at</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:zhdk_madekplayer/locallang.php:tx_zhdkmadekplayer_pi1.config.sorting.random</numIndex>
+										<numIndex index="1">random</numIndex>
+									</numIndex>
+								</items>
+								<default>updated_at</default>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+						</TCEforms>
+					</sorting>
 					<show_copyright>
 						<TCEforms>
 							<exclude>0</exclude>

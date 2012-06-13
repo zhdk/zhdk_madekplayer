@@ -75,22 +75,36 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 			}
 		}
 	}
+
+	function fetchData() {
+		$json_url = $this->madekServer . '/media_resources.json?'.
+			'ids=' . $this->madekSetId . '&'.
+			'with[media_type]=true&'.
+			'with[children]=true&'.
+			'public=true&'.
+			'with[meta_data][meta_context_names][]=copyright&'.
+			'with[meta_data][meta_key_names][]=title&'.
+			'with[meta_data][meta_key_names][]=subtitle&'.
+			'with[meta_data][meta_key_names][]=author&'.
+			'with[meta_data][meta_key_names][]=portrayed%20object%20dates&'.
+			'sort=' . urlencode($this->lConf['sorting']);
+		die($json_url);
+		$json = file_get_contents($json_url);
+		$this->data = json_decode($json, TRUE);
+	}
 	
 	function galleryView() {
 		$this->pi_loadLL();
-		$madekSetId = $this->lConf['madek_set'];
-		if(empty($madekSetId)) {
+		$this->madekSetId = $this->lConf['madek_set'];
+		if(empty($this->madekSetId)) {
 			return;
 		}
 		$imageList = '';
 		//get set content
-		$json_url = "$this->madekServer/media_resources.json?ids=$madekSetId&with[media_type]=true&with[children]=true&public=true&with[meta_data][meta_key_names][]=title&with[meta_data][meta_key_names][]=subtitle&with[meta_data][meta_context_names][]=copyright&with[meta_data][meta_key_names][]=author&with[meta_data][meta_key_names][]=portrayed%20object%20dates";
-		$json = file_get_contents($json_url);
-		$data = json_decode($json, TRUE);
-		$debug = '';
+		$this->fetchData();
 		$GLOBALS['TSFE']->additionalHeaderData['galleriffic_js'] = '<script type="text/javascript" src="' . t3lib_extMgm::siteRelPath('zhdk_madekplayer') . 'res/js/jquery.galleriffic.js"></script>';
 		$GLOBALS['TSFE']->additionalHeaderData['zhdk_madekplayer_css'] = '<link  media="screen" rel="stylesheet" type="text/css"  href="' . t3lib_extMgm::siteRelPath('zhdk_madekplayer') . 'res/css/zhdkmadekplayer.css" />';
-		foreach($data['media_resources'][0]['children'] as $item) {
+		foreach($this->data['media_resources'][0]['children'] as $item) {
 			if($item['type'] != 'media_entry') {
 				continue;
 			}

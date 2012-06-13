@@ -32,6 +32,10 @@
 			<label index="tx_zhdkmadekplayer_pi1.config.show_author">Show author</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.set_id">MAdeK media set ID</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.set_title">MAdeK media set title</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.sorting">Sort order (always descending)</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.sorting.updated_at">Last updated</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.sorting.created_at">Creation date</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.sorting.random">Random</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright">Copyright</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright_notice">Copyright holder</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright_status">License name</label>
