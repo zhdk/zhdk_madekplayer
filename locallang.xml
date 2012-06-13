@@ -28,7 +28,7 @@
 			<label index="tx_zhdkmadekplayer_item.title">Title</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.show_copyright">Show copyright notice</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.show_title">Show title</label>
-			<label index="tx_zhdkmadekplayer_pi1.config.show_subtitle">Show description</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_subtitle">Show public caption</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.show_author">Show author</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.set_id">Madek media set ID</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.set_title">Madek media set title</label>
@@ -69,8 +69,8 @@
 			<label index="tx_zhdkmadekplayer_item.title">Titel</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.show_copyright">Zeige Copyright-Information an</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.show_title">Zeige den Titel an</label>
-			<label index="tx_zhdkmadekplayer_pi1.config.show_subtitle">Zeige die Bildunterschrift</label>
-			<label index="tx_zhdkmadekplayer_pi1.config.show_author">Zeige den Urheber</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_subtitle">Zeige Bildlegende</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_author">Zeige Autor/in</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.set_id">Madek Media Set ID</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright">Copyright</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright_notice">Copyright-Halter</label>

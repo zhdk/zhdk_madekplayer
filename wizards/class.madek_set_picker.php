@@ -56,7 +56,7 @@ class Madek_set_picker {
 		$this->additionalGetParameter = t3lib_div::implodeArrayForUrl('P', $this->P);
 		$this->extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][$this->extKey]);
 		$this->madekServer = rtrim($this->extConf['madekServer'], '/');
-		$this->pageURL = t3lib_div::getIndpEnv('TYPO3_SITE_URL') . t3lib_extMgm::siteRelPath($this->extKey) . 'wizards/class.madek_set_picker_new.php';
+		$this->pageURL = t3lib_div::getIndpEnv('TYPO3_SITE_URL') . t3lib_extMgm::siteRelPath($this->extKey) . 'wizards/class.madek_set_picker.php';
 
 		$this->uid = $this->P['uid'];
 		$this->pid = $this->P['pid'];
@@ -263,7 +263,7 @@ if (defined('TYPO3_MODE') && isset($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLA
 
 
 // Make instance:
-$SOBE = t3lib_div::makeInstance('Madek_set_picker_new');
+$SOBE = t3lib_div::makeInstance('Madek_set_picker');
 $SOBE->init();
 $SOBE->main();
 $SOBE->printContent();

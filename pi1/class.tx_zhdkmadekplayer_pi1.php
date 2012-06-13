@@ -84,7 +84,7 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		}
 		$imageList = '';
 		//get set content
-		$json_url = "$this->madekServer/media_resources.json?ids=$madekSetId&with[media_type]=true&with[children]=true&public=true&with[meta_data][meta_key_names][]=title&with[meta_data][meta_key_names][]=subtitle&with[meta_data][meta_context_names][]=copyright";
+		$json_url = "$this->madekServer/media_resources.json?ids=$madekSetId&with[media_type]=true&with[children]=true&public=true&with[meta_data][meta_key_names][]=title&with[meta_data][meta_key_names][]=subtitle&with[meta_data][meta_context_names][]=copyright&with[meta_data][meta_key_names][]=author";
 		$json = file_get_contents($json_url);
 		$data = json_decode($json, TRUE);
 		$debug = '';
@@ -110,7 +110,7 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 				if(!empty($tmpSubtitle) && $this->lConf['show_subtitle']) {
 					$description .= '<p>' . $tmpSubtitle . '</p>';
 				}
-				$tmpAuthor = zhdk_madekplayer::getMetaDataValue('description author', $item['meta_data']);
+				$tmpAuthor = zhdk_madekplayer::getMetaDataValue('author', $item['meta_data']);
 				if(!empty($tmpAuthor) && $this->lConf['show_author']) {
 					$description .= '<p>' . $tmpAuthor . '</p>';
 				}
