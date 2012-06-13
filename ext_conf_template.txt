@@ -1,0 +1,2 @@
+# cat=basic/; type=text; label=Madek server address
+madekServer = http://medienarchiv.zhdk.ch/

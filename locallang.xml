@@ -28,9 +28,10 @@
 			<label index="tx_zhdkmadekplayer_item.title">Title</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.show_copyright">Show copyright notice</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.show_title">Show title</label>
-			<label index="tx_zhdkmadekplayer_pi1.config.show_subtitle">Show Description</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_subtitle">Show description</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.show_author">Show author</label>
-			<label index="tx_zhdkmadekplayer_pi1.config.set_id">Madek Media Set ID</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.set_id">Madek media set ID</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.set_title">Madek media set title</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright">Copyright</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright_notice">Copyright holder</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright_status">License name</label>
@@ -43,6 +44,7 @@
 			<label index="tx_zhdkmadekplayer.set_wizard.results-list.header.set-author">Authors</label>
 			<label index="tx_zhdkmadekplayer.set_wizard.results-list.no-results">No matching sets found</label>
 			<label index="tx_zhdkmadekplayer.set_wizard.results-list.results">Results</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.resultsPagination">Showing page %d of %d</label>
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="pi1_title">Madek-Player</label>
@@ -77,11 +79,12 @@
 			<label index="tx_zhdkmadekplayer_pi1.copyright_url">URL zum Lizenz-Volltext</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright_url.short">URL</label>
 			<label index="tx_zhdkmadekplayer.set_wizard.title">Madek Set Picker</label>
-			<label index="tx_zhdkmadekplayer.set_wizard.intro">You may pick a single set from madek by searching for keywords. Simply click on a row to select the set. Please note that you won't find sets here that don't include any media.</label>
-			<label index="tx_zhdkmadekplayer.set_wizard.results-list.header.set-title">Title</label>
-			<label index="tx_zhdkmadekplayer.set_wizard.results-list.header.set-author">Authors</label>
-			<label index="tx_zhdkmadekplayer.set_wizard.results-list.no-results">No matching sets found</label>
-			<label index="tx_zhdkmadekplayer.set_wizard.results-list.results">Results</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.intro">Bitte geben Sie einen Suchbegrif ein um anschleissend ein einzelnes Set auswählen zu können. Es werden nur Sets gefunden, die direkt (also nicht in Untersets) Medien enthalten.</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.header.set-title">Titel</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.header.set-author">Autor</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.no-results">Keine passenden Sets gefunden</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.results">Suchergebnisse</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.resultsPagination">Zeige Seite %d von %d</label>
 		</languageKey>
 	</data>
 </T3locallang>

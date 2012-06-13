@@ -11,32 +11,36 @@
 				</TCEforms>
 				<type>array</type>
 				<el>
+					<!-- <set_title>
+						<TCEforms>
+							<exclude>0</exclude>
+							<label>LLL:EXT:zhdk_madekplayer/locallang.php:tx_zhdkmadekplayer_pi1.config.set_title</label>
+							<config>
+								<type>input</type>
+								<size>30</size>
+								<eval>trim</eval>
+								<readOnly>1</readOnly>
+							</config>
+						</TCEforms>
+					</set_title> -->
 					<madek_set>
 						<TCEforms>
 							<exclude>0</exclude>
 							<label>LLL:EXT:zhdk_madekplayer/locallang.php:tx_zhdkmadekplayer_pi1.config.set_id</label>
 							<config>
 								<type>input</type>
-								<size>30</size>
+								<size>10</size>
 								<eval>require,trim,int</eval>
 								<wizards type="array">
 									<_PADDING type="integer">2</_PADDING>
 									<add type="array">
 										<type>popup</type>
-										<title>add</title>
-										<icon>add.gif</icon>
-										<script>EXT:zhdk_madekplayer/wizards/class.madek_set_picker_new.php</script>
-										<!-- EXT:hmtfwperson/class.tx_hmtfwperson.php:&tx_hmtfwperson->personPickerWizardPreview -->
-										<!-- <script>EXT:zhdk_madekplayer/wizards/madek_set_picker.php</script> -->
+										<title>edit</title>
+										<icon>edit2.gif</icon>
+										<script>EXT:zhdk_madekplayer/wizards/class.madek_set_picker.php</script>
 										<JSopenParams>height=800,width=600,status=0,menubar=0,scrollbars=1</JSopenParams>
 										<params>madekServer=</params>
 									</add>
-									<!--<add2 type="array">
-										<type>userFunc</type>
-										<userFunc>tx_zhdkmadekplayer_pi1_wizicon->user_TCAform_procWizard</userFunc>
-										<title>add2</title>
-										<icon>add.gif</icon>
-									</add2>-->
 								</wizards>
 							</config>
 						</TCEforms>
