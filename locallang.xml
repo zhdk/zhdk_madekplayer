@@ -27,7 +27,7 @@
 			<label index="tx_zhdkmadekplayer_item.mediatype">Media Type</label>
 			<label index="tx_zhdkmadekplayer_item.title">Title</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.show_copyright">Show copyright notice</label>
-			<label index="tx_zhdkmadekplayer_pi1.config.show_title">Show title</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_title">Show title and date</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.show_subtitle">Show public caption</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.show_author">Show author</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.set_id">Madek media set ID</label>
@@ -38,6 +38,7 @@
 			<label index="tx_zhdkmadekplayer_pi1.copyright_usage">Terms of use</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright_url">License URL</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright_url.short">URL</label>
+			<label index="tx_zhdkmadekplayer_pi1.dating">URL</label>
 			<label index="tx_zhdkmadekplayer.set_wizard.title">Madek Set Picker</label>
 			<label index="tx_zhdkmadekplayer.set_wizard.intro">You may pick a single set from madek by searching for keywords. Simply click on a row to select the set. Please note that you won't find sets here that don't include any media.</label>
 			<label index="tx_zhdkmadekplayer.set_wizard.results-list.header.set-title">Title</label>
@@ -68,7 +69,7 @@
 			<label index="tx_zhdkmadekplayer_item.mediatype">Medientyp</label>
 			<label index="tx_zhdkmadekplayer_item.title">Titel</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.show_copyright">Zeige Copyright-Information an</label>
-			<label index="tx_zhdkmadekplayer_pi1.config.show_title">Zeige den Titel an</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_title">Zeige Titel und Datierung</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.show_subtitle">Zeige Bildlegende</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.show_author">Zeige Autor/in</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.set_id">Madek Media Set ID</label>
