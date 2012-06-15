@@ -75,22 +75,34 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 			}
 		}
 	}
+
+	function fetchData() {
+		$json_url = $this->madekServer . '/media_resources.json?'.
+			'ids=' . $this->madekSetId . '&'.
+			'with[media_type]=true&'.
+			'with[children]=true&'.
+			'public=true&'.
+			'with[meta_data][meta_context_names][]=copyright&'.
+			'with[meta_data][meta_key_names][]=title&'.
+			'with[meta_data][meta_key_names][]=subtitle&'.
+			'with[meta_data][meta_key_names][]=author&'.
+			'with[meta_data][meta_key_names][]=portrayed%20object%20dates';
+		$json = file_get_contents($json_url);
+		$this->data = json_decode($json, TRUE);
+	}
 	
 	function galleryView() {
 		$this->pi_loadLL();
-		$madekSetId = $this->lConf['madek_set'];
-		if(empty($madekSetId)) {
+		$this->madekSetId = $this->lConf['madek_set'];
+		if(empty($this->madekSetId)) {
 			return;
 		}
 		$imageList = '';
 		//get set content
-		$json_url = "$this->madekServer/media_resources.json?ids=$madekSetId&with[media_type]=true&with[children]=true&public=true&with[meta_data][meta_key_names][]=title&with[meta_data][meta_key_names][]=subtitle&with[meta_data][meta_context_names][]=copyright&with[meta_data][meta_key_names][]=author&with[meta_data][meta_key_names][]=portrayed%20object%20dates";
-		$json = file_get_contents($json_url);
-		$data = json_decode($json, TRUE);
-		$debug = '';
+		$this->fetchData();
 		$GLOBALS['TSFE']->additionalHeaderData['galleriffic_js'] = '<script type="text/javascript" src="' . t3lib_extMgm::siteRelPath('zhdk_madekplayer') . 'res/js/jquery.galleriffic.js"></script>';
 		$GLOBALS['TSFE']->additionalHeaderData['zhdk_madekplayer_css'] = '<link  media="screen" rel="stylesheet" type="text/css"  href="' . t3lib_extMgm::siteRelPath('zhdk_madekplayer') . 'res/css/zhdkmadekplayer.css" />';
-		foreach($data['media_resources'][0]['children'] as $item) {
+		foreach($this->data['media_resources'][0]['children'] as $item) {
 			if($item['type'] != 'media_entry') {
 				continue;
 			}
@@ -139,61 +151,63 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 				</li>';
 		}
 		//prevent problems with multiple galleries on the same page
-		$randomIndex = rand();
-		$html = '
-<div class="zhdk_madekplayer-galleriffic">
-	<div class="zhdk_madekplayer-controls" id="zhdk_madekplayer-controls-' . $randomIndex . '"></div>
-	<!--<div id="zhdk_madekplayer-loading-' . $randomIndex . '"></div>-->
-	<div class="zhdk_madekplayer-slideshow" id="zhdk_madekplayer-slideshow-' . $randomIndex . '"></div>
-	<div class="zhdk_madekplayer-caption" id="zhdk_madekplayer-caption-' . $randomIndex . '"></div>
-	<div class="zhdk_madekplayer-thumbs" id="zhdk_madekplayer-thumbs-' . $randomIndex . '">
-		<ul class="thumbs noscript">
-			' . $imageList . '
-		</ul>
-	</div>
-</div>
-<script type="text/javascript">
-' . "
-jQuery(document).ready(function($) {
-    var gallery = $('#zhdk_madekplayer-thumbs-$randomIndex').galleriffic({
-        delay:                     3000, // in milliseconds
-        numThumbs:                 6, // The number of thumbnails to show page
-        preloadAhead:              24, // Set to -1 to preload all images
-        enableTopPager:            false,
-        enableBottomPager:         true,
-        maxPagesToShow:            7,  // The maximum number of pages to display in either the top or bottom pager
-        imageContainerSel:         '#zhdk_madekplayer-slideshow-$randomIndex', // The CSS selector for the element within which the main slideshow image should be rendered
-        controlsContainerSel:      '#zhdk_madekplayer-controls-$randomIndex', // The CSS selector for the element within which the slideshow controls should be rendered
-        captionContainerSel:       '#zhdk_madekplayer-caption-$randomIndex', // The CSS selector for the element within which the captions should be rendered
-        //loadingContainerSel:       '', // The CSS selector for the element within which should be shown when an image is loading
-        renderSSControls:          true, // Specifies whether the slideshow's Play and Pause links should be rendered
-        renderNavControls:         true, // Specifies whether the slideshow's Next and Previous links should be rendered
-        playLinkText:              'Play',
-        pauseLinkText:             'Pause',
-        prevLinkText:              'Previous',
-        nextLinkText:              'Next',
-        nextPageLinkText:          'Next &rsaquo;',
-        prevPageLinkText:          '&lsaquo; Prev',
-        enableHistory:             false, // Specifies whether the url's hash and the browser's history cache should update when the current slideshow image changes
-        enableKeyboardNavigation:  true, // Specifies whether keyboard navigation is enabled
-        autoStart:                 false, // Specifies whether the slideshow should be playing or paused when the page first loads
-        syncTransitions:           false, // Specifies whether the out and in transitions occur simultaneously or distinctly
-        defaultTransitionDuration: 500, // If using the default transitions, specifies the duration of the transitions
-        /*onSlideChange:             undefined, // accepts a delegate like such: function(prevIndex, nextIndex) { ... }
-        onTransitionOut:           undefined, // accepts a delegate like such: function(slide, caption, isSync, callback) { ... }
-        onTransitionIn:            undefined, // accepts a delegate like such: function(slide, caption, isSync) { ... }
-        onPageTransitionOut:       undefined, // accepts a delegate like such: function(callback) { ... }
-        onPageTransitionIn:        undefined, // accepts a delegate like such: function() { ... }
-        onImageAdded:              undefined, // accepts a delegate like such: function(imageData, li) { ... }
-        onImageRemoved:            undefined  // accepts a delegate like such: function(imageData, li) { ... }*/
-    });
-	console.log('test1');
-});
-</script>
-";
-		return $html;
+		return $this->getPlayer($imageList);
 	}
 
+	function getPlayer($imageList) {
+		$randomIndex = rand();
+		$html = '
+			<div class="zhdk_madekplayer-galleriffic">
+				<div class="zhdk_madekplayer-controls" id="zhdk_madekplayer-controls-' . $randomIndex . '"></div>
+				<!--<div id="zhdk_madekplayer-loading-' . $randomIndex . '"></div>-->
+				<div class="zhdk_madekplayer-slideshow" id="zhdk_madekplayer-slideshow-' . $randomIndex . '"></div>
+				<div class="zhdk_madekplayer-caption" id="zhdk_madekplayer-caption-' . $randomIndex . '"></div>
+				<div class="zhdk_madekplayer-thumbs" id="zhdk_madekplayer-thumbs-' . $randomIndex . '">
+					<ul class="thumbs noscript">
+						' . $imageList . '
+					</ul>
+				</div>
+			</div>
+			<script type="text/javascript">
+			' . "
+			jQuery(document).ready(function($) {
+			    var gallery = $('#zhdk_madekplayer-thumbs-$randomIndex').galleriffic({
+			        delay:                     3000, // in milliseconds
+			        numThumbs:                 6, // The number of thumbnails to show page
+			        preloadAhead:              24, // Set to -1 to preload all images
+			        enableTopPager:            false,
+			        enableBottomPager:         true,
+			        maxPagesToShow:            7,  // The maximum number of pages to display in either the top or bottom pager
+			        imageContainerSel:         '#zhdk_madekplayer-slideshow-$randomIndex', // The CSS selector for the element within which the main slideshow image should be rendered
+			        controlsContainerSel:      '#zhdk_madekplayer-controls-$randomIndex', // The CSS selector for the element within which the slideshow controls should be rendered
+			        captionContainerSel:       '#zhdk_madekplayer-caption-$randomIndex', // The CSS selector for the element within which the captions should be rendered
+			        //loadingContainerSel:       '', // The CSS selector for the element within which should be shown when an image is loading
+			        renderSSControls:          true, // Specifies whether the slideshow's Play and Pause links should be rendered
+			        renderNavControls:         true, // Specifies whether the slideshow's Next and Previous links should be rendered
+			        playLinkText:              'Play',
+			        pauseLinkText:             'Pause',
+			        prevLinkText:              'Previous',
+			        nextLinkText:              'Next',
+			        nextPageLinkText:          'Next &rsaquo;',
+			        prevPageLinkText:          '&lsaquo; Prev',
+			        enableHistory:             false, // Specifies whether the url's hash and the browser's history cache should update when the current slideshow image changes
+			        enableKeyboardNavigation:  true, // Specifies whether keyboard navigation is enabled
+			        autoStart:                 false, // Specifies whether the slideshow should be playing or paused when the page first loads
+			        syncTransitions:           false, // Specifies whether the out and in transitions occur simultaneously or distinctly
+			        defaultTransitionDuration: 500, // If using the default transitions, specifies the duration of the transitions
+			        /*onSlideChange:             undefined, // accepts a delegate like such: function(prevIndex, nextIndex) { ... }
+			        onTransitionOut:           undefined, // accepts a delegate like such: function(slide, caption, isSync, callback) { ... }
+			        onTransitionIn:            undefined, // accepts a delegate like such: function(slide, caption, isSync) { ... }
+			        onPageTransitionOut:       undefined, // accepts a delegate like such: function(callback) { ... }
+			        onPageTransitionIn:        undefined, // accepts a delegate like such: function() { ... }
+			        onImageAdded:              undefined, // accepts a delegate like such: function(imageData, li) { ... }
+			        onImageRemoved:            undefined  // accepts a delegate like such: function(imageData, li) { ... }*/
+			    });
+			});
+			</script>
+			";
+		return $html;
+	}
 }
 
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/zhdk_madekplayer/pi1/class.tx_zhdkmadekplayer_pi1.php']) {
