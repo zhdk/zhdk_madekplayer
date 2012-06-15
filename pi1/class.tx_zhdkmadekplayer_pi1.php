@@ -107,6 +107,10 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		$this->templateFile = $this->cObj->fileResource($this->conf['templateFile']);
 		$subparts['template'] = $this->cObj->getSubpart($this->templateFile, '###TEMPLATE1###');
 		$subparts['row'] = $this->cObj->getSubpart($subparts['template'], '###ROW###');
+		$subparts['title'] = $this->cObj->getSubpart($subparts['row'], '###PART_TITLE_AND_DATE###');
+		$subparts['subtitle'] = $this->cObj->getSubpart($subparts['row'], '###PART_SUBTITLE###');
+		$subparts['author'] = $this->cObj->getSubpart($subparts['row'], '###PART_AUTHOR###');
+		$subparts['copyright'] = $this->cObj->getSubpart($subparts['row'], '###PART_COPYRIGHT###');
 		$contentItem = '';
 		foreach($this->data['media_resources'][0]['children'] as $item) {
 			if($item['type'] != 'media_entry') {
@@ -115,58 +119,65 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 			if($item['media_type'] != 'Image') {
 				continue;
 			}
-			$markerArray = array (
-					'###COPYRIGHT_NOTICE###' => '',
-					'###COPYRIGHT_STATUS###' => '',
-					'###COPYRIGHT_USAGE###' => '',
-					'###COPYRIGHT_URL###' => '',
-					'###TITLE###' => '',
-					'###DATE###' => '',
-					'###SUBTITLE###' => '',
-					'###AUTHOR###' => '',
+			$row_subparts = array(
+					'###PART_TITLE_AND_DATE###' => '',
+					'###PART_SUBTITLE###' => '',
+					'###PART_AUTHOR###' => '',
+					'###PART_COPYRIGHT###' => '',
 				);
 			$description = '';
 			$title = 'Media Entry no. ' . $item['id'];
 			if(isset($item['meta_data'])) {
-				//set meta data
-				$tmpTitle = zhdk_madekplayer::getMetaDataValue('title', $item['meta_data']);
-				if(!empty($tmpTitle) && $this->lConf['show_title']) {
-					$tmpDate = zhdk_madekplayer::getMetaDataValue('portrayed object dates', $item['meta_data']);
-					$title = $tmpTitle;
-					$markerArray['###TITLE###'] = $tmpDate;
-					$markerArray['###DATE###'] = $title;
-					$description = '<h3>' . $title . ' ('. $tmpDate . ')</h3>';
+				$title = zhdk_madekplayer::getMetaDataValue('title', $item['meta_data']);
+				if(!empty($title) && $this->lConf['show_title']) {
+					$date = zhdk_madekplayer::getMetaDataValue('portrayed object dates', $item['meta_data']);
+					$row_subparts['###PART_TITLE_AND_DATE###'] = $this->cObj->substituteMarkerArrayCached(
+						$subparts['title'],
+						array(
+							'###TITLE###' => $date,
+							'###DATE###' => $title
+						)
+					);
 
 				}
-				$tmpSubtitle = zhdk_madekplayer::getMetaDataValue('subtitle', $item['meta_data']);
-				if(!empty($tmpSubtitle) && $this->lConf['show_subtitle']) {
-					$markerArray['###SUBTITLE###'] = $tmpSubtitle;
-					$description .= '<p>' . $tmpSubtitle . '</p>';
+				$subtitle = zhdk_madekplayer::getMetaDataValue('subtitle', $item['meta_data']);
+				if(!empty($subtitle) && $this->lConf['show_subtitle']) {
+					$row_subparts['###PART_SUBTITLE###'] = $this->cObj->substituteMarkerArrayCached(
+						$subparts['subtitle'],
+						array(
+							'###SUBTITLE###' => $subtitle,
+						)
+					);
 				}
-				$tmpAuthor = zhdk_madekplayer::getMetaDataValue('author', $item['meta_data']);
-				if(!empty($tmpAuthor) && $this->lConf['show_author']) {
-					$markerArray['###AUTHOR###'] = $tmpAuthor;
-					$description .= '<p>' . $tmpAuthor . '</p>';
+				$author = zhdk_madekplayer::getMetaDataValue('author', $item['meta_data']);
+				if(!empty($author) && $this->lConf['show_author']) {
+					$row_subparts['###PART_AUTHOR###'] = $this->cObj->substituteMarkerArrayCached(
+						$subparts['author'],
+						array(
+							'###AUTHOR###' => $author,
+						)
+					);
 				}
 				if($this->lConf['show_copyright']) {
 					$notice = zhdk_madekplayer::getMetaDataValue('copyright notice', $item['meta_data']);
 					$status = zhdk_madekplayer::getMetaDataValue('copyright status', $item['meta_data']);
 					$usage = zhdk_madekplayer::getMetaDataValue('copyright usage', $item['meta_data']);
 					$url = zhdk_madekplayer::getMetaDataValue('copyright url', $item['meta_data']);
-					$markerArray['###COPYRIGHT_NOTICE###'] = $notice;
-					$markerArray['###COPYRIGHT_STATUS###'] = $status;
-					$markerArray['###COPYRIGHT_USAGE###'] = $usage;
-					$markerArray['###COPYRIGHT_URL###'] = $url;
-					$description .= '<h4>' . $this->pi_getLL('tx_zhdkmadekplayer_pi1.copyright', 'Copyright') . '</h4>
-						<p>' . $notice . '<br>' . 
-							(!empty($url) ? '<a target="_blank" href="' . $url . '">' : '') . $status . (!empty($url) ? '</a>' : '');
-						'</p>';
+					$row_subparts['###PART_COPYRIGHT###'] = $this->cObj->substituteMarkerArrayCached(
+						$subparts['copyright'],
+						array(
+							'###COPYRIGHT_NOTICE###' => $notice,
+							'###COPYRIGHT_STATUS###' => $status,
+							'###COPYRIGHT_USAGE###' => $usage,
+							'###COPYRIGHT_URL###' => $url,
+						)
+					);
 				}
 				
 			}
 			$markerArray['###IMAGE_URL###'] = $this->madekServer . '/media_resources/' . $item['id'] . '/image?size=large';
 			$markerArray['###THUMBNAIL_URL###'] = $this->madekServer . '/media_resources/' . $item['id'] . '/image?size=small';
-			$contentItem .= $this->cObj->substituteMarkerArrayCached($subparts['row'], $markerArray);
+			$contentItem .= $this->cObj->substituteMarkerArrayCached($subparts['row'], $markerArray, $row_subparts);
 		}
 		$subpartArray['###CONTENT###'] = $contentItem;
 		$markerArray['###RANDOM_INDEX###'] = $randomIndex = rand();
