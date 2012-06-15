@@ -14,7 +14,7 @@ require ('../../../../typo3/template.php');
 require_once('../class.zhdk_madekplayer.php');
 
 // $BACK_PATH='';
-$LANG->includeLLFile('EXT:zhdk_madekplayer/locallang.xml');
+$LANG->includeLLFile('EXT:zhdk_madekplayer/wizards/locallang.xml');
 
 /**
  * Script Class for colorpicker wizard

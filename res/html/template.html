@@ -5,7 +5,7 @@
 	<div class="zhdk_madekplayer-galleriffic">
 		<div class="zhdk_madekplayer-controls" id="zhdk_madekplayer-controls-###RANDOM_INDEX###"></div>
 		<!--<div id="zhdk_madekplayer-loading-###RANDOM_INDEX###"></div>-->
-		<div class="zhdk_madekplayer-slideshow" id="zhdk_madekplayer-slideshow-###RANDOM_INDEX###"></div>
+		<div class="zhdk_madekplayer-slideshow centervert" id="zhdk_madekplayer-slideshow-###RANDOM_INDEX###"></div>
 		<div class="zhdk_madekplayer-caption" id="zhdk_madekplayer-caption-###RANDOM_INDEX###"></div>
 		<div class="zhdk_madekplayer-thumbs" id="zhdk_madekplayer-thumbs-###RANDOM_INDEX###">
 			<ul class="thumbs noscript">
@@ -38,9 +38,21 @@
 	</div>
 	<script type="text/javascript">
 	jQuery(document).ready(function($) {
+		// var THUMB_WIDTH = 100px;
+
+		var container = $('#zhdk_madekplayer-thumbs-###RANDOM_INDEX###');
+		// container.height(container.width());
+		console.log(container);
+		console.log('width: ' + container.width());
+		console.log('height: ' + container.height());
+
+		var thumbs = $('#zhdk_madekplayer-thumbs-###RANDOM_INDEX### div.zhdk_madekplayer-thumbs');
+		// thumbs
+
+
 	    var gallery = $('#zhdk_madekplayer-thumbs-###RANDOM_INDEX###').galleriffic({
 	        delay:                     3000, // in milliseconds
-	        numThumbs:                 6, // The number of thumbnails to show page
+	        numThumbs:                 5, // The number of thumbnails to show page
 	        preloadAhead:              24, // Set to -1 to preload all images
 	        enableTopPager:            false,
 	        enableBottomPager:         true,
@@ -51,12 +63,12 @@
 	        //loadingContainerSel:       '', // The CSS selector for the element within which should be shown when an image is loading
 	        renderSSControls:          true, // Specifies whether the slideshow's Play and Pause links should be rendered
 	        renderNavControls:         true, // Specifies whether the slideshow's Next and Previous links should be rendered
-	        playLinkText:              'Play',
-	        pauseLinkText:             'Pause',
-	        prevLinkText:              'Previous',
-	        nextLinkText:              'Next',
-	        nextPageLinkText:          'Next &rsaquo;',
-	        prevPageLinkText:          '&lsaquo; Prev',
+	        playLinkText:              '###PLAY###',
+	        pauseLinkText:             '###PAUSE###',
+	        prevLinkText:              '###PREV###',
+	        nextLinkText:              '###NEXT###',
+	        nextPageLinkText:          '###NEXT_LINK###',
+	        prevPageLinkText:          '###PREV_LINK###',
 	        enableHistory:             false, // Specifies whether the url's hash and the browser's history cache should update when the current slideshow image changes
 	        enableKeyboardNavigation:  true, // Specifies whether keyboard navigation is enabled
 	        autoStart:                 false, // Specifies whether the slideshow should be playing or paused when the page first loads
@@ -70,6 +82,8 @@
 	        onImageAdded:              undefined, // accepts a delegate like such: function(imageData, li) { ... }
 	        onImageRemoved:            undefined  // accepts a delegate like such: function(imageData, li) { ... }*/
 	    });
+		console.log('width: ' + container.width());
+		console.log('height: ' + container.height());
 	});
 	</script>
 	<!-- ###TEMPLATE1### end -->

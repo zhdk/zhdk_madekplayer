@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for extension 'zhdk_madekplayer', wizard</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_zhdkmadekplayer.set_wizard.title">MAdeK Set Picker</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.intro">You may pick a single set from MAdeK by searching for keywords. Simply click on a row to select the set. Please note that you won't find sets here that don't include any media.</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.header.set-title">Title</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.header.set-author">Authors</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.no-results">No matching sets found</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.results">Results</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.resultsPagination">Showing page %d of %d</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="tx_zhdkmadekplayer.set_wizard.title">MAdeK Set Picker</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.intro">Bitte geben Sie einen Suchbegrif ein um anschleissend ein einzelnes Set auswählen zu können. Es werden nur Sets gefunden, die direkt (also nicht in Untersets) Medien enthalten.</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.header.set-title">Titel</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.header.set-author">Autor</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.no-results">Keine passenden Sets gefunden</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.results">Suchergebnisse</label>
+			<label index="tx_zhdkmadekplayer.set_wizard.results-list.resultsPagination">Zeige Seite %d von %d</label>
+		</languageKey>
+	</data>
+</T3locallang>

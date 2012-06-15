@@ -8,37 +8,39 @@
 		<languageKey index="default" type="array">
 			<label index="pi1_title">Madek Gallery</label>
 			<label index="pi1_plus_wiz_description">Displays Images from the Madek (media archive)</label>
-			<label index="listFieldHeader_title">Title</label>
-			<label index="listFieldHeader_description">Description</label>
-			<label index="listFieldHeader_type">Type</label>
-			<label index="listFieldHeader_items">Gallery Items</label>
-			<label index="list_mode_1">Mode 1</label>
-			<label index="list_mode_2">Mode 2</label>
-			<label index="list_mode_3">Mode 3</label>
-			<label index="back">Back</label>
-			<label index="pi_list_browseresults_prev">&lt; Previous</label>
-			<label index="pi_list_browseresults_page">Page</label>
-			<label index="pi_list_browseresults_next">Next &gt;</label>
-			<label index="pi_list_browseresults_displays">Displaying results ###SPAN_BEGIN###%s to %s&lt;/span&gt; out of ###SPAN_BEGIN###%s&lt;/span&gt;</label>
-			<label index="pi_list_searchBox_search">Search</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_copyright">Show copyright notice</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_title">Show title and date</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_subtitle">Show public caption</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_author">Show author</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.set_id">MAdeK media set ID</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.set_title">MAdeK media set title</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright">Copyright</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_notice">Copyright holder</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_status">License name</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_usage">Terms of use</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_url">License URL</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_url.short">URL</label>
+			<label index="tx_zhdkmadekplayer_pi1.dating">URL</label>
+			<label index="tx_zhdkmadekplayer_pi1.play">Play</label>
+			<label index="tx_zhdkmadekplayer_pi1.pause">Pause</label>
+			<label index="tx_zhdkmadekplayer_pi1.prev">Previous</label>
+			<label index="tx_zhdkmadekplayer_pi1.next">Next</label>
 			<label index="flexform.tabgeneral">General</label>
 		</languageKey>
 		<languageKey index="de" type="array">
-			<label index="pi1_title">Madek Gallery</label>
-			<label index="pi1_plus_wiz_description">Displays Images from the Madek (media archive)</label>
-			<label index="listFieldHeader_title">Titel</label>
-			<label index="listFieldHeader_description">Beschreibung</label>
-			<label index="listFieldHeader_type">Typ</label>
-			<label index="listFieldHeader_items">Gallery Items</label>
-			<label index="list_mode_1">Mode 1</label>
-			<label index="list_mode_2">Mode 2</label>
-			<label index="list_mode_3">Mode 3</label>
-			<label index="back">Back</label>
-			<label index="pi_list_browseresults_prev">&lt; Zurück</label>
-			<label index="pi_list_browseresults_page">Seite</label>
-			<label index="pi_list_browseresults_next">Nächste &gt;</label>
-			<label index="pi_list_browseresults_displays">Displaying results ###SPAN_BEGIN###%s to %s&lt;/span&gt; out of ###SPAN_BEGIN###%s&lt;/span&gt;</label>
-			<label index="pi_list_searchBox_search">Suche</label>
+			<label index="pi1_title">MAdeK-Player</label>
+			<label index="pi1_plus_wiz_description">Zeigt Sets aus dem MAdeK an.</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_copyright">Zeige Copyright-Information an</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_title">Zeige Titel und Datierung</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_subtitle">Zeige Bildlegende</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_author">Zeige Autor/in</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.set_id">MAdeK Media Set ID</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright">Copyright</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_notice">Copyright-Halter</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_status">Lizenz</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_usage">Lizenztext</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_url">URL zum Lizenz-Volltext</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_url.short">URL</label>
 			<label index="flexform.tabgeneral">Allgemein</label>
 		</languageKey>
 	</data>

@@ -26,7 +26,7 @@
 					<madek_set>
 						<TCEforms>
 							<exclude>0</exclude>
-							<label>LLL:EXT:zhdk_madekplayer/locallang.php:tx_zhdkmadekplayer_pi1.config.set_id</label>
+							<label>LLL:EXT:zhdk_madekplayer/pi1/locallang.php:tx_zhdkmadekplayer_pi1.config.set_id</label>
 							<config>
 								<type>input</type>
 								<size>10</size>
@@ -48,7 +48,7 @@
 					<show_copyright>
 						<TCEforms>
 							<exclude>0</exclude>
-							<label>LLL:EXT:zhdk_madekplayer/locallang.php:tx_zhdkmadekplayer_pi1.config.show_copyright</label>
+							<label>LLL:EXT:zhdk_madekplayer/pi1/locallang.php:tx_zhdkmadekplayer_pi1.config.show_copyright</label>
 							<config>
 								<type>check</type>
 								<default>1</default>
@@ -58,7 +58,7 @@
 					<show_title>
 						<TCEforms>
 							<exclude>0</exclude>
-							<label>LLL:EXT:zhdk_madekplayer/locallang.php:tx_zhdkmadekplayer_pi1.config.show_title</label>
+							<label>LLL:EXT:zhdk_madekplayer/pi1/locallang.php:tx_zhdkmadekplayer_pi1.config.show_title</label>
 							<config>
 								<type>check</type>
 								<default>1</default>
@@ -68,7 +68,7 @@
 					<show_subtitle>
 						<TCEforms>
 							<exclude>0</exclude>
-							<label>LLL:EXT:zhdk_madekplayer/locallang.php:tx_zhdkmadekplayer_pi1.config.show_subtitle</label>
+							<label>LLL:EXT:zhdk_madekplayer/pi1/locallang.php:tx_zhdkmadekplayer_pi1.config.show_subtitle</label>
 							<config>
 								<type>check</type>
 								<default>1</default>
@@ -78,7 +78,7 @@
 					<show_author>
 						<TCEforms>
 							<exclude>0</exclude>
-							<label>LLL:EXT:zhdk_madekplayer/locallang.php:tx_zhdkmadekplayer_pi1.config.show_author</label>
+							<label>LLL:EXT:zhdk_madekplayer/pi1/locallang.php:tx_zhdkmadekplayer_pi1.config.show_author</label>
 							<config>
 								<type>check</type>
 								<default>1</default>

@@ -1,3 +1,9 @@
+div.zhdk_madekplayer-galleriffic {
+	padding: 5px;
+	width: 630px;
+	background-color: #eeeeee;
+}
+
 div.zhdk_madekplayer-galleriffic div.pagination {
 	clear: both;
 	text-align: center;
@@ -9,31 +15,47 @@ div.zhdk_madekplayer-galleriffic div.pagination a {
 	margin-right: 10px;
 }
 
+div.zhdk_madekplayer-galleriffic div.zhdk_madekplayer-caption {
+	padding: 10px 0 10px 50px;
+	margin: 5px;
+	min-height: 50px;
+	border: 1px solid #dedede;
+}
+
+div.zhdk_madekplayer-galleriffic ul.thumbs {
+	text-align: center;
+}
+
 div.zhdk_madekplayer-galleriffic ul.thumbs li {
 	list-style: none;
-	float: left;
+	/*float: left;*/
+	display: inline;
 	padding: 0;
 	margin: 0;
 	margin-right: 10px;
+	height: 100px;
+	line-height: 100px;
+}
+
+div.zhdk_madekplayer-galleriffic ul.thumbs li img {
+	margin: auto;
+	vertical-align: middle;
 }
 
 div.zhdk_madekplayer-galleriffic .zhdk_madekplayer-slideshow {
-	text-align: left;
-	/*min-height: 465px;*/
+	text-align: center;
+	height: 500px;;
+	line-height: 500px;
 }
 
 div.zhdk_madekplayer-galleriffic .zhdk_madekplayer-slideshow img {
 	padding: 0;
-	margin: 0;
+	margin: auto;
+	vertical-align: middle;
 }
 
 div.zhdk_madekplayer-galleriffic a:hover {
 	text-decoration: none;
-}
-
-div.zhdk_madekplayer-caption {
-	min-height: 50px;
-	margin: 10px 0;
 }
 
 div.zhdk_madekplayer-caption h3 {

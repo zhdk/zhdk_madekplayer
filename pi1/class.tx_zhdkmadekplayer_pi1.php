@@ -175,12 +175,19 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 				}
 				
 			}
+			$markerArray['###TITLE###'] = $title;
 			$markerArray['###IMAGE_URL###'] = $this->madekServer . '/media_resources/' . $item['id'] . '/image?size=large';
 			$markerArray['###THUMBNAIL_URL###'] = $this->madekServer . '/media_resources/' . $item['id'] . '/image?size=small';
 			$contentItem .= $this->cObj->substituteMarkerArrayCached($subparts['row'], $markerArray, $row_subparts);
 		}
 		$subpartArray['###CONTENT###'] = $contentItem;
-		$markerArray['###RANDOM_INDEX###'] = $randomIndex = rand();
+		$markerArray['###RANDOM_INDEX###'] = rand();
+		$markerArray['###PLAY###'] = $this->pi_getLL('tx_zhdkmadekplayer_pi1.play');
+		$markerArray['###PAUSE###'] = $this->pi_getLL('tx_zhdkmadekplayer_pi1.pause');
+		$markerArray['###PREV###'] = $this->pi_getLL('tx_zhdkmadekplayer_pi1.prev');
+		$markerArray['###NEXT###'] = $this->pi_getLL('tx_zhdkmadekplayer_pi1.next');
+		$markerArray['###PREV_LINK###'] = '&lsaquo; ' . $this->pi_getLL('tx_zhdkmadekplayer_pi1.prev');
+		$markerArray['###NEXT_LINK###'] = $this->pi_getLL('tx_zhdkmadekplayer_pi1.next') . ' &rsaquo;';
 		$content = $this->cObj->substituteMarkerArrayCached($subparts['template'], $markerArray, $subpartArray);
 		return $content;
 	}
