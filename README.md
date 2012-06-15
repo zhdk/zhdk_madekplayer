@@ -22,7 +22,7 @@ MAdeK set with the "MAdeK Set Picker". Done.
 Contribute
 ----------
 The "ZHdK MAdeK Player" code is managed on
-[Github](https://github.com/beatrohrer/zhdk_madekplayer)
+[Github](https://github.com/zhdk/zhdk_madekplayer.git)
 
 About MAdeK
 ===========
