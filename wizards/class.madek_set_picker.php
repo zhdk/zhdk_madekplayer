@@ -112,6 +112,24 @@ div.pagination p {
 div.pagination a {
 	text-decoration: underline;
 }
+
+tr.result-row {
+	cursor: pointer;
+}
+
+/*tr.result-row:nth-child(even) {
+	background-color: #cdcdcd;
+}*/
+
+tr.result-row td {
+	border-top: 1px solid #cdcdcd;
+	padding-top: 10px;
+	/*border-top: 1px solid #000000;*/
+}
+
+table {
+	border-collapse:collapse;
+}
 		";
 		$this->currentPage = (int)t3lib_div::_GP('pageOffset');
 		$this->currentPage = ((empty($this->currentPage)) ? 1 : $this->currentPage);
@@ -171,7 +189,7 @@ div.pagination a {
 					if(empty($item['image'])) {
 						continue;
 					}
-					$resultList .= '<tr onclick="javascript:zhdk_madekplayer_picker_writeback(' . (int)$item['id'] . ',\'' .  zhdk_madekplayer::getMetaDataValue('title', $item['meta_data']) . '\')">
+					$resultList .= '<tr class="result-row" onclick="javascript:zhdk_madekplayer_picker_writeback(' . (int)$item['id'] . ',\'' .  zhdk_madekplayer::getMetaDataValue('title', $item['meta_data']) . '\')">
 									<td>
 										' . (!empty($item['image']) ? '<img src="' . $item['image'] . '" />' : '') . '
 									</td>
