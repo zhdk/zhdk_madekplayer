@@ -1,0 +1,7 @@
+plugin.tx_zhdkmadekplayer_pi1  {
+	#cat=zhdkmadekplayer/file/f01; type=file[css]; label= CSS File.
+	cssFile = EXT:zhdk_madekplayer/res/css/zhdkmadekplayer.css
+	
+	#cat=zhdkmadekplayer/file/f02; type=file[html,htm]; label= Template File.
+	templateFile = EXT:zhdk_madekplayer/res/html/template.html
+}

@@ -74,6 +74,7 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 				}
 			}
 		}
+		// die(print_r($this->conf));
 	}
 
 	function fetchData() {
@@ -101,7 +102,12 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		//get set content
 		$this->fetchData();
 		$GLOBALS['TSFE']->additionalHeaderData['galleriffic_js'] = '<script type="text/javascript" src="' . t3lib_extMgm::siteRelPath('zhdk_madekplayer') . 'res/js/jquery.galleriffic.js"></script>';
-		$GLOBALS['TSFE']->additionalHeaderData['zhdk_madekplayer_css'] = '<link  media="screen" rel="stylesheet" type="text/css"  href="' . t3lib_extMgm::siteRelPath('zhdk_madekplayer') . 'res/css/zhdkmadekplayer.css" />';
+		
+		//get template
+		$this->templateFile = $this->cObj->fileResource($this->conf['templateFile']);
+		$subparts['template'] = $this->cObj->getSubpart($this->templateFile, '###TEMPLATE1###');
+		$subparts['row'] = $this->cObj->getSubpart($subparts['template'], '###ROW###');
+		$contentItem = '';
 		foreach($this->data['media_resources'][0]['children'] as $item) {
 			if($item['type'] != 'media_entry') {
 				continue;
@@ -109,6 +115,16 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 			if($item['media_type'] != 'Image') {
 				continue;
 			}
+			$markerArray = array (
+					'###COPYRIGHT_NOTICE###' => '',
+					'###COPYRIGHT_STATUS###' => '',
+					'###COPYRIGHT_USAGE###' => '',
+					'###COPYRIGHT_URL###' => '',
+					'###TITLE###' => '',
+					'###DATE###' => '',
+					'###SUBTITLE###' => '',
+					'###AUTHOR###' => '',
+				);
 			$description = '';
 			$title = 'Media Entry no. ' . $item['id'];
 			if(isset($item['meta_data'])) {
@@ -117,15 +133,19 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 				if(!empty($tmpTitle) && $this->lConf['show_title']) {
 					$tmpDate = zhdk_madekplayer::getMetaDataValue('portrayed object dates', $item['meta_data']);
 					$title = $tmpTitle;
+					$markerArray['###TITLE###'] = $tmpDate;
+					$markerArray['###DATE###'] = $title;
 					$description = '<h3>' . $title . ' ('. $tmpDate . ')</h3>';
 
 				}
 				$tmpSubtitle = zhdk_madekplayer::getMetaDataValue('subtitle', $item['meta_data']);
 				if(!empty($tmpSubtitle) && $this->lConf['show_subtitle']) {
+					$markerArray['###SUBTITLE###'] = $tmpSubtitle;
 					$description .= '<p>' . $tmpSubtitle . '</p>';
 				}
 				$tmpAuthor = zhdk_madekplayer::getMetaDataValue('author', $item['meta_data']);
 				if(!empty($tmpAuthor) && $this->lConf['show_author']) {
+					$markerArray['###AUTHOR###'] = $tmpAuthor;
 					$description .= '<p>' . $tmpAuthor . '</p>';
 				}
 				if($this->lConf['show_copyright']) {
@@ -133,6 +153,10 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 					$status = zhdk_madekplayer::getMetaDataValue('copyright status', $item['meta_data']);
 					$usage = zhdk_madekplayer::getMetaDataValue('copyright usage', $item['meta_data']);
 					$url = zhdk_madekplayer::getMetaDataValue('copyright url', $item['meta_data']);
+					$markerArray['###COPYRIGHT_NOTICE###'] = $notice;
+					$markerArray['###COPYRIGHT_STATUS###'] = $status;
+					$markerArray['###COPYRIGHT_USAGE###'] = $usage;
+					$markerArray['###COPYRIGHT_URL###'] = $url;
 					$description .= '<h4>' . $this->pi_getLL('tx_zhdkmadekplayer_pi1.copyright', 'Copyright') . '</h4>
 						<p>' . $notice . '<br>' . 
 							(!empty($url) ? '<a target="_blank" href="' . $url . '">' : '') . $status . (!empty($url) ? '</a>' : '');
@@ -140,73 +164,14 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 				}
 				
 			}
-			$imageList .= '
-				<li>
-					<a class="thumb" href="' . $this->madekServer . '/media_resources/' . $item['id'] . '/image?size=large" title="' . $title  . '">
-						<img alt="' . $title . '" src="' . $this->madekServer . '/media_resources/' . $item['id'] . '/image?size=small" />
-					</a>
-					<div class="caption">
-						' . $description  . '
-					</div>
-				</li>';
+			$markerArray['###IMAGE_URL###'] = $this->madekServer . '/media_resources/' . $item['id'] . '/image?size=large';
+			$markerArray['###THUMBNAIL_URL###'] = $this->madekServer . '/media_resources/' . $item['id'] . '/image?size=small';
+			$contentItem .= $this->cObj->substituteMarkerArrayCached($subparts['row'], $markerArray);
 		}
-		//prevent problems with multiple galleries on the same page
-		return $this->getPlayer($imageList);
-	}
-
-	function getPlayer($imageList) {
-		$randomIndex = rand();
-		$html = '
-			<div class="zhdk_madekplayer-galleriffic">
-				<div class="zhdk_madekplayer-controls" id="zhdk_madekplayer-controls-' . $randomIndex . '"></div>
-				<!--<div id="zhdk_madekplayer-loading-' . $randomIndex . '"></div>-->
-				<div class="zhdk_madekplayer-slideshow" id="zhdk_madekplayer-slideshow-' . $randomIndex . '"></div>
-				<div class="zhdk_madekplayer-caption" id="zhdk_madekplayer-caption-' . $randomIndex . '"></div>
-				<div class="zhdk_madekplayer-thumbs" id="zhdk_madekplayer-thumbs-' . $randomIndex . '">
-					<ul class="thumbs noscript">
-						' . $imageList . '
-					</ul>
-				</div>
-			</div>
-			<script type="text/javascript">
-			' . "
-			jQuery(document).ready(function($) {
-			    var gallery = $('#zhdk_madekplayer-thumbs-$randomIndex').galleriffic({
-			        delay:                     3000, // in milliseconds
-			        numThumbs:                 6, // The number of thumbnails to show page
-			        preloadAhead:              24, // Set to -1 to preload all images
-			        enableTopPager:            false,
-			        enableBottomPager:         true,
-			        maxPagesToShow:            7,  // The maximum number of pages to display in either the top or bottom pager
-			        imageContainerSel:         '#zhdk_madekplayer-slideshow-$randomIndex', // The CSS selector for the element within which the main slideshow image should be rendered
-			        controlsContainerSel:      '#zhdk_madekplayer-controls-$randomIndex', // The CSS selector for the element within which the slideshow controls should be rendered
-			        captionContainerSel:       '#zhdk_madekplayer-caption-$randomIndex', // The CSS selector for the element within which the captions should be rendered
-			        //loadingContainerSel:       '', // The CSS selector for the element within which should be shown when an image is loading
-			        renderSSControls:          true, // Specifies whether the slideshow's Play and Pause links should be rendered
-			        renderNavControls:         true, // Specifies whether the slideshow's Next and Previous links should be rendered
-			        playLinkText:              'Play',
-			        pauseLinkText:             'Pause',
-			        prevLinkText:              'Previous',
-			        nextLinkText:              'Next',
-			        nextPageLinkText:          'Next &rsaquo;',
-			        prevPageLinkText:          '&lsaquo; Prev',
-			        enableHistory:             false, // Specifies whether the url's hash and the browser's history cache should update when the current slideshow image changes
-			        enableKeyboardNavigation:  true, // Specifies whether keyboard navigation is enabled
-			        autoStart:                 false, // Specifies whether the slideshow should be playing or paused when the page first loads
-			        syncTransitions:           false, // Specifies whether the out and in transitions occur simultaneously or distinctly
-			        defaultTransitionDuration: 500, // If using the default transitions, specifies the duration of the transitions
-			        /*onSlideChange:             undefined, // accepts a delegate like such: function(prevIndex, nextIndex) { ... }
-			        onTransitionOut:           undefined, // accepts a delegate like such: function(slide, caption, isSync, callback) { ... }
-			        onTransitionIn:            undefined, // accepts a delegate like such: function(slide, caption, isSync) { ... }
-			        onPageTransitionOut:       undefined, // accepts a delegate like such: function(callback) { ... }
-			        onPageTransitionIn:        undefined, // accepts a delegate like such: function() { ... }
-			        onImageAdded:              undefined, // accepts a delegate like such: function(imageData, li) { ... }
-			        onImageRemoved:            undefined  // accepts a delegate like such: function(imageData, li) { ... }*/
-			    });
-			});
-			</script>
-			";
-		return $html;
+		$subpartArray['###CONTENT###'] = $contentItem;
+		$markerArray['###RANDOM_INDEX###'] = $randomIndex = rand();
+		$content = $this->cObj->substituteMarkerArrayCached($subparts['template'], $markerArray, $subpartArray);
+		return $content;
 	}
 }
 

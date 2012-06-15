@@ -1,0 +1,8 @@
+plugin.tx_zhdkmadekplayer_pi1.templateFile = {$plugin.tx_zhdkmadekplayer_pi1.templateFile}
+
+#plugin.tx_zhdkmadekplayer_pi1.templateFile = {$plugin.tx_zhdkmadekplayer_pi1.cssFile}
+
+page.headerData.1337 = COA
+page.headerData.1337.1 = TEXT
+page.headerData.1337.1.value = <link rel="stylesheet" href="{path:{$plugin.tx_zhdkmadekplayer_pi1.cssFile}}" type="text/css" />
+page.headerData.1337.1.insertData = 1
