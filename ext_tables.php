@@ -21,8 +21,4 @@ t3lib_extMgm::addPlugin(array(
  t3lib_extMgm::addPiFlexFormValue($_EXTKEY.'_pi1', 'FILE:EXT:'.$_EXTKEY.'/pi1/flexform_ds_pi1.xml');
 
  t3lib_extMgm::addStaticFile($_EXTKEY,'static/', 'ZHdK MAdeK Player');
- 
-if (TYPO3_MODE == 'BE') {
-	$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['tx_zhdkmadekplayer_pi1_wizicon'] = t3lib_extMgm::extPath($_EXTKEY).'pi1/class.tx_zhdkmadekplayer_pi1_wizicon.php';
-}
 ?>
