@@ -65,6 +65,7 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		$piFlexForm = $this->cObj->data['pi_flexform'];
 		$this->extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][$this->extKey]);
 		$this->madekServer = rtrim($this->extConf['madekServer'], '/');
+		$this->random = rand();
 		// Traverse the entire array based on the language...
 		// and assign each configuration option to $this->lConf array...
 		foreach ($piFlexForm['data'] as $sheet => $data) {
@@ -74,7 +75,6 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 				}
 			}
 		}
-		// die(print_r($this->conf));
 	}
 
 	function fetchData() {
@@ -101,12 +101,37 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		$imageList = '';
 		//get set content
 		$this->fetchData();
+		$GLOBALS['TSFE']->additionalHeaderData['tx_zhdkmadekplayer_pi1'] .= '
+			<style type="text/css">
+				div#zhdk_madekplayer-thumbs-' . $this->random . ' div.zhdk_madekplayer-galleriffic .zhdk_madekplayer-slideshow {
+					height: ' . $this->lConf['max_image_height'] . 'px;
+					line-height: ' . $this->lConf['max_image_height'] . 'px;
+				}
+				div#zhdk_madekplayer-thumbs-' . $this->random . ' div.zhdk_madekplayer-galleriffic .zhdk_madekplayer-slideshow img {
+					max-height: ' . $this->lConf['max_image_height'] . 'px;
+					max-width: ' . $this->lConf['max_image_width'] . 'px;
+				}
+				div#zhdk_madekplayer-thumbs-' . $this->random . ' div.zhdk_madekplayer-galleriffic {
+					width: ' . $this->lConf['player_width'] . 'px;
+				}
+			</style>';
 		$GLOBALS['TSFE']->additionalHeaderData['galleriffic_js'] = '<script type="text/javascript" src="' . t3lib_extMgm::siteRelPath('zhdk_madekplayer') . 'res/js/jquery.galleriffic.js"></script>';
 		
 		//get template
 		$this->templateFile = $this->cObj->fileResource($this->conf['templateFile']);
 		$subparts['template'] = $this->cObj->getSubpart($this->templateFile, '###TEMPLATE1###');
 		$subparts['row'] = $this->cObj->getSubpart($subparts['template'], '###ROW###');
+		
+		//insert the separate caption template file
+		$this->templateFileCaption = $this->cObj->fileResource($this->conf['templateFileCaption']);
+		$caption = $this->cObj->getSubpart($this->templateFileCaption, '###CAPTION_TEMPLATE###');
+		$subparts['row'] = $this->cObj->substituteMarkerArrayCached(
+						$subparts['row'],
+						array(
+							'###CAPTION###' => $caption,
+						)
+					);
+
 		$subparts['title'] = $this->cObj->getSubpart($subparts['row'], '###PART_TITLE_AND_DATE###');
 		$subparts['subtitle'] = $this->cObj->getSubpart($subparts['row'], '###PART_SUBTITLE###');
 		$subparts['author'] = $this->cObj->getSubpart($subparts['row'], '###PART_AUTHOR###');
@@ -181,13 +206,14 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 			$contentItem .= $this->cObj->substituteMarkerArrayCached($subparts['row'], $markerArray, $row_subparts);
 		}
 		$subpartArray['###CONTENT###'] = $contentItem;
-		$markerArray['###RANDOM_INDEX###'] = rand();
+		$markerArray['###RANDOM_INDEX###'] = $this->random;
 		$markerArray['###PLAY###'] = $this->pi_getLL('tx_zhdkmadekplayer_pi1.play');
 		$markerArray['###PAUSE###'] = $this->pi_getLL('tx_zhdkmadekplayer_pi1.pause');
 		$markerArray['###PREV###'] = $this->pi_getLL('tx_zhdkmadekplayer_pi1.prev');
 		$markerArray['###NEXT###'] = $this->pi_getLL('tx_zhdkmadekplayer_pi1.next');
 		$markerArray['###PREV_LINK###'] = '&lsaquo; ' . $this->pi_getLL('tx_zhdkmadekplayer_pi1.prev');
 		$markerArray['###NEXT_LINK###'] = $this->pi_getLL('tx_zhdkmadekplayer_pi1.next') . ' &rsaquo;';
+		$markerArray['###THUMBNAIL_COUNT###'] = $this->lConf['thumbnails_per_page'];
 		$content = $this->cObj->substituteMarkerArrayCached($subparts['template'], $markerArray, $subpartArray);
 		return $content;
 	}

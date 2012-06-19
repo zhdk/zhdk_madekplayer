@@ -1,6 +1,5 @@
 plugin.tx_zhdkmadekplayer_pi1.templateFile = {$plugin.tx_zhdkmadekplayer_pi1.templateFile}
-
-#plugin.tx_zhdkmadekplayer_pi1.templateFile = {$plugin.tx_zhdkmadekplayer_pi1.cssFile}
+plugin.tx_zhdkmadekplayer_pi1.templateFileCaption = {$plugin.tx_zhdkmadekplayer_pi1.templateFileCaption}
 
 page.headerData.1337 = COA
 page.headerData.1337.1 = TEXT

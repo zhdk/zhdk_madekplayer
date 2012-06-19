@@ -47,7 +47,7 @@
 					</madek_set>
 					<show_copyright>
 						<TCEforms>
-							<exclude>0</exclude>
+							<exclude>1</exclude>
 							<label>LLL:EXT:zhdk_madekplayer/pi1/locallang.php:tx_zhdkmadekplayer_pi1.config.show_copyright</label>
 							<config>
 								<type>check</type>
@@ -57,7 +57,7 @@
 					</show_copyright>
 					<show_title>
 						<TCEforms>
-							<exclude>0</exclude>
+							<exclude>1</exclude>
 							<label>LLL:EXT:zhdk_madekplayer/pi1/locallang.php:tx_zhdkmadekplayer_pi1.config.show_title</label>
 							<config>
 								<type>check</type>
@@ -67,7 +67,7 @@
 					</show_title>
 					<show_subtitle>
 						<TCEforms>
-							<exclude>0</exclude>
+							<exclude>1</exclude>
 							<label>LLL:EXT:zhdk_madekplayer/pi1/locallang.php:tx_zhdkmadekplayer_pi1.config.show_subtitle</label>
 							<config>
 								<type>check</type>
@@ -77,7 +77,7 @@
 					</show_subtitle>
 					<show_author>
 						<TCEforms>
-							<exclude>0</exclude>
+							<exclude>1</exclude>
 							<label>LLL:EXT:zhdk_madekplayer/pi1/locallang.php:tx_zhdkmadekplayer_pi1.config.show_author</label>
 							<config>
 								<type>check</type>
@@ -88,5 +88,92 @@
 				</el>
 			</ROOT>
 		</sDEF>
+		<formats>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:zhdk_madekplayer/pi1/locallang.php:flexform.tabformats</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<player_width>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>LLL:EXT:zhdk_madekplayer/pi1/locallang.php:tx_zhdkmadekplayer_pi1.config.player_width</label>
+							<config>
+								<size>2</size>
+								<eval>require,trim,int</eval>
+								<type>input</type>
+								<default>630</default>
+								<range>
+									<lower>
+										50
+									</lower>
+								</range>
+							</config>
+						</TCEforms>
+					</player_width>
+					<max_image_width>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>LLL:EXT:zhdk_madekplayer/pi1/locallang.php:tx_zhdkmadekplayer_pi1.config.max_image_width</label>
+							<config>
+								<size>2</size>
+								<eval>require,trim,int</eval>
+								<type>input</type>
+								<default>620</default>
+								<range>
+									<lower>
+										50
+									</lower>
+									<upper>
+										620
+									</upper>
+								</range>
+							</config>
+						</TCEforms>
+					</max_image_width>
+					<max_image_height>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>LLL:EXT:zhdk_madekplayer/pi1/locallang.php:tx_zhdkmadekplayer_pi1.config.max_image_height</label>
+							<config>
+								<size>2</size>
+								<eval>require,trim,int</eval>
+								<type>input</type>
+								<default>500</default>
+								<range>
+									<lower>
+										50
+									</lower>
+									<upper>
+										500
+									</upper>
+								</range>
+							</config>
+						</TCEforms>
+					</max_image_height>
+					<thumbnails_per_page>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>LLL:EXT:zhdk_madekplayer/pi1/locallang.php:tx_zhdkmadekplayer_pi1.config.thumbnail_count</label>
+							<config>
+								<size>2</size>
+								<eval>require,trim,int</eval>
+								<type>input</type>
+								<default>5</default>
+								<range>
+									<lower>
+										2
+									</lower>
+									<upper>
+										20
+									</upper>
+								</range>
+							</config>
+						</TCEforms>
+					</thumbnails_per_page>
+				</el>
+			</ROOT>
+		</formats>
 	</sheets>
 </T3DataStructure>

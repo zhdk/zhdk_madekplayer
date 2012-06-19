@@ -13,7 +13,10 @@
 			<label index="tx_zhdkmadekplayer_pi1.config.show_subtitle">Show public caption</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.show_author">Show author</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.set_id">MAdeK media set ID</label>
-			<label index="tx_zhdkmadekplayer_pi1.config.set_title">MAdeK media set title</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.thumbnail_count">No. of thumbnails per page</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.max_image_width">Max. image width (pixel)</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.max_image_height">Max. image height (pixel)</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.player_width">Player width (pixel)</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright">Copyright</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright_notice">Copyright holder</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright_status">License name</label>
@@ -21,11 +24,12 @@
 			<label index="tx_zhdkmadekplayer_pi1.copyright_url">License URL</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright_url.short">URL</label>
 			<label index="tx_zhdkmadekplayer_pi1.dating">URL</label>
-			<label index="tx_zhdkmadekplayer_pi1.play">Play</label>
-			<label index="tx_zhdkmadekplayer_pi1.pause">Pause</label>
+			<label index="tx_zhdkmadekplayer_pi1.play">Play Slideshow</label>
+			<label index="tx_zhdkmadekplayer_pi1.pause">Pause Slideshow</label>
 			<label index="tx_zhdkmadekplayer_pi1.prev">Previous</label>
 			<label index="tx_zhdkmadekplayer_pi1.next">Next</label>
 			<label index="flexform.tabgeneral">General</label>
+			<label index="flexform.tabformats">Formats</label>
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="pi1_title">MAdeK-Player</label>
@@ -35,13 +39,23 @@
 			<label index="tx_zhdkmadekplayer_pi1.config.show_subtitle">Zeige Bildlegende</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.show_author">Zeige Autor/in</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.set_id">MAdeK Media Set ID</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.thumbnail_count">Anzahl Thumbnails pro Seite</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.max_image_width">Maximale Bildbreite (Pixel)</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.max_image_height">Maximale Bildhöhe (pixel)</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.player_width">Breite Player (Pixel)</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright">Copyright</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright_notice">Copyright-Halter</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright_status">Lizenz</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright_usage">Lizenztext</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright_url">URL zum Lizenz-Volltext</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright_url.short">URL</label>
+			<label index="tx_zhdkmadekplayer_pi1.dating">URL</label>
+			<label index="tx_zhdkmadekplayer_pi1.play">Slideshow abspielen</label>
+			<label index="tx_zhdkmadekplayer_pi1.pause">Slideshow pausieren</label>
+			<label index="tx_zhdkmadekplayer_pi1.prev">Zurück</label>
+			<label index="tx_zhdkmadekplayer_pi1.next">Weiter</label>
 			<label index="flexform.tabgeneral">Allgemein</label>
+			<label index="flexform.tabformats">Formatierungen</label>
 		</languageKey>
 	</data>
 </T3locallang>

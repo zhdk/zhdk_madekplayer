@@ -2,6 +2,9 @@ plugin.tx_zhdkmadekplayer_pi1  {
 	#cat=zhdkmadekplayer/file/f01; type=file[css]; label= CSS File.
 	cssFile = EXT:zhdk_madekplayer/res/css/zhdkmadekplayer.css
 	
-	#cat=zhdkmadekplayer/file/f02; type=file[html,htm]; label= Template File.
+	#cat=zhdkmadekplayer/file/f02; type=file[html,htm]; label= General template file.
 	templateFile = EXT:zhdk_madekplayer/res/html/template.html
+	
+	#cat=zhdkmadekplayer/file/f03; type=file[html,htm]; label= Template file for image caption.
+	templateFileCaption = EXT:zhdk_madekplayer/res/html/template_caption.html
 }
