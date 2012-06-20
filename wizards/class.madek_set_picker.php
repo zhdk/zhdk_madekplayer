@@ -56,6 +56,9 @@ class Madek_set_picker {
 		$this->additionalGetParameter = t3lib_div::implodeArrayForUrl('P', $this->P);
 		$this->extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][$this->extKey]);
 		$this->madekServer = rtrim($this->extConf['madekServer'], '/');
+		if(empty($this->madekServer)) {
+			$this->madekServer = 'http://medienarchiv.zhdk.ch/';
+		}
 		$this->pageURL = t3lib_div::getIndpEnv('TYPO3_SITE_URL') . t3lib_extMgm::siteRelPath($this->extKey) . 'wizards/class.madek_set_picker.php';
 
 		$this->uid = $this->P['uid'];
@@ -64,7 +67,7 @@ class Madek_set_picker {
 			// Initialize document object:
 		$this->doc = t3lib_div::makeInstance('mediumDoc');
 		$this->doc->backPath = $BACK_PATH;
-		$this->doc->JScode .= '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>';
+		$this->doc->JScode .= '<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>';
 		$this->doc->JScode .= $this->doc->wrapScriptTags('
 			function zhdk_madekplayer_picker_writeback(id, title) {
 				window.opener.document.editform["data[tt_content][' . $this->uid . '][pi_flexform][data][sDEF][lDEF][madek_set][vDEF]"].value=id;

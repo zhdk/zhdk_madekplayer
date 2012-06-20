@@ -56,7 +56,10 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		$this->init();
 		return $this->galleryView();
 	}
-
+	/**
+	 * Init the class and get all the config data
+	 * @return void;
+	 */
 	function init() {
 		$this->pi_setPiVarDefaults();
 		$this->pi_initPIflexForm(); // Init and get the flexform data of the plugin
@@ -65,6 +68,11 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		$piFlexForm = $this->cObj->data['pi_flexform'];
 		$this->extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][$this->extKey]);
 		$this->madekServer = rtrim($this->extConf['madekServer'], '/');
+		if(empty($this->madekServer)) {
+			$this->madekServer = 'http://medienarchiv.zhdk.ch/';
+		}
+		// set random number for this content element
+		// this prohibits problems problems with multiple plugins on the same page
 		$this->random = rand();
 		// Traverse the entire array based on the language...
 		// and assign each configuration option to $this->lConf array...
@@ -77,6 +85,11 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		}
 	}
 
+	/**
+	 * Get data from madek server
+	 * and set it to $this->data
+	 * @return void;
+	 */
 	function fetchData() {
 		$json_url = $this->madekServer . '/media_resources.json?'.
 			'ids=' . $this->madekSetId . '&'.
@@ -92,6 +105,10 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		$this->data = json_decode($json, TRUE);
 	}
 	
+	/**
+	 * Display normal gallery view
+	 * @return void;
+	 */
 	function galleryView() {
 		$this->pi_loadLL();
 		$this->madekSetId = $this->lConf['madek_set'];
@@ -137,6 +154,8 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		$subparts['author'] = $this->cObj->getSubpart($subparts['row'], '###PART_AUTHOR###');
 		$subparts['copyright'] = $this->cObj->getSubpart($subparts['row'], '###PART_COPYRIGHT###');
 		$contentItem = '';
+
+		// set data for each image
 		foreach($this->data['media_resources'][0]['children'] as $item) {
 			if($item['type'] != 'media_entry') {
 				continue;
