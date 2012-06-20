@@ -1,7 +1,6 @@
 div.zhdk_madekplayer-galleriffic {
 	padding: 5px;
 	background-color: #eeeeee;
-	width: 630px;
 }
 
 div.zhdk_madekplayer-galleriffic div.pagination {
@@ -40,21 +39,19 @@ div.zhdk_madekplayer-galleriffic ul.thumbs li {
 	line-height: 100px;
 }
 
-div.zhdk_madekplayer-galleriffic ul.thumbs li img {
-	margin: auto;
-	vertical-align: middle;
-}
-
-div.zhdk_madekplayer-galleriffic .zhdk_madekplayer-slideshow {
+div.zhdk_madekplayer-galleriffic .zhdk_madekplayer-slideshow-table {
 	text-align: center;
-	height: 500px;
-	line-height: 500px;
+	display: table;
 }
 
-div.zhdk_madekplayer-galleriffic .zhdk_madekplayer-slideshow img {
-	padding: 0;
-	margin: auto;
+div.zhdk_madekplayer-galleriffic .zhdk_madekplayer-slideshow-cell {
+	display: table-cell;
 	vertical-align: middle;
+}
+
+div.zhdk_madekplayer-galleriffic .zhdk_madekplayer-slideshow-cell img {
+	padding: 0;
+	
 }
 
 div.zhdk_madekplayer-galleriffic a:hover {

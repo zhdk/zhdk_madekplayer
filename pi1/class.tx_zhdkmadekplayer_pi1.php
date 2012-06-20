@@ -118,20 +118,6 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		$imageList = '';
 		//get set content
 		$this->fetchData();
-		$GLOBALS['TSFE']->additionalHeaderData['tx_zhdkmadekplayer_pi1'] .= '
-			<style type="text/css">
-				div#zhdk_madekplayer-thumbs-' . $this->random . ' div.zhdk_madekplayer-galleriffic .zhdk_madekplayer-slideshow {
-					height: ' . $this->lConf['max_image_height'] . 'px;
-					line-height: ' . $this->lConf['max_image_height'] . 'px;
-				}
-				div#zhdk_madekplayer-thumbs-' . $this->random . ' div.zhdk_madekplayer-galleriffic .zhdk_madekplayer-slideshow img {
-					max-height: ' . $this->lConf['max_image_height'] . 'px;
-					max-width: ' . $this->lConf['max_image_width'] . 'px;
-				}
-				div#zhdk_madekplayer-thumbs-' . $this->random . ' div.zhdk_madekplayer-galleriffic {
-					width: ' . $this->lConf['player_width'] . 'px;
-				}
-			</style>';
 		$GLOBALS['TSFE']->additionalHeaderData['galleriffic_js'] = '<script type="text/javascript" src="' . t3lib_extMgm::siteRelPath('zhdk_madekplayer') . 'res/js/jquery.galleriffic.js"></script>';
 		
 		//get template
@@ -233,6 +219,9 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		$markerArray['###PREV_LINK###'] = '&lsaquo; ' . $this->pi_getLL('tx_zhdkmadekplayer_pi1.prev');
 		$markerArray['###NEXT_LINK###'] = $this->pi_getLL('tx_zhdkmadekplayer_pi1.next') . ' &rsaquo;';
 		$markerArray['###THUMBNAIL_COUNT###'] = $this->lConf['thumbnails_per_page'];
+		$markerArray['###MAX_IMAGE_WIDTH###'] = $this->lConf['max_image_width'];
+		$markerArray['###MAX_IMAGE_HEIGHT###'] = $this->lConf['max_image_height'];
+		$markerArray['###PLAYER_WIDTH###'] = $this->lConf['player_width'];
 		$content = $this->cObj->substituteMarkerArrayCached($subparts['template'], $markerArray, $subpartArray);
 		return $content;
 	}
