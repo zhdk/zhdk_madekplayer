@@ -165,9 +165,9 @@
 									<lower>
 										2
 									</lower>
-									<upper>
+									<!-- <upper>
 										20
-									</upper>
+									</upper> -->
 								</range>
 							</config>
 						</TCEforms>
