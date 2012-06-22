@@ -30,7 +30,7 @@
 							<config>
 								<type>input</type>
 								<size>10</size>
-								<eval>require,trim,int</eval>
+								<eval>require,int</eval>
 								<wizards type="array">
 									<_PADDING type="integer">2</_PADDING>
 									<add type="array">
@@ -101,7 +101,7 @@
 							<label>LLL:EXT:zhdk_madekplayer/pi1/locallang.php:tx_zhdkmadekplayer_pi1.config.player_width</label>
 							<config>
 								<size>2</size>
-								<eval>require,trim,int</eval>
+								<eval>require,int</eval>
 								<type>input</type>
 								<default>630</default>
 								<range>
@@ -118,7 +118,7 @@
 							<label>LLL:EXT:zhdk_madekplayer/pi1/locallang.php:tx_zhdkmadekplayer_pi1.config.max_image_width</label>
 							<config>
 								<size>2</size>
-								<eval>require,trim,int</eval>
+								<eval>require,int</eval>
 								<type>input</type>
 								<default>620</default>
 								<range>
@@ -138,7 +138,7 @@
 							<label>LLL:EXT:zhdk_madekplayer/pi1/locallang.php:tx_zhdkmadekplayer_pi1.config.max_image_height</label>
 							<config>
 								<size>2</size>
-								<eval>require,trim,int</eval>
+								<eval>require,int</eval>
 								<type>input</type>
 								<default>500</default>
 								<range>
@@ -158,12 +158,12 @@
 							<label>LLL:EXT:zhdk_madekplayer/pi1/locallang.php:tx_zhdkmadekplayer_pi1.config.thumbnail_count</label>
 							<config>
 								<size>2</size>
-								<eval>require,trim,int</eval>
+								<eval>require,int</eval>
 								<type>input</type>
 								<default>5</default>
 								<range>
 									<lower>
-										2
+										0
 									</lower>
 									<!-- <upper>
 										20

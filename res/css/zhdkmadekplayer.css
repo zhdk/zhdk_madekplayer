@@ -23,6 +23,8 @@ div.zhdk_madekplayer-galleriffic div.zhdk_madekplayer-caption {
 
 div.zhdk_madekplayer-galleriffic ul.thumbs {
 	text-align: center;
+	height: 100px;
+	line-height: 100px;
 }
 
 div.zhdk_madekplayer-galleriffic div.pagination {
@@ -31,12 +33,16 @@ div.zhdk_madekplayer-galleriffic div.pagination {
 
 div.zhdk_madekplayer-galleriffic ul.thumbs li {
 	list-style: none;
-	display: inline;
+	display: inline-block;
+	vertical-align: middle;
 	padding: 0;
 	margin: 0;
 	margin-right: 10px;
-	height: 100px;
-	line-height: 100px;
+}
+
+div.zhdk_madekplayer-galleriffic ul.thumbs li img {
+	display: inline;
+	vertical-align: middle;
 }
 
 div.zhdk_madekplayer-galleriffic .zhdk_madekplayer-slideshow-table {
