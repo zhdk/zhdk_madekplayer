@@ -119,7 +119,8 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		//get set content
 		$this->fetchData();
 		$GLOBALS['TSFE']->additionalHeaderData['galleriffic_js'] = '<script type="text/javascript" src="' . t3lib_extMgm::siteRelPath('zhdk_madekplayer') . 'res/js/jquery.galleriffic.js"></script>';
-		
+		$GLOBALS['TSFE']->additionalHeaderData['zhdk_madekplayer_css'] = '<link rel="stylesheet" type="text/css" href="' . $this->conf['cssFile'] . '"></script>';
+
 		//get template
 		$this->templateFile = $this->cObj->fileResource($this->conf['templateFile']);
 		$subparts['template'] = $this->cObj->getSubpart($this->templateFile, '###TEMPLATE1###');
