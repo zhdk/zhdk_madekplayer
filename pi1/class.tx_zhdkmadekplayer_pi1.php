@@ -121,7 +121,7 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		$GLOBALS['TSFE']->additionalHeaderData['galleriffic_js'] = '<script type="text/javascript" src="' . t3lib_extMgm::siteRelPath('zhdk_madekplayer') . 'res/js/jquery.galleriffic.js"></script>';
 		$GLOBALS['TSFE']->additionalHeaderData['zhdk_madekplayer_css'] = '<link rel="stylesheet" type="text/css" href="' . $this->conf['cssFile'] . '"></script>';
 		if(empty($this->lConf['thumbnails_per_page'])) {
-			$GLOBALS['TSFE']->setCSS('test', 'div#zhdk_madekplayer-'. $this->random . ' .zhdk_madekplayer-thumbs {display: none;}');
+			$GLOBALS['TSFE']->setCSS('hide thumbnails', 'div#zhdk_madekplayer-'. $this->random . ' .zhdk_madekplayer-thumbs * {display: none;}');
 		}
 		
 
