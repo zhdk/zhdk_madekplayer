@@ -1,3 +1,8 @@
 plugin.tx_zhdkmadekplayer_pi1.templateFile = {$plugin.tx_zhdkmadekplayer_pi1.templateFile}
 plugin.tx_zhdkmadekplayer_pi1.templateFileCaption = {$plugin.tx_zhdkmadekplayer_pi1.templateFileCaption}
-plugin.tx_zhdkmadekplayer_pi1.cssFile = {path:{$plugin.tx_zhdkmadekplayer_pi1.cssFile}}
+#plugin.tx_zhdkmadekplayer_pi1.cssFile = {$plugin.tx_zhdkmadekplayer_pi1.cssFile}
+
+page.headerData.320491215 = COA
+page.headerData.320491215.1 = TEXT
+page.headerData.320491215.1.value = <link rel="stylesheet" href="{path:{$plugin.tx_zhdkmadekplayer_pi1.cssFile}}" type="text/css" />
+page.headerData.320491215.1.insertData = 1
