@@ -171,8 +171,8 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 					$row_subparts['###PART_TITLE_AND_DATE###'] = $this->cObj->substituteMarkerArrayCached(
 						$subparts['title'],
 						array(
-							'###TITLE###' => $date,
-							'###DATE###' => $title
+							'###TITLE###' => $title,
+							'###DATE###' => (!empty($date) ? '(' . $date . ')' : '')
 						)
 					);
 
