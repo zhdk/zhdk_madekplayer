@@ -117,11 +117,8 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		}
 		$imageList = '';
 		//get set content
-		// die(t3lib_extMgm::siteRelPath($this->conf['cssFile']));
 		$this->fetchData();
 		$GLOBALS['TSFE']->additionalHeaderData['galleriffic_js'] = '<script type="text/javascript" src="' . t3lib_extMgm::siteRelPath('zhdk_madekplayer') . 'res/js/jquery.galleriffic.js"></script>';
-		// $GLOBALS['TSFE']->additionalHeaderData['zhdk_madekplayer_css'] = '<link rel="stylesheet" type="text/css" href="' . $this->conf['cssFile'] . '"></script>';
-		// $GLOBALS['TSFE']->additionalHeaderData['zhdk_madekplayer_css'] = $this->conf['cssFile'];
 		if(empty($this->lConf['thumbnails_per_page'])) {
 			$GLOBALS['TSFE']->setCSS('hide thumbnails', 'div#zhdk_madekplayer-'. $this->random . ' .zhdk_madekplayer-thumbs * {display: none;}');
 		}
@@ -213,7 +210,23 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 				
 			}
 			$markerArray['###TITLE###'] = $title;
-			$markerArray['###IMAGE_URL###'] = $this->madekServer . '/media_resources/' . $item['id'] . '/image?size=large';
+			$image_size = 'large';
+			if(($this->lConf['max_image_width'] > 620 && $this->lConf['player_width'] > 620) 
+				|| $this->lConf['max_image_height'] > 500) {
+				$image_size = 'x_large';
+			} else if (($this->lConf['max_image_width'] > 300 && $this->lConf['player_width'] > 300) 
+				|| $this->lConf['max_image_height'] > 300) {
+				$image_size = 'large';
+			} else if (($this->lConf['max_image_width'] > 125 && $this->lConf['player_width'] > 125) 
+				|| $this->lConf['max_image_height'] > 125) {
+				$image_size = 'medium';
+			} else if (($this->lConf['max_image_width'] > 100 && $this->lConf['player_width'] > 100) 
+				|| $this->lConf['max_image_height'] > 100) {
+				$image_size = 'small_125';
+			} else {
+				$image_size = 'small';
+			}
+			$markerArray['###IMAGE_URL###'] = $this->madekServer . '/media_resources/' . $item['id'] . '/image?size=' . $image_size;
 			$markerArray['###THUMBNAIL_URL###'] = $this->madekServer . '/media_resources/' . $item['id'] . '/image?size=small';
 			$contentItem .= $this->cObj->substituteMarkerArrayCached($subparts['row'], $markerArray, $row_subparts);
 		}
