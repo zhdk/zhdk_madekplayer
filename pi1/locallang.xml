@@ -50,8 +50,8 @@
 			<label index="tx_zhdkmadekplayer_pi1.copyright_url">URL zum Lizenz-Volltext</label>
 			<label index="tx_zhdkmadekplayer_pi1.copyright_url.short">URL</label>
 			<label index="tx_zhdkmadekplayer_pi1.dating">URL</label>
-			<label index="tx_zhdkmadekplayer_pi1.play">Slideshow abspielen</label>
-			<label index="tx_zhdkmadekplayer_pi1.pause">Slideshow pausieren</label>
+			<label index="tx_zhdkmadekplayer_pi1.play">Präsentation starten</label>
+			<label index="tx_zhdkmadekplayer_pi1.pause">Präsentation pausieren</label>
 			<label index="tx_zhdkmadekplayer_pi1.prev">Zurück</label>
 			<label index="tx_zhdkmadekplayer_pi1.next">Weiter</label>
 			<label index="flexform.tabgeneral">Allgemein</label>
