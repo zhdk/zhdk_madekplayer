@@ -68,8 +68,11 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		$piFlexForm = $this->cObj->data['pi_flexform'];
 		$this->extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][$this->extKey]);
 		$this->madekServer = rtrim($this->extConf['madekServer'], '/');
+		//if we are loaded on a https page, we want to load madek as https, too
 		if(empty($this->madekServer)) {
-			$this->madekServer = 'http://medienarchiv.zhdk.ch/';
+			$this->madekServer = '//medienarchiv.zhdk.ch/';
+		} elseif(strpos($this->madekServer, 'http://') === 0) {
+			$this->madekServer = substr ($this->madekServer, 5);
 		}
 		// set random number for this content element
 		// this prohibits problems problems with multiple plugins on the same page
@@ -101,7 +104,10 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 			'with[meta_data][meta_key_names][]=subtitle&'.
 			'with[meta_data][meta_key_names][]=author&'.
 			'with[meta_data][meta_key_names][]=portrayed%20object%20dates';
+
 		$json = file_get_contents($json_url);
+		$data = json_decode($json, TRUE);
+
 		$this->data = json_decode($json, TRUE);
 	}
 	
