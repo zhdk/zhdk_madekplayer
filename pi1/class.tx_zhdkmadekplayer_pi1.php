@@ -99,6 +99,7 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 			'with[meta_data][meta_context_names][]=copyright&'.
 			'with[meta_data][meta_key_names][]=title&'.
 			'with[meta_data][meta_key_names][]=subtitle&'.
+			'with[meta_data][meta_key_names][]=public%20caption&'.
 			'with[meta_data][meta_key_names][]=author&'.
 			'with[meta_data][meta_key_names][]=portrayed%20object%20dates';
 		$json = file_get_contents($json_url);
@@ -141,6 +142,7 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 
 		$subparts['title'] = $this->cObj->getSubpart($subparts['row'], '###PART_TITLE_AND_DATE###');
 		$subparts['subtitle'] = $this->cObj->getSubpart($subparts['row'], '###PART_SUBTITLE###');
+		$subparts['public caption'] = $this->cObj->getSubpart($subparts['row'], '###PART_PUBLIC_CAPTION###');
 		$subparts['author'] = $this->cObj->getSubpart($subparts['row'], '###PART_AUTHOR###');
 		$subparts['copyright'] = $this->cObj->getSubpart($subparts['row'], '###PART_COPYRIGHT###');
 		$contentItem = '';
@@ -156,6 +158,7 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 			$row_subparts = array(
 					'###PART_TITLE_AND_DATE###' => '',
 					'###PART_SUBTITLE###' => '',
+					'###PART_PUBLIC_CAPTION###' => '',
 					'###PART_AUTHOR###' => '',
 					'###PART_COPYRIGHT###' => '',
 				);
@@ -180,6 +183,15 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 						$subparts['subtitle'],
 						array(
 							'###SUBTITLE###' => $subtitle,
+						)
+					);
+				}
+				$publicCaption = zhdk_madekplayer::getMetaDataValue('public caption', $item['meta_data']);
+				if(!empty($publicCaption) && $this->lConf['show_public_caption']) {
+					$row_subparts['###PART_PUBLIC_CAPTION###'] = $this->cObj->substituteMarkerArrayCached(
+						$subparts['public caption'],
+						array(
+							'###PUBLIC_CAPTION###' => $publicCaption,
 						)
 					);
 				}

@@ -10,7 +10,8 @@
 			<label index="pi1_plus_wiz_description">Displays Images from the Madek (media archive)</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.show_copyright">Show copyright notice</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.show_title">Show title and date</label>
-			<label index="tx_zhdkmadekplayer_pi1.config.show_subtitle">Show public caption</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_subtitle">Show subtitle</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_public_caption">Show public caption</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.show_author">Show author</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.set_id">MAdeK media set ID</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.thumbnail_count">No. of thumbnails per page</label>
@@ -36,7 +37,8 @@
 			<label index="pi1_plus_wiz_description">Zeigt Sets aus dem MAdeK an.</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.show_copyright">Zeige Copyright-Information an</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.show_title">Zeige Titel und Datierung</label>
-			<label index="tx_zhdkmadekplayer_pi1.config.show_subtitle">Zeige Bildlegende</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_subtitle">Zeige Untertitel</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_public_caption">Zeige Bildlegende</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.show_author">Zeige Autor/in</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.set_id">MAdeK Media Set ID</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.thumbnail_count">Anzahl Thumbnails pro Seite</label>
