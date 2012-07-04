@@ -1,2 +1,5 @@
 # cat=basic/; type=text; label=Madek server address
 madekServer = http://medienarchiv.zhdk.ch/
+
+# cat=basic/; type=int+; label=Max. images for one gallery: be aware that you can't set it exactly. It will fetch packets of 36 media resources until the limit is reached.
+maxImagesForGallery = 100

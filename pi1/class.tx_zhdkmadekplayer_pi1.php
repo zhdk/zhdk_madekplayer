@@ -67,12 +67,15 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		// Assign the flexform data to a local variable for easier access
 		$piFlexForm = $this->cObj->data['pi_flexform'];
 		$this->extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][$this->extKey]);
-		$this->madekServer = rtrim($this->extConf['madekServer'], '/');
 
-		//TODO: make this a config option for the extension
-		$this->maxImagesPerGallery = 100;
+		$this->madekServer = rtrim($this->extConf['madekServer'], '/');
 		if(empty($this->madekServer)) {
 			$this->madekServer = 'http://medienarchiv.zhdk.ch/';
+		}
+
+		$this->maxImagesPerGallery = $this->extConf['maxImagesForGallery'];
+		if(empty($this->maxImagesPerGallery)) {
+			$this->maxImagesPerGallery = 100;
 		}
 		// set random number for this content element
 		// this prohibits problems problems with multiple plugins on the same page
@@ -108,7 +111,6 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 			'with[children][with][meta_data][meta_key_names][]=public%20caption&'.
 			'with[children][with][meta_data][meta_key_names][]=author&'.
 			'with[children][with][meta_data][meta_key_names][]=portrayed%20object%20dates&'.
-			'with[children][pagination][per_page]=2&'.
 			'with[children][pagination][page]=' . $page;
 		$json = file_get_contents($json_url);
 		$data = json_decode($json, TRUE);
