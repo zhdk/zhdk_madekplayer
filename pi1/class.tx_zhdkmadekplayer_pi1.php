@@ -89,28 +89,48 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 	}
 
 	/**
-	 * Get data from madek server
-	 * and set it to $this->data
-	 * @return void;
+	 * Get media_resources from MAdeK. Because of pagination we have to do recusrive calls.
+	 * Be aware that we don't take into account that we fetch all medias buyt only display images.
+	 * @param type $madekServer the madek server url
+	 * @param type $madekSetId the set id to fetch the children from
+	 * @param int $limit how many medias do we fetch at max
+	 * @param int $page = 1: pagination
+	 * @return array media_resources
 	 */
-	function fetchData($page = 1) {
-		$json_url = $this->madekServer . '/media_resources.json?'.
-			'ids=' . $this->madekSetId . '&'.
-			'with[media_type]=true&'.
-			'with[children]=true&'.
+	static function fetchData($madekServer, $madekSetId, $limit, $page = 1) {
+		$json_url = $madekServer . '/media_resources.json?'.
+			'ids=' . $madekSetId . '&'.
 			'public=true&'.
-			'with[meta_data][meta_context_names][]=copyright&'.
-			'with[meta_data][meta_key_names][]=title&'.
-			'with[meta_data][meta_key_names][]=subtitle&'.
-			'with[meta_data][meta_key_names][]=public%20caption&'.
-			'with[meta_data][meta_key_names][]=author&'.
-			'with[meta_data][meta_key_names][]=portrayed%20object%20dates';
+			'with[children][with][media_type]=true&'.
+			'with[children][with][meta_data][meta_context_names][]=copyright&'.
+			'with[children][with][meta_data][meta_key_names][]=title&'.
+			'with[children][with][meta_data][meta_key_names][]=subtitle&'.
+			'with[children][with][meta_data][meta_key_names][]=public%20caption&'.
+			'with[children][with][meta_data][meta_key_names][]=author&'.
+			'with[children][with][meta_data][meta_key_names][]=portrayed%20object%20dates&'.
+			'with[children][pagination][per_page]=2&'.
+			'with[children][pagination][page]=' . $page;
 		$json = file_get_contents($json_url);
 		$data = json_decode($json, TRUE);
-		if(!empty($data['pagination']) && $data['pagination']['total'] > 1) {
-
+		$media_resources = $data['media_resources'][0]['children']['media_resources'];
+		// check if we do recursive call
+		if(
+			// we get pagination for children
+			!empty($data['media_resources'][0]['children']['pagination'])
+			// we haven't reache limit yet
+			&& $data['media_resources'][0]['children']['pagination']['per_page'] * $data['media_resources'][0]['children']['pagination']['page'] < $limit 
+			// we haven't seen all media yet
+			&& $data['media_resources'][0]['children']['pagination']['per_page'] * $data['media_resources'][0]['children']['pagination']['page'] < $data['media_resources'][0]['children']['pagination']['total']) {
+			// do the recursive call
+			$recursiveMediaResources = tx_zhdkmadekplayer_pi1::fetchData(
+				$madekServer,
+				$madekSetId,
+				$limit - $data['media_resources'][0]['children']['pagination']['per_page'],
+				++$page);
+			// merge the arrays
+			$media_resources = array_merge($media_resources, $recursiveMediaResources);
 		}
-		$this->data = $data;
+		return $media_resources;
 	}
 	
 	/**
@@ -124,8 +144,9 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 			return;
 		}
 		$imageList = '';
-		//get set content
-		$this->fetchData();
+		//get madek set content
+		$this->media_resources = $this->fetchData($this->madekServer, $this->madekSetId, $this->maxImagesPerGallery);
+
 		$GLOBALS['TSFE']->additionalHeaderData['galleriffic_js'] = '<script type="text/javascript" src="' . t3lib_extMgm::siteRelPath('zhdk_madekplayer') . 'res/js/jquery.galleriffic.js"></script>';
 		if(empty($this->lConf['thumbnails_per_page'])) {
 			$GLOBALS['TSFE']->setCSS('hide thumbnails', 'div#zhdk_madekplayer-'. $this->random . ' .zhdk_madekplayer-thumbs * {display: none;}');
@@ -155,7 +176,7 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		$contentItem = '';
 
 		// set data for each image
-		foreach($this->data['media_resources'][0]['children'] as $item) {
+		foreach($this->media_resources as $item) {
 			if($item['type'] != 'media_entry') {
 				continue;
 			}
