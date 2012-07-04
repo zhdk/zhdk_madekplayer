@@ -68,6 +68,9 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		$piFlexForm = $this->cObj->data['pi_flexform'];
 		$this->extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][$this->extKey]);
 		$this->madekServer = rtrim($this->extConf['madekServer'], '/');
+
+		//TODO: make this a config option for the extension
+		$this->maxImagesPerGallery = 100;
 		if(empty($this->madekServer)) {
 			$this->madekServer = 'http://medienarchiv.zhdk.ch/';
 		}
@@ -90,7 +93,7 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 	 * and set it to $this->data
 	 * @return void;
 	 */
-	function fetchData() {
+	function fetchData($page = 1) {
 		$json_url = $this->madekServer . '/media_resources.json?'.
 			'ids=' . $this->madekSetId . '&'.
 			'with[media_type]=true&'.
@@ -103,7 +106,11 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 			'with[meta_data][meta_key_names][]=author&'.
 			'with[meta_data][meta_key_names][]=portrayed%20object%20dates';
 		$json = file_get_contents($json_url);
-		$this->data = json_decode($json, TRUE);
+		$data = json_decode($json, TRUE);
+		if(!empty($data['pagination']) && $data['pagination']['total'] > 1) {
+
+		}
+		$this->data = $data;
 	}
 	
 	/**
