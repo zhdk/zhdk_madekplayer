@@ -9,8 +9,8 @@
 define('TYPO3_MOD_PATH', '../typo3conf/ext/zhdk_madekplayer/wizards/');
 $BACK_PATH='../../../../typo3/';
 
-require ('../../../../typo3/init.php');
-require ('../../../../typo3/template.php');
+require ($BACK_PATH . 'init.php');
+require ($BACK_PATH . 'template.php');
 require_once('../class.zhdk_madekplayer.php');
 
 // $BACK_PATH='';
