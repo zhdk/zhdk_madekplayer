@@ -49,17 +49,6 @@
 		if(maxImageWidth > playerWidth) {
 			maxImageWidth = playerWidth;
 		}
-		
-		console.log(
-				"maxImageWidth initial: ###MAX_IMAGE_WIDTH###\n" +
-				"parentWidth: " + parentWidth + "\n" +
-				"playerWidth initial: ###PLAYER_WIDTH###\n" +
-				"playerWidth: " + playerWidth + "\n" +
-				"playerTotalHorizontalPadding: " + playerTotalHorizontalPadding + "\n" +
-				"maxImageWidth: " + maxImageWidth + "\n"
-			);
-		console.log(
-			jQuery('div#zhdk_madekplayer-###RANDOM_INDEX###').parent());
 
 		jQuery('div#zhdk_madekplayer-###RANDOM_INDEX###').css('width', playerWidth);
 		jQuery('div#zhdk_madekplayer-###RANDOM_INDEX### .zhdk_madekplayer-slideshow-table').css('height', maxImageHeight + 'px');
