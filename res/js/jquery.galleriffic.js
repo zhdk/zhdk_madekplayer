@@ -2,6 +2,11 @@
  * jQuery Galleriffic plugin
  *
  * Copyright (c) 2008 Trent Foley (http://trentacular.com)
+ * Contributors:
+ *   Ponticlaro
+ *   Christian Ress (http://github.com/ress)
+ *   Beat Rohrer <beat.rohrer@zhdk.ch>
+ *
  * Licensed under the MIT License:
  *   http://www.opensource.org/licenses/mit-license.php
  *
@@ -492,7 +497,7 @@
 				var imageData = this.data[index];
 				
 				if (!bypassHistory && this.enableHistory)
-					$.historyLoad(String(imageData.hash));  // At the moment, historyLoad only accepts string arguments
+					$.history.load(String(imageData.hash));  // At the moment, historyLoad only accepts string arguments
 				else
 					this.gotoImage(imageData);
 
@@ -624,17 +629,34 @@
 			buildImage: function(imageData, isSync) {
 				var gallery = this;
 				var nextIndex = this.getNextIndex(imageData.index);
+console.log(imageData);
+				// removes leftover .current images that could
+				// case ghosting if a long fade is used
+				this.$imageContainer.find(".current").remove();
+				this.$captionContainer.find(".current").remove();
 
 				// Construct new hidden span for the image
 				var newSlide = this.$imageContainer
-					.append('<span class="image-wrapper current"><a class="advance-link" rel="history" href="#'+this.data[nextIndex].hash+'" title="'+imageData.title+'"></a></span>')
+					.append('<span class="image-wrapper current"><a class="advance-link" rel="history" href="#'+this.data[nextIndex].hash+'" title="'+imageData.title+'">&nbsp;</a></span>')
 					.find('span.current').css('opacity', '0');
 				
-				newSlide.find('a')
+				var webmRegex = /.*\.webm$/;
+				var src = imageData.image.src;
+				if(src.match(webmRegex)) {
+					console.log("webm!");
+					var html = '<video autoplay="autoplay" height="348" width="620" class="video-js" preload="none" style="height: 346px; "><source src="' + src + '" type="video/webm"></video>';
+					newSlide.find('a')
+					.append(html)
+					.click(function(e) {
+						gallery.clickHandler(e, this);
+					});
+				} else {
+					newSlide.find('a')
 					.append(imageData.image)
 					.click(function(e) {
 						gallery.clickHandler(e, this);
 					});
+				}
 				
 				var newCaption = 0;
 				if (this.$captionContainer) {
@@ -865,7 +887,7 @@
 		$.extend(this, defaults, settings);
 		
 		// Verify the history plugin is available
-		if (this.enableHistory && !$.historyInit)
+		if (this.enableHistory && !$.history.init)
 			this.enableHistory = false;
 		
 		// Select containers

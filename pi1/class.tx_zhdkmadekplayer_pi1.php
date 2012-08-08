@@ -182,9 +182,9 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 			if($item['type'] != 'media_entry') {
 				continue;
 			}
-			if($item['media_type'] != 'Image') {
-				continue;
-			}
+			// if($item['media_type'] != 'Image') {
+			// 	die($item['media_type']);
+			// }
 			$row_subparts = array(
 					'###PART_TITLE_AND_DATE###' => '',
 					'###PART_SUBTITLE###' => '',
@@ -268,7 +268,11 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 			} else {
 				$image_size = 'small';
 			}
-			$markerArray['###IMAGE_URL###'] = $this->madekServer . '/media_resources/' . $item['id'] . '/image?size=' . $image_size;
+			if($item['media_type'] == 'Image') {
+				$markerArray['###IMAGE_URL###'] = $this->madekServer . '/media_resources/' . $item['id'] . '/image?size=' . $image_size;
+			} elseif ($item['media_type'] == 'Image') {
+				$markerArray['###IMAGE_URL###'] = $this->madekServer . '/media_resources/' . $item['id'] . '/image?size=' . $image_size;
+			}
 			$markerArray['###THUMBNAIL_URL###'] = $this->madekServer . '/media_resources/' . $item['id'] . '/image?size=small';
 			$contentItem .= $this->cObj->substituteMarkerArrayCached($subparts['row'], $markerArray, $row_subparts);
 		}
