@@ -1,5 +1,5 @@
 div.zhdk_madekplayer-galleriffic {
-	padding: 10px;
+	padding: 0 10px 10px;
 	background-color: #eeeeee;
 }
 
@@ -82,7 +82,7 @@ div.zhdk_madekplayer-caption p {
 }
 
 div.zhdk_madekplayer-controls {
-	margin: 5px;
+	margin: 0 5px 5px;
 }
 
 div.zhdk_madekplayer-controls div.nav-controls:after {
@@ -93,11 +93,15 @@ div.zhdk_madekplayer-controls div.nav-controls .next {
 	float: right;
 }
 
-div.zhdk_madekplayer-controls div.nav-controls {
+/*div.zhdk_madekplayer-controls div.nav-controls {
 	position: relative;
 	top: -15px;
-}
+}*/
 
 div.zhdk_madekplayer-controls .ss-controls {
 	text-align: center;
+	position: relative;
+	top: 15px;
+	width: 50%;
+	margin: auto;
 }
