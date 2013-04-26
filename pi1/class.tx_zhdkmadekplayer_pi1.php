@@ -103,14 +103,14 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 	static function fetchData($madekServer, $madekSetId, $limit, $page = 1) {
 		$json_url = $madekServer . '/media_resources.json?'.
 			'ids=' . $madekSetId . '&'.
-			'public=true&'.
+			'with[children][public]=true&'.
 			'with[children][with][media_type]=true&'.
 			'with[children][with][meta_data][meta_context_names][]=copyright&'.
-			'with[children][with][meta_data][meta_key_names][]=title&'.
-			'with[children][with][meta_data][meta_key_names][]=subtitle&'.
-			'with[children][with][meta_data][meta_key_names][]=public%20caption&'.
-			'with[children][with][meta_data][meta_key_names][]=author&'.
-			'with[children][with][meta_data][meta_key_names][]=portrayed%20object%20dates&'.
+			'with[children][with][meta_data][meta_key_ids][]=title&'.
+			'with[children][with][meta_data][meta_key_ids][]=subtitle&'.
+			'with[children][with][meta_data][meta_key_ids][]=public%20caption&'.
+			'with[children][with][meta_data][meta_key_ids][]=author&'.
+			'with[children][with][meta_data][meta_key_ids][]=portrayed%20object%20dates&'.
 			'with[children][pagination][page]=' . $page;
 		$json = file_get_contents($json_url);
 		$data = json_decode($json, TRUE);
@@ -148,7 +148,6 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		$imageList = '';
 		//get madek set content
 		$this->media_resources = $this->fetchData($this->madekServer, $this->madekSetId, $this->maxImagesPerGallery);
-
 		$GLOBALS['TSFE']->additionalHeaderData['galleriffic_js'] = '<script type="text/javascript" src="' . t3lib_extMgm::siteRelPath('zhdk_madekplayer') . 'res/js/jquery.galleriffic.js"></script>';
 		if(empty($this->lConf['thumbnails_per_page'])) {
 			$GLOBALS['TSFE']->setCSS('hide thumbnails', 'div#zhdk_madekplayer-'. $this->random . ' .zhdk_madekplayer-thumbs * {display: none;}');
@@ -176,13 +175,12 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		$subparts['author'] = $this->cObj->getSubpart($subparts['row'], '###PART_AUTHOR###');
 		$subparts['copyright'] = $this->cObj->getSubpart($subparts['row'], '###PART_COPYRIGHT###');
 		$contentItem = '';
-
 		// set data for each image
 		foreach($this->media_resources as $item) {
-			if($item['type'] != 'media_entry') {
+			if(strtolower($item['type']) != 'media_entry') {
 				continue;
 			}
-			if($item['media_type'] != 'Image') {
+			if(strtolower($item['media_type']) != 'image') {
 				continue;
 			}
 			$row_subparts = array(

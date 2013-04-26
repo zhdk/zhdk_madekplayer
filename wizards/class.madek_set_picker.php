@@ -155,7 +155,7 @@ table {
 	 * @return type array of Results
 	 */
 	protected function fetchResults() {
-		$json_url = $this->madekServer . "/media_resources.json?type=media_sets&query=" . urlencode($this->searchQuery) . "&with[media_type]=true&with[meta_data][meta_key_names][]=title&with[image][as]=base64&with[image][size]=small&with[meta_data][meta_key_names][]=author&page=" . urlencode($this->currentPage);
+		$json_url = $this->madekServer . "/media_resources.json?type=media_sets&search=" . urlencode($this->searchQuery) . "&with[media_type]=true&with[meta_data][meta_key_ids][]=title&with[image][as]=base64&with[image][size]=small&with[meta_data][meta_key_ids][]=author&page=" . urlencode($this->currentPage);
 		$json = file_get_contents($json_url);
 		if($json === FALSE) {
 			t3lib_div::sysLog('Could not connect to madek server "' . $this->madekServer . '".', $this->extKey, 3);
