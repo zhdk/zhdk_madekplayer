@@ -67,7 +67,7 @@ class Madek_set_picker {
 			// Initialize document object:
 		$this->doc = t3lib_div::makeInstance('mediumDoc');
 		$this->doc->backPath = $BACK_PATH;
-		$this->doc->JScode .= '<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>';
+		$this->doc->JScode .= '<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>';
 		$this->doc->JScode .= $this->doc->wrapScriptTags('
 			function zhdk_madekplayer_picker_writeback(id, title) {
 				window.opener.document.editform["data[tt_content][' . $this->uid . '][pi_flexform][data][sDEF][lDEF][madek_set][vDEF]"].value=id;
