@@ -624,6 +624,7 @@
 			buildImage: function(imageData, isSync) {
 				var gallery = this;
 				var nextIndex = this.getNextIndex(imageData.index);
+				this.$imageContainer.empty();
 
 				// Construct new hidden span for the image
 				var newSlide = this.$imageContainer
@@ -637,6 +638,7 @@
 					});
 				
 				var newCaption = 0;
+				this.$captionContainer.empty();
 				if (this.$captionContainer) {
 					// Construct new hidden caption for the image
 					newCaption = this.$captionContainer
