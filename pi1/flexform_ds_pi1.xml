@@ -182,6 +182,23 @@
 							</config>
 						</TCEforms>
 					</thumbnails_per_page>
+					<madek_background>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>LLL:EXT:zhdk_madekplayer/pi1/locallang.php:tx_zhdkmadekplayer_pi1.config.madek_background</label>
+							<config>
+								<size>2</size>
+								<eval>require, array</eval>
+								<type>input</type>
+								<default>#dedede</default>
+								<range>
+									<!-- <upper>
+										20
+									</upper> -->
+								</range>
+							</config>
+						</TCEforms>
+					</madek_background>
 				</el>
 			</ROOT>
 		</formats>

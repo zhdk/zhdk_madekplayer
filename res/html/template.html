@@ -39,6 +39,7 @@
 		var maxImageWidth = ###MAX_IMAGE_WIDTH###;
 		var maxImageHeight= ###MAX_IMAGE_HEIGHT###;
 		var playerWidth = ###PLAYER_WIDTH###;
+		var madekBackground = '###MADEK_BACKGROUND###';
 		var playerTotalHorizontalPadding = stripPx(jQuery('div#zhdk_madekplayer-###RANDOM_INDEX###').css('padding-left')) + stripPx(jQuery('div#zhdk_madekplayer-###RANDOM_INDEX###').css('padding-right'));
 		var parentWidth = jQuery('div#zhdk_madekplayer-###RANDOM_INDEX###').parent().width();
 
@@ -51,6 +52,7 @@
 		}
 
 		jQuery('div#zhdk_madekplayer-###RANDOM_INDEX###').css('width', playerWidth);
+		jQuery('div#zhdk_madekplayer-###RANDOM_INDEX###').css('background-color', madekBackground);
 		jQuery('div#zhdk_madekplayer-###RANDOM_INDEX### .zhdk_madekplayer-slideshow-table').css('height', maxImageHeight + 'px');
 		jQuery('div#zhdk_madekplayer-###RANDOM_INDEX### .zhdk_madekplayer-slideshow-table').css('width', playerWidth + 'px');
 
