@@ -176,99 +176,101 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		$subparts['copyright'] = $this->cObj->getSubpart($subparts['row'], '###PART_COPYRIGHT###');
 		$contentItem = '';
 		// set data for each image
-		foreach($this->media_resources as $item) {
-			if(strtolower($item['type']) != 'media_entry') {
-				continue;
-			}
-			if(strtolower($item['media_type']) != 'image') {
-				continue;
-			}
-			$row_subparts = array(
-					'###PART_TITLE_AND_DATE###' => '',
-					'###PART_SUBTITLE###' => '',
-					'###PART_PUBLIC_CAPTION###' => '',
-					'###PART_AUTHOR###' => '',
-					'###PART_COPYRIGHT###' => '',
-				);
-			$description = '';
-			$title = 'Media Entry no. ' . $item['id'];
-			if(isset($item['meta_data'])) {
-				$title = zhdk_madekplayer::getMetaDataValue('title', $item['meta_data']);
-				if(!empty($title) && $this->lConf['show_title']) {
-					$date = zhdk_madekplayer::getMetaDataValue('portrayed object dates', $item['meta_data']);
-					$row_subparts['###PART_TITLE_AND_DATE###'] = $this->cObj->substituteMarkerArrayCached(
-						$subparts['title'],
-						array(
-							'###TITLE###' => $title,
-							'###DATE###' => (!empty($date) ? '(' . $date . ')' : '')
-						)
-					);
-
+		if (is_array($this->media_resources)) {
+			foreach($this->media_resources as $item) {
+				if(strtolower($item['type']) != 'media_entry') {
+					continue;
 				}
-				$subtitle = zhdk_madekplayer::getMetaDataValue('subtitle', $item['meta_data']);
-				if(!empty($subtitle) && $this->lConf['show_subtitle']) {
-					$row_subparts['###PART_SUBTITLE###'] = $this->cObj->substituteMarkerArrayCached(
-						$subparts['subtitle'],
-						array(
-							'###SUBTITLE###' => $subtitle,
-						)
-					);
+				if(strtolower($item['media_type']) != 'image') {
+					continue;
 				}
-				$publicCaption = zhdk_madekplayer::getMetaDataValue('public caption', $item['meta_data']);
-				if(!empty($publicCaption) && $this->lConf['show_public_caption']) {
-					$row_subparts['###PART_PUBLIC_CAPTION###'] = $this->cObj->substituteMarkerArrayCached(
-						$subparts['public caption'],
-						array(
-							'###PUBLIC_CAPTION###' => $publicCaption,
-						)
+				$row_subparts = array(
+						'###PART_TITLE_AND_DATE###' => '',
+						'###PART_SUBTITLE###' => '',
+						'###PART_PUBLIC_CAPTION###' => '',
+						'###PART_AUTHOR###' => '',
+						'###PART_COPYRIGHT###' => '',
 					);
+				$description = '';
+				$title = 'Media Entry no. ' . $item['id'];
+				if(isset($item['meta_data'])) {
+					$title = zhdk_madekplayer::getMetaDataValue('title', $item['meta_data']);
+					if(!empty($title) && $this->lConf['show_title']) {
+						$date = zhdk_madekplayer::getMetaDataValue('portrayed object dates', $item['meta_data']);
+						$row_subparts['###PART_TITLE_AND_DATE###'] = $this->cObj->substituteMarkerArrayCached(
+							$subparts['title'],
+							array(
+								'###TITLE###' => $title,
+								'###DATE###' => (!empty($date) ? '(' . $date . ')' : '')
+							)
+						);
+	
+					}
+					$subtitle = zhdk_madekplayer::getMetaDataValue('subtitle', $item['meta_data']);
+					if(!empty($subtitle) && $this->lConf['show_subtitle']) {
+						$row_subparts['###PART_SUBTITLE###'] = $this->cObj->substituteMarkerArrayCached(
+							$subparts['subtitle'],
+							array(
+								'###SUBTITLE###' => $subtitle,
+							)
+						);
+					}
+					$publicCaption = zhdk_madekplayer::getMetaDataValue('public caption', $item['meta_data']);
+					if(!empty($publicCaption) && $this->lConf['show_public_caption']) {
+						$row_subparts['###PART_PUBLIC_CAPTION###'] = $this->cObj->substituteMarkerArrayCached(
+							$subparts['public caption'],
+							array(
+								'###PUBLIC_CAPTION###' => $publicCaption,
+							)
+						);
+					}
+					$author = zhdk_madekplayer::getMetaDataValue('author', $item['meta_data']);
+					if(!empty($author) && $this->lConf['show_author']) {
+						$row_subparts['###PART_AUTHOR###'] = $this->cObj->substituteMarkerArrayCached(
+							$subparts['author'],
+							array(
+								'###AUTHOR###' => $author,
+							)
+						);
+					}
+					if($this->lConf['show_copyright']) {
+						$notice = zhdk_madekplayer::getMetaDataValue('copyright notice', $item['meta_data']);
+						$status = zhdk_madekplayer::getMetaDataValue('copyright status', $item['meta_data']);
+						$usage = zhdk_madekplayer::getMetaDataValue('copyright usage', $item['meta_data']);
+						$url = zhdk_madekplayer::getMetaDataValue('copyright url', $item['meta_data']);
+						$row_subparts['###PART_COPYRIGHT###'] = $this->cObj->substituteMarkerArrayCached(
+							$subparts['copyright'],
+							array(
+								'###COPYRIGHT_NOTICE###' => $notice,
+								'###COPYRIGHT_STATUS###' => $status,
+								'###COPYRIGHT_USAGE###' => $usage,
+								'###COPYRIGHT_URL###' => $url,
+							)
+						);
+					}
+					
 				}
-				$author = zhdk_madekplayer::getMetaDataValue('author', $item['meta_data']);
-				if(!empty($author) && $this->lConf['show_author']) {
-					$row_subparts['###PART_AUTHOR###'] = $this->cObj->substituteMarkerArrayCached(
-						$subparts['author'],
-						array(
-							'###AUTHOR###' => $author,
-						)
-					);
-				}
-				if($this->lConf['show_copyright']) {
-					$notice = zhdk_madekplayer::getMetaDataValue('copyright notice', $item['meta_data']);
-					$status = zhdk_madekplayer::getMetaDataValue('copyright status', $item['meta_data']);
-					$usage = zhdk_madekplayer::getMetaDataValue('copyright usage', $item['meta_data']);
-					$url = zhdk_madekplayer::getMetaDataValue('copyright url', $item['meta_data']);
-					$row_subparts['###PART_COPYRIGHT###'] = $this->cObj->substituteMarkerArrayCached(
-						$subparts['copyright'],
-						array(
-							'###COPYRIGHT_NOTICE###' => $notice,
-							'###COPYRIGHT_STATUS###' => $status,
-							'###COPYRIGHT_USAGE###' => $usage,
-							'###COPYRIGHT_URL###' => $url,
-						)
-					);
-				}
-				
-			}
-			$markerArray['###TITLE###'] = $title;
-			$image_size = 'large';
-			if(($this->lConf['max_image_width'] > 620 && $this->lConf['player_width'] > 620) 
-				|| $this->lConf['max_image_height'] > 500) {
-				$image_size = 'x_large';
-			} else if (($this->lConf['max_image_width'] > 300 && $this->lConf['player_width'] > 300) 
-				|| $this->lConf['max_image_height'] > 300) {
+				$markerArray['###TITLE###'] = $title;
 				$image_size = 'large';
-			} else if (($this->lConf['max_image_width'] > 125 && $this->lConf['player_width'] > 125) 
-				|| $this->lConf['max_image_height'] > 125) {
-				$image_size = 'medium';
-			} else if (($this->lConf['max_image_width'] > 100 && $this->lConf['player_width'] > 100) 
-				|| $this->lConf['max_image_height'] > 100) {
-				$image_size = 'small_125';
-			} else {
-				$image_size = 'small';
+				if(($this->lConf['max_image_width'] > 620 && $this->lConf['player_width'] > 620) 
+					|| $this->lConf['max_image_height'] > 500) {
+					$image_size = 'x_large';
+				} else if (($this->lConf['max_image_width'] > 300 && $this->lConf['player_width'] > 300) 
+					|| $this->lConf['max_image_height'] > 300) {
+					$image_size = 'large';
+				} else if (($this->lConf['max_image_width'] > 125 && $this->lConf['player_width'] > 125) 
+					|| $this->lConf['max_image_height'] > 125) {
+					$image_size = 'medium';
+				} else if (($this->lConf['max_image_width'] > 100 && $this->lConf['player_width'] > 100) 
+					|| $this->lConf['max_image_height'] > 100) {
+					$image_size = 'small_125';
+				} else {
+					$image_size = 'small';
+				}
+				$markerArray['###IMAGE_URL###'] = $this->madekServer . '/media_resources/' . $item['id'] . '/image?size=' . $image_size;
+				$markerArray['###THUMBNAIL_URL###'] = $this->madekServer . '/media_resources/' . $item['id'] . '/image?size=small';
+				$contentItem .= $this->cObj->substituteMarkerArrayCached($subparts['row'], $markerArray, $row_subparts);
 			}
-			$markerArray['###IMAGE_URL###'] = $this->madekServer . '/media_resources/' . $item['id'] . '/image?size=' . $image_size;
-			$markerArray['###THUMBNAIL_URL###'] = $this->madekServer . '/media_resources/' . $item['id'] . '/image?size=small';
-			$contentItem .= $this->cObj->substituteMarkerArrayCached($subparts['row'], $markerArray, $row_subparts);
 		}
 		$subpartArray['###CONTENT###'] = $contentItem;
 		$markerArray['###RANDOM_INDEX###'] = $this->random;
