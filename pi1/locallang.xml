@@ -16,6 +16,7 @@
 			<label index="tx_zhdkmadekplayer_pi1.config.set_id">MAdeK media set ID</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.thumbnail_count">No. of thumbnails per page</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.madek_background">Background color</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.madek_border">Border color</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.max_image_width">Max. image width (pixel)</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.max_image_height">Max. image height (pixel)</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.player_width">Player width (pixel)</label>
@@ -44,6 +45,7 @@
 			<label index="tx_zhdkmadekplayer_pi1.config.set_id">MAdeK Media Set ID</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.thumbnail_count">Anzahl Thumbnails pro Seite</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.madek_background">Hintergrundfarbe</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.madek_border">Rahmenfarbe</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.max_image_width">Maximale Bildbreite (Pixel)</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.max_image_height">Maximale Bildhöhe (pixel)</label>
 			<label index="tx_zhdkmadekplayer_pi1.config.player_width">Breite Player (Pixel)</label>

@@ -285,6 +285,7 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 		$markerArray['###MAX_IMAGE_HEIGHT###'] = $this->lConf['max_image_height'];
 		$markerArray['###PLAYER_WIDTH###'] = $this->lConf['player_width'];
 		$markerArray['###MADEK_BACKGROUND###'] = $this->lConf['madek_background'];
+		$markerArray['###MADEK_BORDER###'] = $this->lConf['madek_border'];
 		$content = $this->cObj->substituteMarkerArrayCached($subparts['template'], $markerArray, $subpartArray);
 		return $content;
 	}
