@@ -186,17 +186,21 @@
 						<TCEforms>
 							<exclude>1</exclude>
 							<label>LLL:EXT:zhdk_madekplayer/pi1/locallang.php:tx_zhdkmadekplayer_pi1.config.madek_background</label>
-							<config>
-								<size>6</size>
-								<eval>require, array</eval>
+							<config> 
 								<type>input</type>
-								<default>#dedede</default>
-								<range>
-									<!-- <upper>
-										20
-									</upper> -->
-								</range>
-							</config>
+								<size>6</size>
+								<wizards>
+								<color>
+									<type>colorbox</type>
+									<dim>120x20</dim>
+									<tableStyle>border:solid 1px black;</tableStyle>
+									<script>wizard_colorpicker.php</script>
+									<JSopenParams>height=340,width=360,status=0,menubar=0,scrollbars=1</JSopenParams>
+								</color>
+								</wizards>
+								<default>#000</default>
+								<eval>#555555</eval>ß	
+							</config> 
 						</TCEforms>
 					</madek_background>
 					<madek_border>
@@ -204,15 +208,18 @@
 					<exclude>1</exclude>
 							<label>LLL:EXT:zhdk_madekplayer/pi1/locallang.php:tx_zhdkmadekplayer_pi1.config.madek_border</label>
 							<config>
-								<size>6</size>
-								<eval>require, array</eval>
 								<type>input</type>
-								<default>#dedede</default>
-								<range>
-									<!-- <upper>
-										20
-									</upper> -->
-								</range>
+								<size>6</size>
+								<wizards>
+								<color>
+									<type>colorbox</type>
+									<tableStyle>border:solid 1px black;</tableStyle>
+									<script>wizard_colorpicker.php</script>
+									<JSopenParams>height=340,width=360,status=0,menubar=0,scrollbars=1</JSopenParams>
+								</color>
+								</wizards>
+								<default>#000</default>
+								<eval>#555555</eval>ß
 							</config>
 						</TCEforms>
 					</madek_border>
