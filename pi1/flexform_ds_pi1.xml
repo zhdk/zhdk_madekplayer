@@ -192,14 +192,12 @@
 								<wizards>
 								<color>
 									<type>colorbox</type>
-									<dim>120x20</dim>
-									<tableStyle>border:solid 1px black;</tableStyle>
 									<script>wizard_colorpicker.php</script>
 									<JSopenParams>height=340,width=360,status=0,menubar=0,scrollbars=1</JSopenParams>
 								</color>
 								</wizards>
 								<default>#000</default>
-								<eval>#555555</eval>ß	
+								<eval>#555555</eval>	
 							</config> 
 						</TCEforms>
 					</madek_background>
@@ -213,13 +211,12 @@
 								<wizards>
 								<color>
 									<type>colorbox</type>
-									<tableStyle>border:solid 1px black;</tableStyle>
 									<script>wizard_colorpicker.php</script>
 									<JSopenParams>height=340,width=360,status=0,menubar=0,scrollbars=1</JSopenParams>
 								</color>
 								</wizards>
 								<default>#000</default>
-								<eval>#555555</eval>ß
+								<eval>#555555</eval>
 							</config>
 						</TCEforms>
 					</madek_border>
