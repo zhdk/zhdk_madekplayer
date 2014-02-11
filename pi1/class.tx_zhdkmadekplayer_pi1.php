@@ -272,20 +272,24 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 				$contentItem .= $this->cObj->substituteMarkerArrayCached($subparts['row'], $markerArray, $row_subparts);
 			}
 		}
+
+
 		$subpartArray['###CONTENT###'] = $contentItem;
 		$markerArray['###RANDOM_INDEX###'] = $this->random;
 		$markerArray['###PLAY###'] = $this->pi_getLL('tx_zhdkmadekplayer_pi1.play');
-		$markerArray['###PAUSE###'] = $this->pi_getLL('tx_zhdkmadekplayer_pi1.pause');
-		$markerArray['###PREV###'] = $this->pi_getLL('tx_zhdkmadekplayer_pi1.prev');
+		$markerArray['###PAUSE###'] = $this->pi_getLL('tx_zhdkmadekplayer_pi1.pause');   
+		$markerArray['###PREV###'] = $this->pi_getLL('tx_zhdkmadekplayer_pi1.prev');   
 		$markerArray['###NEXT###'] = $this->pi_getLL('tx_zhdkmadekplayer_pi1.next');
 		$markerArray['###PREV_LINK###'] = '&lsaquo; ' . $this->pi_getLL('tx_zhdkmadekplayer_pi1.prev');
 		$markerArray['###NEXT_LINK###'] = $this->pi_getLL('tx_zhdkmadekplayer_pi1.next') . ' &rsaquo;';
-		$markerArray['###THUMBNAIL_COUNT###'] = $this->lConf['thumbnails_per_page'];
-		$markerArray['###MAX_IMAGE_WIDTH###'] = $this->lConf['max_image_width'];
-		$markerArray['###MAX_IMAGE_HEIGHT###'] = $this->lConf['max_image_height'];
-		$markerArray['###PLAYER_WIDTH###'] = $this->lConf['player_width'];
-		$markerArray['###MADEK_BACKGROUND###'] = $this->lConf['madek_background'];
-		$markerArray['###MADEK_BORDER###'] = $this->lConf['madek_border'];
+		//cast to int for security reasons
+		$markerArray['###THUMBNAIL_COUNT###'] = (int)$this->lConf['thumbnails_per_page'];
+		$markerArray['###MAX_IMAGE_WIDTH###'] = (int)$this->lConf['max_image_width'];
+		$markerArray['###MAX_IMAGE_HEIGHT###'] = (int)$this->lConf['max_image_height'];
+		$markerArray['###PLAYER_WIDTH###'] = (int)$this->lConf['player_width'];
+		//escape quotes for security reasons
+		$markerArray['###MADEK_BACKGROUND###'] = addslashes($this->lConf['madek_background']);
+		$markerArray['###MADEK_BORDER###'] = addslashes($this->lConf['madek_border']);
 		$content = $this->cObj->substituteMarkerArrayCached($subparts['template'], $markerArray, $subpartArray);
 		return $content;
 	}
