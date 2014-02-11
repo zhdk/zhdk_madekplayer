@@ -196,8 +196,7 @@
 									<JSopenParams>height=340,width=360,status=0,menubar=0,scrollbars=1</JSopenParams>
 								</color>
 								</wizards>
-								<default>#000</default>
-								<eval>#555555</eval>	
+								<default>#eeeeee</default>	
 							</config> 
 						</TCEforms>
 					</madek_background>
@@ -215,8 +214,7 @@
 									<JSopenParams>height=340,width=360,status=0,menubar=0,scrollbars=1</JSopenParams>
 								</color>
 								</wizards>
-								<default>#000</default>
-								<eval>#555555</eval>
+								<default>#dedede</default>
 							</config>
 						</TCEforms>
 					</madek_border>

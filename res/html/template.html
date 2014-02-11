@@ -52,6 +52,21 @@
 			maxImageWidth = playerWidth;
 		}
 
+		//remove whitespaces
+		madekBackground.trim();
+		//controll if madekBackground is a empty string
+		if(madekBackground == "") {
+			//set default color
+			madekBackground = "#eeeeee";
+		}
+
+		madekBorder.trim();
+		//controll if madekBorder is a empty string
+		if(madekBorder == "") {
+			//set default color
+			madekBorder = "#dedede"
+		}
+
 		jQuery('div#zhdk_madekplayer-###RANDOM_INDEX###').css('width', playerWidth);
 		jQuery('div#zhdk_madekplayer-###RANDOM_INDEX###').css('background-color', madekBackground);
 		jQuery('div#zhdk_madekplayer-###RANDOM_INDEX### .zhdk_madekplayer-caption').css('border-color' , madekBorder);
