@@ -3,7 +3,7 @@
 /***************************************************************
  * Extension Manager/Repository config file for ext "zhdk_madekplayer".
  *
- * Auto generated 12-02-2014 10:20
+ * Auto generated 12-02-2014 10:34
  *
  * Manual updates:
  * Only the data in the array - everything else is removed by next
@@ -29,7 +29,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'modify_tables' => '',
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
-	'version' => '1.0.1',
+	'version' => '1.0.2',
 	'constraints' => array(
 		'depends' => array(
 			'cms' => '',
