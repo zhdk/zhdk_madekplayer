@@ -3,7 +3,7 @@
 /***************************************************************
  * Extension Manager/Repository config file for ext "zhdk_madekplayer".
  *
- * Auto generated 11-02-2014 15:03
+ * Auto generated 12-02-2014 10:20
  *
  * Manual updates:
  * Only the data in the array - everything else is removed by next
@@ -14,13 +14,10 @@ $EM_CONF[$_EXTKEY] = array(
 	'title' => 'ZHDK MAdeK Player',
 	'description' => 'Provides a frontend plugin to display a gallery of single set from a MAdeK server (https://github.com/zhdk/madek).',
 	'category' => 'plugin',
-	'author' => array(
-		'0' => 'Beat Rohrer',
-		'1' => 'Manuel Farina',
-	),
+	'author' => 'Beat Rohrer, Manuel Farina',
 	'author_email' => 'service.itz@zhdk.ch',
-	'author_company' => 'Zürcher Hochschule der Künste, ZHdK',
-	'shy' => '',
+	'author_company' => 'Zurich University of the Arts (ZHdK)',
+	'shy' => 0,
 	'dependencies' => 'cms',
 	'conflicts' => '',
 	'priority' => '',
@@ -32,7 +29,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'modify_tables' => '',
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
-	'version' => '1.0.0',
+	'version' => '1.0.1',
 	'constraints' => array(
 		'depends' => array(
 			'cms' => '',
