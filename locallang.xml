@@ -13,5 +13,9 @@
 			<label index="pi1_title">MAdeK Player</label>
 			<label index="pi1_plus_wiz_description">Zeigt ein MAdeK-Set als Galerie an.</label>
 		</languageKey>
+		<languageKey index="es" type="array">
+			<label index="pi1_title">MAdeK Player</label>
+			<label index="pi1_plus_wiz_description">Muestra un set de MAdeK como galeria.</label>
+		</languageKey>
 	</data>
 </T3locallang>

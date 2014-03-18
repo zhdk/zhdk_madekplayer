@@ -63,5 +63,34 @@
 			<label index="flexform.tabgeneral">Allgemein</label>
 			<label index="flexform.tabformats">Formatierungen</label>
 		</languageKey>
+		<languageKey index="es" type="array">
+			<label index="pi1_title">MAdeK-Player</label>
+			<label index="pi1_plus_wiz_description">Muestra los sets del MAdeK.</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_copyright">Mostrar informaciones de derechos de autor</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_title">Mostrar titulo y fecha</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_subtitle">Mostrar subtitulo</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_public_caption">Mostrar leyenda de imagenes</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.show_author">Mostrar autor/a</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.set_id">MAdeK Media Set ID</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.thumbnail_count">númro de Thumbnails por pagina</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.madek_background">color de fondo</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.madek_border">color del marco</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.max_image_width">Max. ancho de imagen (Pixel)</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.max_image_height">Max. altura de imagen (pixel)</label>
+			<label index="tx_zhdkmadekplayer_pi1.config.player_width">ancho del player (Pixel)</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright">Derechos de autor</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_notice">Titular de derechos de autor</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_status">Licencia</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_usage">Texto de la licencia</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_url">URL al texto completo de la licencia</label>
+			<label index="tx_zhdkmadekplayer_pi1.copyright_url.short">URL</label>
+			<label index="tx_zhdkmadekplayer_pi1.dating">URL</label>
+			<label index="tx_zhdkmadekplayer_pi1.play">Comenzar presentacion</label>
+			<label index="tx_zhdkmadekplayer_pi1.pause">pausar presentacion</label>
+			<label index="tx_zhdkmadekplayer_pi1.prev">Atrás</label>
+			<label index="tx_zhdkmadekplayer_pi1.next">Seguir</label>
+			<label index="flexform.tabgeneral">General</label>
+			<label index="flexform.tabformats">Formato</label>
+		</languageKey>
 	</data>
 </T3locallang>

@@ -3,7 +3,7 @@
 /***************************************************************
  * Extension Manager/Repository config file for ext "zhdk_madekplayer".
  *
- * Auto generated 12-02-2014 10:57
+ * Auto generated 18-03-2014 09:41
  *
  * Manual updates:
  * Only the data in the array - everything else is removed by next
@@ -29,7 +29,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'modify_tables' => '',
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
-	'version' => '1.0.3',
+	'version' => '1.1.1',
 	'constraints' => array(
 		'depends' => array(
 			'cms' => '',
@@ -41,7 +41,7 @@ $EM_CONF[$_EXTKEY] = array(
 		'suggests' => array(
 		),
 	),
-	'_md5_values_when_last_written' => 'a:21:{s:26:"class.zhdk_madekplayer.php";s:4:"ceee";s:21:"ext_conf_template.txt";s:4:"fddd";s:12:"ext_icon.gif";s:4:"3f61";s:17:"ext_localconf.php";s:4:"6f63";s:14:"ext_tables.php";s:4:"e2cb";s:7:"LICENSE";s:4:"d433";s:13:"locallang.xml";s:4:"4625";s:9:"README.md";s:4:"ae96";s:14:"pi1/ce_wiz.gif";s:4:"3f61";s:36:"pi1/class.tx_zhdkmadekplayer_pi1.php";s:4:"6aa0";s:44:"pi1/class.tx_zhdkmadekplayer_pi1_wizicon.php";s:4:"d81c";s:23:"pi1/flexform_ds_pi1.xml";s:4:"835c";s:17:"pi1/locallang.xml";s:4:"15b1";s:27:"res/css/zhdkmadekplayer.css";s:4:"8738";s:22:"res/html/template.html";s:4:"5b36";s:30:"res/html/template_caption.html";s:4:"cb2d";s:28:"res/js/jquery.galleriffic.js";s:4:"d968";s:20:"static/constants.txt";s:4:"a8f6";s:16:"static/setup.txt";s:4:"444a";s:34:"wizards/class.madek_set_picker.php";s:4:"f856";s:21:"wizards/locallang.xml";s:4:"2fdc";}',
+	'_md5_values_when_last_written' => 'a:21:{s:26:"class.zhdk_madekplayer.php";s:4:"ceee";s:21:"ext_conf_template.txt";s:4:"fddd";s:12:"ext_icon.gif";s:4:"3f61";s:17:"ext_localconf.php";s:4:"6f63";s:14:"ext_tables.php";s:4:"e2cb";s:7:"LICENSE";s:4:"d433";s:13:"locallang.xml";s:4:"c35f";s:9:"README.md";s:4:"ae96";s:14:"pi1/ce_wiz.gif";s:4:"3f61";s:36:"pi1/class.tx_zhdkmadekplayer_pi1.php";s:4:"6aa0";s:44:"pi1/class.tx_zhdkmadekplayer_pi1_wizicon.php";s:4:"d81c";s:23:"pi1/flexform_ds_pi1.xml";s:4:"835c";s:17:"pi1/locallang.xml";s:4:"0655";s:27:"res/css/zhdkmadekplayer.css";s:4:"8738";s:22:"res/html/template.html";s:4:"5b36";s:30:"res/html/template_caption.html";s:4:"cb2d";s:28:"res/js/jquery.galleriffic.js";s:4:"d968";s:20:"static/constants.txt";s:4:"a8f6";s:16:"static/setup.txt";s:4:"444a";s:34:"wizards/class.madek_set_picker.php";s:4:"f856";s:21:"wizards/locallang.xml";s:4:"2fdc";}',
 	'suggests' => array(
 	),
 );
