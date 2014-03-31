@@ -17,10 +17,9 @@
 							<label>LLL:EXT:zhdk_madekplayer/pi1/locallang.php:tx_zhdkmadekplayer_pi1.config.set_id</label>
 							<config>
 								<type>input</type>
-								<size>10</size>
-								<eval>require,int</eval>
+								<size>36</size>
+								<eval>require</eval>
 								<wizards type="array">
-									<_PADDING type="integer">2</_PADDING>
 									<add type="array">
 										<type>popup</type>
 										<title>edit</title>

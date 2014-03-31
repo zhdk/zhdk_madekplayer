@@ -192,7 +192,7 @@ table {
 					if(empty($item['image'])) {
 						continue;
 					}
-					$resultList .= '<tr class="result-row" onclick="javascript:zhdk_madekplayer_picker_writeback(' . (int)$item['id'] . ',\'' .  zhdk_madekplayer::getMetaDataValue('title', $item['meta_data']) . '\')">
+					$resultList .= '<tr class="result-row" onclick="javascript:zhdk_madekplayer_picker_writeback(\'' .  htmlspecialchars($item['id'], ENT_QUOTES) . '\',\'' .  htmlspecialchars(zhdk_madekplayer::getMetaDataValue('title', $item['meta_data']), ENT_QUOTES) . '\')">
 									<td>
 										' . (!empty($item['image']) ? '<img src="' . $item['image'] . '" />' : '') . '
 									</td>
