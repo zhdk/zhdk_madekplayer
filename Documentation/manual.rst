@@ -12,7 +12,7 @@ use
 **Different MAdeK server**  
 If you want to use a different MAdeK server than
 [medienarchiv.zhdk.ch](http://medienarchiv.zhdk.ch/) you must define it in the extension configuration.
-.. image:: /images/server.jpg
+.. image:: images/server.jpg
 	:width 200px
 
 
@@ -23,16 +23,16 @@ Set a MAdeK media set
 ------------------
 
 1.	Click on the edit symbol
-.. image:: /images/scr_general.jpg
+.. image:: images/scr_general.jpg
 	:width 200px
 2.	Then it should appear a pop up window, where you can search for a MAdeK set
 3.	Search for the set you want
-.. image:: /images/screenshot_popup_1.jpg
+.. image:: images/screenshot_popup_1.jpg
 	:width 200px
 4.	When the search is finished, select the set you wanted
 	-You can only select the sets which are set up as published
 
-.. image:: /images/screenshot_popup_2.jpg
+.. image:: images/screenshot_popup_2.jpg
 	:width 200px
 
 Selections
@@ -51,14 +51,14 @@ Selections
 |5.	 | Show author			  | enables the author name  in the frontend		   		  | 
 +----+------------------------+-----------------------------------------------------------+
 
-.. image:: /images/general.jpg
+.. image:: images/general.jpg
 	:width 300px
 
 
 Formats
 ======
 
-.. image:: /images/scr_format.jpg
+.. image:: images/scr_format.jpg
 	:width 200px
 
 Fields
@@ -80,7 +80,7 @@ Fields
 +----+-----------------------------+-----------------------------------------+--------------+
 
 
-.. image:: /images/format.jpg
+.. image:: images/format.jpg
 	:width 300px
 
 How to use the the color picker
