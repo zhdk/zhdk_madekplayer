@@ -12,6 +12,7 @@ use
 **Different MAdeK server**  
 If you want to use a different MAdeK server than
 [medienarchiv.zhdk.ch](http://medienarchiv.zhdk.ch/) you must define it in the extension configuration.
+
 .. image:: images/server.jpg
 	:width: 200
 
@@ -23,12 +24,16 @@ Set a MAdeK media set
 ------------------
 
 1.	Click on the edit symbol
+
 .. image:: images/scr_general.jpg
 	:width: 200px
+
 2.	Then it should appear a pop up window, where you can search for a MAdeK set
 3.	Search for the set you want
+
 .. image:: images/screenshot_popup_1.jpg
 	:width: 200px
+
 4.	When the search is finished, select the set you wanted
 	-You can only select the sets which are set up as published
 
@@ -52,7 +57,7 @@ Selections
 +----+------------------------+-----------------------------------------------------------+
 
 .. image:: images/general.jpg
-	:width 300
+	:width: 300
 
 
 Formats
