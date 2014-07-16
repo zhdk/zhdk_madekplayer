@@ -13,7 +13,7 @@ use
 If you want to use a different MAdeK server than
 [medienarchiv.zhdk.ch](http://medienarchiv.zhdk.ch/) you must define it in the extension configuration.
 .. image:: images/server.jpg
-	:width: 200px
+	:width: 200
 
 
 General
@@ -33,7 +33,7 @@ Set a MAdeK media set
 	-You can only select the sets which are set up as published
 
 .. image:: images/screenshot_popup_2.jpg
-	:width: 200px
+	:width: 200
 
 Selections
 --------
@@ -52,14 +52,14 @@ Selections
 +----+------------------------+-----------------------------------------------------------+
 
 .. image:: images/general.jpg
-	:width 300px
+	:width 300
 
 
 Formats
 ======
 
 .. image:: images/scr_format.jpg
-	:width: 200px
+	:width: 200
 
 Fields
 -----
@@ -81,7 +81,7 @@ Fields
 
 
 .. image:: images/format.jpg
-	:width: 300px
+	:width: 300
 
 How to use the the color picker
 ------------------------
