@@ -41,19 +41,19 @@ Selections
 
 
 
-+----+------------------------+-----------------------------------------------------------+-----------------------------------------+
-|Nr. | Selection		      | What it does                    		  	 			  |Refers to:								|
-+========================+================================================================+=========================================+
-|1.	 | Show copyright notice  | enables copyright notice in the frontend				  | 
-+----+------------------------+-----------------------------------------------------------+-----------------------------------------+
-|2.	 | Show title and date    | enables the title and date in the frontend   			  |Field title and year of upload of the image 	|
-+----+------------------------+-----------------------------------------------------------+-----------------------------------------+
-|3.	 | Show subtitle	      | enables the subtitle of the image in the frontend         |Subtitle which are set in the settings of images |	
-+----+------------------------+-----------------------------------------------------------+-----------------------------------------+
-|4.	 | Show pubic caption     | enables the public caption of the image  in the frontend  |Field caption in the image metadata settings
-+----+------------------------+-----------------------------------------------------------+-----------------------------------------+
-|5.	 | Show author			  | enables the author name  in the frontend		   		  |Field author in the image metadata settings
-+----+------------------------+-----------------------------------------------------------+-----------------------------------------+
++----+------------------------+-----------------------------------------------------------+-------------------------------------------------+
+|Nr. | Selection              | What it does                                              |Refers to:                                       |
++========================+================================================================+=================================================+
+|1.  | Show copyright notice  | enables copyright notice in the frontend                  |Test                                             |
++----+------------------------+-----------------------------------------------------------+-------------------------------------------------+
+|2.  | Show title and date    | enables the title and date in the frontend                |Field title and year of upload of the image      |
++----+------------------------+-----------------------------------------------------------+-------------------------------------------------+
+|3.  | Show subtitle          | enables the subtitle of the image in the frontend         |Subtitle which are set in the settings of images |	
++----+------------------------+-----------------------------------------------------------+-------------------------------------------------+
+|4.  | Show pubic caption     | enables the public caption of the image  in the frontend  |Field caption in the image metadata settings     |
++----+------------------------+-----------------------------------------------------------+-------------------------------------------------+
+|5.  | Show author            | enables the author name  in the frontend                  |Field author in the image metadata settings      |
++----+------------------------+-----------------------------------------------------------+-------------------------------------------------+
 
 +-------+----------+------+
 | Table Headings   | Here |
@@ -92,6 +92,8 @@ Fields
 +----+-----------------------------+-----------------------------------------+--------------+
 |6.	| Border color				| Set the color of the players border	  | #dedede	  |
 +----+-----------------------------+-----------------------------------------+--------------+
+
+
 
 
 How to use the the color picker
