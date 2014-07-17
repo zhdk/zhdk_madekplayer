@@ -33,6 +33,7 @@ Set a MAdeK media set
 ------------------
 
 When you search for a set, you have to be sure if the set in the media server is set up as published.
+You can do this in the settings **Permissions and Responsibility**.
 
 
 Selections
@@ -41,19 +42,33 @@ Selections
 
 
 +----+------------------------+-----------------------------------------------------------+-----------------------------------------+
-|Nr. | Selection		      | What it does                    		  	 			  |Refers to the field in the Media-Server	|
+|Nr. | Selection		      | What it does                    		  	 			  |Refers to:								|
 +========================+================================================================+=========================================+
 |1.	 | Show copyright notice  | enables copyright notice in the frontend				  | 
 +----+------------------------+-----------------------------------------------------------+-----------------------------------------+
-|2.	 | Show title and date    | enables the title and date in the frontend   			  |
+|2.	 | Show title and date    | enables the title and date in the frontend   			  |Field title and year of upload of the image 	|
 +----+------------------------+-----------------------------------------------------------+-----------------------------------------+
-|3.	 | Show subtitle	      | enables the subtitle of the image in the frontend         |
+|3.	 | Show subtitle	      | enables the subtitle of the image in the frontend         |Subtitle which are set in the settings of images |	
 +----+------------------------+-----------------------------------------------------------+-----------------------------------------+
-|4.	 | Show pubic caption     | enables the public caption of the image  in the frontend  | 
+|4.	 | Show pubic caption     | enables the public caption of the image  in the frontend  |Field caption in the image metadata settings
 +----+------------------------+-----------------------------------------------------------+-----------------------------------------+
-|5.	 | Show author			  | enables the author name  in the frontend		   		  | 
+|5.	 | Show author			  | enables the author name  in the frontend		   		  |Field author in the image metadata settings
 +----+------------------------+-----------------------------------------------------------+-----------------------------------------+
 
++-------+----------+------+
+| Table Headings   | Here |
++-------+----------+------+
+| Sub   | Headings | Too  |
++=======+==========+======+
+| cell  | column spanning |
++ spans +----------+------+
+| rows  | normal   | cell |
++-------+----------+------+
+| multi | * cells can be  |
+| line  | * formatted     |
+| cells | * paragraphs    |
+| too   |                 |
++-------+-----------------+
 
 Formats
 ======
