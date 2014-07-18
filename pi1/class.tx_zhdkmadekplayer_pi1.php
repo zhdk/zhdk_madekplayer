@@ -101,7 +101,7 @@ class tx_zhdkmadekplayer_pi1 extends tslib_pibase {
 			'ids=' . $madekSetId . '&'.
 			'with[children][public]=true&'.
 			'with[children][with][media_type]=true&'.
-			'with[children][with][meta_data][meta_context_names][]=copyright&'.
+			'with[children][with][meta_data][context_ids][]=copyright&'.
 			'with[children][with][meta_data][meta_key_ids][]=title&'.
 			'with[children][with][meta_data][meta_key_ids][]=subtitle&'.
 			'with[children][with][meta_data][meta_key_ids][]=public%20caption&'.
