@@ -21,6 +21,15 @@ In the extension configuration you can set the range.
 Constants
 ---------
 
++------------------------+----------------------------------------------------------+
+| Constants              | Is for:                                                  | 
++========================+==========================================================+
+| tamplate.html          | Structs the whole MAdeK Player                           |
++------------------------+----------------------------------------------------------+
+| zhdkmadekplayer.css    | Sets the style of the MAdeK Player                       |
++------------------------+----------------------------------------------------------+
+| template_camption.html | Formats the captions which are set in the image settings |
++------------------------+----------------------------------------------------------+
 
 
 ============
@@ -44,7 +53,7 @@ Selections
 +======+=========================+===========================================================+========================================================+
 | 1\.  | Show copyright notice   | enables copyright notice in the frontend                  | Field copyright in the image metadata settings         |
 +------+-------------------------+-----------------------------------------------------------+--------------------------------------------------------+
-| 2\.  | Show title and date     | enables the title and date in the frontend                | Field title and year of upload of the image            |
+| 2\.  | Show title and date     | enables the title and date in the frontend                | Field title and date of upload of the image            |
 +------+-------------------------+-----------------------------------------------------------+--------------------------------------------------------+
 | 3\.  | Show subtitle           | enables the subtitle of the image in the frontend         | Subtitle which are set in the image metadata settings  |
 +------+-------------------------+-----------------------------------------------------------+--------------------------------------------------------+
