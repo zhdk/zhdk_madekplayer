@@ -8,14 +8,14 @@ Set up
 Set a different media server
 -----------------------------
 
-If you want to use a different MAdeK server than
-[medienarchiv.zhdk.ch](http://medienarchiv.zhdk.ch/) you must define it in the extension configuration.
+If you want to use a different MAdeK server than `medienarchiv.zhdk.ch`_ you must define it in the **extension configuration**.
 
+.. _medienarchiv.zhdk.ch: http://medienarchiv.zhdk.ch/
 
 Set the number of images for a gallery
 ---------------------------------------
 
-In the extension configuration you can set the range.
+In the **extension configuration** you can set the range of images.
 
 
 Constants
@@ -41,7 +41,7 @@ Set a MAdeK media set
 ----------------------
 
 When you search for a set, you have to be sure if it's set up in the media server as published.
-You can do this in the settings **Permissions and Responsibility**.
+You can do this in the MAdeK set settings **Permissions and Responsibility**.
 
 
 Selections

@@ -11,19 +11,20 @@ Set a MAdeK media set
 1.	Click on the edit symbol
 
 .. image:: images/scr_general.jpg
-	:width: 800
+	:width: 500
 
 2.	Then it should appear a pop up window, where you can search for a MAdeK set
 3.	Search for the set you want
 
 .. image:: images/screenshot_popup_1.jpg
-	:width: 800
+	:width: 350
 
 4.	When the search is finished, select the set you wanted
-	-You can only select the sets which are set up as published
+	
+- You can only select the sets which are set up as published
 
 .. image:: images/screenshot_popup_2.jpg
-	:width: 800
+	:width: 350
 
 Selections
 ----------
@@ -42,8 +43,6 @@ Selections
 | 5\.  | Show author             | enables the author name  in the frontend                  |
 +------+-------------------------+-----------------------------------------------------------+
 
-.. image:: images/general.jpg
-	:width: 800
 
 ====================
 
@@ -74,7 +73,7 @@ Fields
 
 
 .. image:: images/format.jpg
-	:width: 800
+	:width: 500
 
 How to use the the color picker
 -------------------------------
