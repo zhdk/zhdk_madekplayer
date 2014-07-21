@@ -79,8 +79,8 @@ How to use the the color picker
 -------------------------------
 
 1. Click on the color picker symbol next to the background or border color field
-2. Then it should appear a pop-up window, where you can select the color you prefer
-3. Once selected the color press on Save and Close
+2. Then a pop-up window appears, where you can select the color you prefer
+3. Press "Save and Close" to store your selection
 
 
 
