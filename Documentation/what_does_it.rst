@@ -10,11 +10,10 @@ The plugin will only play images, because the current public MAdeK API doens't s
 
 The format can be set up just as one like it.
 
+More about MAdeK: `medienarchiv.zhdk.ch <http://medienarchiv.zhdk.ch/>`_
 
 
 
 
-**Screenshots**
-
-.. image:: images/scr_2.jpg
-	:width: 800
+.. toctree::
+	screenshots.rst
