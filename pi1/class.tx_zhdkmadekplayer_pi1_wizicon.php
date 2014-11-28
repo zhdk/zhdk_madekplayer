@@ -40,34 +40,16 @@ class tx_zhdkmadekplayer_pi1_wizicon {
 	 */
 	function proc($wizardItems) {
 		global $LANG;
-		$LL = $this->includeLocalLang();
 
 		$wizardItems['plugins_tx_zhdkmadekplayer_pi1'] = array(
 			'icon' => t3lib_extMgm::extRelPath('zhdk_madekplayer') . 'pi1/ce_wiz.gif',
-			'title' => $LANG->getLLL('pi1_title', $LL),
-			'description' => $LANG->getLLL('pi1_plus_wiz_description', $LL),
+			'title'=> $LANG->sL('LLL:EXT:zhdk_madekplayer/locallang.xml:pi1_title'),
+			'description'=> $LANG->sL('LLL:EXT:zhdk_madekplayer/locallang.xml:pi1_plus_wiz_description'),
 			'params' => '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=zhdk_madekplayer_pi1'
 		);
 
 		return $wizardItems;
 	}
-
-	/**
-	 * Reads the [extDir]/locallang.xml and returns the $LOCAL_LANG array found in that file.
-	 *
-	 * @return	The array with language labels
-	 */
-	function includeLocalLang() {
-		$llFile = t3lib_extMgm::extPath('zhdk_madekplayer') . 'locallang.xml';
-		$LOCAL_LANG = t3lib_div::readLLXMLfile($llFile, $GLOBALS['LANG']->lang);
-
-		return $LOCAL_LANG;
-	}
-	
-	function user_TCAform_procWizard($PA, $fobj)    {
-		die(print_r($PA));
-	}
-
 }
 
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/zhdk_madekplayer/pi1/class.tx_zhdkmadekplayer_pi1_wizicon.php']) {
