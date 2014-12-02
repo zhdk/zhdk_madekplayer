@@ -9,11 +9,12 @@
 define('TYPO3_MOD_PATH', '../typo3conf/ext/zhdk_madekplayer/wizards/');
 $BACK_PATH='../../../../typo3/';
 
-require ($BACK_PATH . 'init.php');
-require ($BACK_PATH . 'template.php');
+require($BACK_PATH . 'init.php');
+
 require_once('../class.zhdk_madekplayer.php');
 
-// $BACK_PATH='';
+
+$BACK_PATH='';
 $LANG->includeLLFile('EXT:zhdk_madekplayer/wizards/locallang.xml');
 
 /**
@@ -284,7 +285,7 @@ if (defined('TYPO3_MODE') && isset($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLA
 
 
 // Make instance:
-$SOBE = t3lib_div::makeInstance('Madek_set_picker');
+$SOBE = new Madek_set_picker;
 $SOBE->init();
 $SOBE->main();
 $SOBE->printContent();
