@@ -19,6 +19,13 @@ If you want to use a different MAdeK server than
 Insert the "ZHdK MAdeK Player" as a plugin on a normal page and select a
 MAdeK set with the "MAdeK Set Picker". Done.
 
+Limitations
+----------
+
+- the MAdeK Player won't be compatible with MAdeK's v3 API
+- it doesn't display videos or pdfs
+- it can only handle public sets and files
+
 Contribute
 ----------
 The "ZHdK MAdeK Player" code is managed on
