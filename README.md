@@ -1,6 +1,8 @@
 About ZHdK MAdeK Player
 =======================
 
+**ATTENTION**: This extension only works with the old version of MAdeK (v2) and not with the current (v3). This extension won't get updated for v3!
+
 Introduction
 ------------
 
